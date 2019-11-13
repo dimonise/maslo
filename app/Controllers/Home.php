@@ -31,7 +31,9 @@ class Home extends Controller
         echo view('templates/footer',$data);
     }
 
-
+public function admin(){
+    echo view('admin/admin');
+}
     //--------------------------------------------------------------------
 
 }

@@ -47,7 +47,8 @@ function inCart(prod_id) {
         //dataType:'json',
         data: {id: prod_id,count:$('#kolvo').val()},
         success: function (html) {
-            alert('Product in cart'+prod_id);
+            console.log(html);
+            alert(html+' in cart');
         },
 
     })
@@ -59,7 +60,7 @@ function delProduct(prod_id,user) {
     $.ajax({
         url: 'http://maslo.loc/product/delCart',
         type: 'post',
-        //dataType:'json',
+        dataType:'json',
         data: {prod_id: prod_id,user:user},
         success: function (html) {
 

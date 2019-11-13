@@ -10,8 +10,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
-use App\Controllers\Catalog as Catalog;
-use Config\Services;
+
 
 class Product extends Controller
 {
@@ -67,10 +66,10 @@ class Product extends Controller
                 'img' => $getProductInfo[0]['img'],
                 'user' => $user
             ];
-            $this->session->set($data);
+            //$this->session->set($data);
             $builder->insert($data);
 
-            return json_encode(lang('Language.incart'));
+            return json_encode($getProductInfo[0]['product_name_'.$this->locale], JSON_UNESCAPED_UNICODE);
         }
 
     }
