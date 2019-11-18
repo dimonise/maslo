@@ -16,7 +16,18 @@ class Product_cat_link_model extends CI_Model
      */
     function get_product_cat_link($id_link)
     {
-        return $this->db->get_where('product_cat_link',array('id_link'=>$id_link))->row_array();
+        $product_cat_link = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_cat_link`
+
+            WHERE
+                `id_link` = ?
+        ",array($id_link))->row_array();
+
+        return $product_cat_link;
     }
         
     /*
@@ -24,8 +35,20 @@ class Product_cat_link_model extends CI_Model
      */
     function get_all_product_cat_link()
     {
-        $this->db->order_by('id_link', 'desc');
-        return $this->db->get('product_cat_link')->result_array();
+        $product_cat_link = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_cat_link`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_link` DESC
+        ")->result_array();
+
+        return $product_cat_link;
     }
         
     /*

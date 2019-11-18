@@ -16,7 +16,18 @@ class Product_feature_val_model extends CI_Model
      */
     function get_product_feature_val($idd)
     {
-        return $this->db->get_where('product_feature_val',array('idd'=>$idd))->row_array();
+        $product_feature_val = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_feature_val`
+
+            WHERE
+                `idd` = ?
+        ",array($idd))->row_array();
+
+        return $product_feature_val;
     }
         
     /*
@@ -24,8 +35,20 @@ class Product_feature_val_model extends CI_Model
      */
     function get_all_product_feature_val()
     {
-        $this->db->order_by('idd', 'desc');
-        return $this->db->get('product_feature_val')->result_array();
+        $product_feature_val = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_feature_val`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `idd` DESC
+        ")->result_array();
+
+        return $product_feature_val;
     }
         
     /*

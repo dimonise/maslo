@@ -16,7 +16,18 @@ class Product_model extends CI_Model
      */
     function get_product($product_id)
     {
-        return $this->db->get_where('product',array('product_id'=>$product_id))->row_array();
+        $product = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product`
+
+            WHERE
+                `product_id` = ?
+        ",array($product_id))->row_array();
+
+        return $product;
     }
         
     /*
@@ -24,8 +35,20 @@ class Product_model extends CI_Model
      */
     function get_all_product()
     {
-        $this->db->order_by('product_id', 'desc');
-        return $this->db->get('product')->result_array();
+        $product = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `product_id` DESC
+        ")->result_array();
+
+        return $product;
     }
         
     /*

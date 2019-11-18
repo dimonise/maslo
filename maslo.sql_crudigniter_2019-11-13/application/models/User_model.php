@@ -16,7 +16,18 @@ class User_model extends CI_Model
      */
     function get_user($id_user)
     {
-        return $this->db->get_where('users',array('id_user'=>$id_user))->row_array();
+        $user = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `users`
+
+            WHERE
+                `id_user` = ?
+        ",array($id_user))->row_array();
+
+        return $user;
     }
         
     /*
@@ -24,8 +35,20 @@ class User_model extends CI_Model
      */
     function get_all_users()
     {
-        $this->db->order_by('id_user', 'desc');
-        return $this->db->get('users')->result_array();
+        $users = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `users`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_user` DESC
+        ")->result_array();
+
+        return $users;
     }
         
     /*

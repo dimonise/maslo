@@ -16,7 +16,18 @@ class Feature_val_model extends CI_Model
      */
     function get_feature_val($)
     {
-        return $this->db->get_where('feature_val',array(''=>$))->row_array();
+        $feature_val = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `feature_val`
+
+            WHERE
+                `` = ?
+        ",array($))->row_array();
+
+        return $feature_val;
     }
         
     /*
@@ -24,8 +35,20 @@ class Feature_val_model extends CI_Model
      */
     function get_all_feature_val()
     {
-        $this->db->order_by('', 'desc');
-        return $this->db->get('feature_val')->result_array();
+        $feature_val = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `feature_val`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `` DESC
+        ")->result_array();
+
+        return $feature_val;
     }
         
     /*

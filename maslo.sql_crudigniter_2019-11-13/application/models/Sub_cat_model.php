@@ -16,7 +16,18 @@ class Sub_cat_model extends CI_Model
      */
     function get_sub_cat($id_sub)
     {
-        return $this->db->get_where('sub_cat',array('id_sub'=>$id_sub))->row_array();
+        $sub_cat = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `sub_cat`
+
+            WHERE
+                `id_sub` = ?
+        ",array($id_sub))->row_array();
+
+        return $sub_cat;
     }
         
     /*
@@ -24,8 +35,20 @@ class Sub_cat_model extends CI_Model
      */
     function get_all_sub_cat()
     {
-        $this->db->order_by('id_sub', 'desc');
-        return $this->db->get('sub_cat')->result_array();
+        $sub_cat = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `sub_cat`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_sub` DESC
+        ")->result_array();
+
+        return $sub_cat;
     }
         
     /*

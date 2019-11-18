@@ -16,7 +16,15 @@ class Cart extends CI_Controller{
      */
     function index()
     {
-        $data['cart'] = $this->Cart_model->get_all_cart();
+        $params['limit'] = RECORDS_PER_PAGE; 
+        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+        
+        $config = $this->config->item('pagination');
+        $config['base_url'] = site_url('cart/index?');
+        $config['total_rows'] = $this->Cart_model->get_all_cart_count();
+        $this->pagination->initialize($config);
+
+        $data['cart'] = $this->Cart_model->get_all_cart($params);
         
         $data['_view'] = 'cart/index';
         $this->load->view('layouts/main',$data);

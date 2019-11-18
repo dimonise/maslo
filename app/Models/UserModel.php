@@ -14,7 +14,13 @@ class UserModel extends Model
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('users');
     }
-    
+
+    public function index(){
+        $a = $this->db->query("select * from `users`")->getResultArray();
+
+        return $a;
+    }
+
     /*
      * Get user by id_user
      */
@@ -31,8 +37,9 @@ class UserModel extends Model
 
 //        $this->builder->select('id_user, name_user');
         $this->builder->orderBy('id_user', 'asc');
+        $a = $this->builder->get()->getResult();
 
-        return $this->builder->get()->getResultArray();
+      return $a;
     }
         
     /*

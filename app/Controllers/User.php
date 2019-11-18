@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\UserModel;
+use App\Models\TestModel;
 
 class User extends Controller{
     
@@ -13,16 +14,23 @@ class User extends Controller{
     {
         $this->locale  =  service('request')->getLocale();
         $this->model = new UserModel();
-    } 
+
+    }
 
     /*
      * Listing of users
      */
     function index()
     {
-        $data['users'] = $this->model->get_all_users();
-        $data['locale'] = $this->locale;
-        $data['_view'] = 'user/index';
+
+        $pager = \Config\Services::pager();
+
+
+        $data = [
+            'users' => $this->model->paginate(1),
+            'pager' => $this->model->pager,
+            'locale' => $this->locale
+        ];
         echo view('admin/header',$data);
         echo view('admin/user/index',$data);
         echo view('admin/footer');

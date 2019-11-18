@@ -16,7 +16,18 @@ class Category_model extends CI_Model
      */
     function get_category($id_cat)
     {
-        return $this->db->get_where('category',array('id_cat'=>$id_cat))->row_array();
+        $category = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `category`
+
+            WHERE
+                `id_cat` = ?
+        ",array($id_cat))->row_array();
+
+        return $category;
     }
         
     /*
@@ -24,8 +35,20 @@ class Category_model extends CI_Model
      */
     function get_all_category()
     {
-        $this->db->order_by('id_cat', 'desc');
-        return $this->db->get('category')->result_array();
+        $category = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `category`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_cat` DESC
+        ")->result_array();
+
+        return $category;
     }
         
     /*

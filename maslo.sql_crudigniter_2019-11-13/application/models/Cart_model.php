@@ -16,16 +16,61 @@ class Cart_model extends CI_Model
      */
     function get_cart($id_cart)
     {
-        return $this->db->get_where('cart',array('id_cart'=>$id_cart))->row_array();
+        $cart = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `cart`
+
+            WHERE
+                `id_cart` = ?
+        ",array($id_cart))->row_array();
+
+        return $cart;
+    }
+    
+    /*
+     * Get all cart count
+     */
+    function get_all_cart_count()
+    {
+        $cart = $this->db->query("
+            SELECT
+                count(*) as count
+
+            FROM
+                `cart`
+        ")->row_array();
+
+        return $cart['count'];
     }
         
     /*
      * Get all cart
      */
-    function get_all_cart()
+    function get_all_cart($params = array())
     {
-        $this->db->order_by('id_cart', 'desc');
-        return $this->db->get('cart')->result_array();
+        $limit_condition = "";
+        if(isset($params) && !empty($params))
+            $limit_condition = " LIMIT " . $params['offset'] . "," . $params['limit'];
+        
+        $cart = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `cart`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_cart` DESC
+
+            " . $limit_condition . "
+        ")->result_array();
+
+        return $cart;
     }
         
     /*

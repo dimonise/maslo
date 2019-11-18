@@ -16,7 +16,18 @@ class Feature_model extends CI_Model
      */
     function get_feature($id_name_har)
     {
-        return $this->db->get_where('feature',array('id_name_har'=>$id_name_har))->row_array();
+        $feature = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `feature`
+
+            WHERE
+                `id_name_har` = ?
+        ",array($id_name_har))->row_array();
+
+        return $feature;
     }
         
     /*
@@ -24,8 +35,20 @@ class Feature_model extends CI_Model
      */
     function get_all_feature()
     {
-        $this->db->order_by('id_name_har', 'desc');
-        return $this->db->get('feature')->result_array();
+        $feature = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `feature`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_name_har` DESC
+        ")->result_array();
+
+        return $feature;
     }
         
     /*

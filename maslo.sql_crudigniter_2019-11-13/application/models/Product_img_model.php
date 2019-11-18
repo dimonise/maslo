@@ -16,7 +16,18 @@ class Product_img_model extends CI_Model
      */
     function get_product_img($img_id)
     {
-        return $this->db->get_where('product_img',array('img_id'=>$img_id))->row_array();
+        $product_img = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_img`
+
+            WHERE
+                `img_id` = ?
+        ",array($img_id))->row_array();
+
+        return $product_img;
     }
         
     /*
@@ -24,8 +35,20 @@ class Product_img_model extends CI_Model
      */
     function get_all_product_img()
     {
-        $this->db->order_by('img_id', 'desc');
-        return $this->db->get('product_img')->result_array();
+        $product_img = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `product_img`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `img_id` DESC
+        ")->result_array();
+
+        return $product_img;
     }
         
     /*

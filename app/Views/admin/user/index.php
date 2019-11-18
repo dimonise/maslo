@@ -35,7 +35,7 @@
                     </tr>
                     <?php } ?>
                 </table>
-                                
+                <?= $pager->links() ?>
             </div>
         </div>
     </div>

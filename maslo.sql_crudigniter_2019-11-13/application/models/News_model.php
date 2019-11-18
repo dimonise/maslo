@@ -16,7 +16,18 @@ class News_model extends CI_Model
      */
     function get_news($id_news)
     {
-        return $this->db->get_where('news',array('id_news'=>$id_news))->row_array();
+        $news = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `news`
+
+            WHERE
+                `id_news` = ?
+        ",array($id_news))->row_array();
+
+        return $news;
     }
         
     /*
@@ -24,8 +35,20 @@ class News_model extends CI_Model
      */
     function get_all_news()
     {
-        $this->db->order_by('id_news', 'desc');
-        return $this->db->get('news')->result_array();
+        $news = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `news`
+
+            WHERE
+                1 = 1
+
+            ORDER BY `id_news` DESC
+        ")->result_array();
+
+        return $news;
     }
         
     /*
