@@ -7,18 +7,26 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Datetimepicker -->
-    <link rel="stylesheet" href="/resources/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="/assets/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/resources/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="/resources/css/_all-skins.min.css">
+    <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/assets/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -169,528 +177,176 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="/assets/#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="<?php echo '/';?>">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/./index.html" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
-                                </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Cart</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'cart/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/./index2.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/./index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'cart/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="/assets/pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Widgets
-                                <span class="right badge badge-danger">New</span>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Category</span>
                         </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Layout Options
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'category/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'category/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Charts
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Feature</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/charts/chartjs.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>ChartJS</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'feature/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Flot</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/charts/inline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inline</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'feature/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-tree"></i>
-                            <p>
-                                UI Elements
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Feature Val</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/general.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>General</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/icons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Icons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/buttons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Buttons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/sliders.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Sliders</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/modals.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Modals & Alerts</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/navbar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Navbar & Tabs</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/timeline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Timeline</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/UI/ribbons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ribbons</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Forms
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>News</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/forms/general.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>General Elements</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'news/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/forms/advanced.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Advanced Elements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/forms/editors.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Editors</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'news/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Tables
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Product</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/tables/simple.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'product/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/tables/data.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/tables/jsgrid.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'product/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-header"><a href="/<?= $locale; ?>/admin/user">ПОЛЬЗОВАТЕЛИ</a></li>
-
-
-                    <li class="nav-header">EXAMPLES</li>
-                    <li class="nav-item">
-                        <a href="/assets/pages/calendar.html" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
-                            <p>
-                                Calendar
-                                <span class="badge badge-info right">2</span>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Product Cat Link</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/assets/pages/gallery.html" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
-                            <p>
-                                Gallery
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon far fa-envelope"></i>
-                            <p>
-                                Mailbox
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/mailbox/mailbox.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inbox</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'product_cat_link/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/mailbox/compose.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Compose</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/mailbox/read-mail.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Read</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'product_cat_link/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Pages
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Product Feature Val</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/invoice.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Invoice</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'product_feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/profile.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Profile</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/e_commerce.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>E-commerce</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/projects.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Projects</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/project_add.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Add</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/project_edit.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Edit</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/project_detail.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Detail</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/contacts.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Contacts</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'product_feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                Extras
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Product Img</span>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Login</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'product_img/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/register.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Register</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/forgot-password.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Forgot Password</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/recover-password.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Recover Password</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/lockscreen.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Lockscreen</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/legacy-user-menu.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Legacy User Menu</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/language-menu.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Language Menu</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/404.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Error 404</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/500.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Error 500</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/pace.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Pace</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/pages/examples/blank.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Blank Page</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/starter.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Starter Page</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'product_img/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-header">MISCELLANEOUS</li>
-                    <li class="nav-item">
-                        <a href="/assets/https://adminlte.io/docs/3.0" class="nav-link">
-                            <i class="nav-icon fas fa-file"></i>
-                            <p>Documentation</p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Sub Cat</span>
                         </a>
-                    </li>
-                    <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                    <li class="nav-item">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="fas fa-circle nav-icon"></i>
-                            <p>Level 1</p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon fas fa-circle"></i>
-                            <p>
-                                Level 1
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/assets/#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Level 2</p>
-                                </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
-                            <li class="nav-item has-treeview">
-                                <a href="/assets/#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Level 2
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="/assets/#" class="nav-link">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Level 3</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/assets/#" class="nav-link">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Level 3</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/assets/#" class="nav-link">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Level 3</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assets/#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Level 2</p>
-                                </a>
+                            <li>
+                                <a href="<?php echo 'sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="fas fa-circle nav-icon"></i>
-                            <p>Level 1</p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Sub Sub Cat</span>
                         </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'sub_sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo 'sub_sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-header">LABELS</li>
-                    <li class="nav-item">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon far fa-circle text-danger"></i>
-                            <p class="text">Important</p>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>User</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon far fa-circle text-warning"></i>
-                            <p>Warning</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/assets/#" class="nav-link">
-                            <i class="nav-icon far fa-circle text-info"></i>
-                            <p>Informational</p>
-                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active">
+                                <a href="<?php echo 'user/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo 'user/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
+                <!-- /.sidebar -->
+    </aside>
+
             <!-- /.sidebar-menu -->
-        </div>
+
         <!-- /.sidebar -->
-    </aside>/
+
     <div class="content-wrapper">

@@ -4,20 +4,18 @@
             <div class="box-header">
                 <h3 class="box-title">Пользователи</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('user/add'); ?>" class="btn btn-success btn-sm">Add</a> 
+                    <a href="<?php echo site_url('user/add'); ?>" class="btn btn-success btn-sm">Добавить нового пользователя</a>
                 </div>
             </div>
             <div class="box-body">
                 <table class="table table-striped">
                     <tr>
                         <th>ID</th>
-						<th>Name User</th>
-						<th>Sname User</th>
-						<th>Email User</th>
-
-						<th>Date Reg</th>
-
-						<th>Actions</th>
+						<th>Имя</th>
+						<th>Фамилия</th>
+						<th>Email</th>
+						<th>Дата регистрации</th>
+						<th></th>
                     </tr>
                     <?php foreach($users as $u){ ?>
                     <tr>
