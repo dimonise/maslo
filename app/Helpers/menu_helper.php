@@ -49,22 +49,41 @@ function renderTemplate($data)
         $menu = '';
         foreach ($data as $item):
 
-                $menu .= '<div class="col-1">
+            $menu .= '<div class="col-1">
                          <nav>';
-                $menu .= '<ul class="topmenu">';
-                $menu .= '<li class="verh">';
-                $menu .= "<a href=\"/?=/{$item['id']}\">";
-                $menu .= $item['name_ru'];
-                $menu .= "</a>";
-
+            $menu .= '<ul class="topmenu">';
+            $menu .= '<li class="verh">';
+            $menu .= "<a href=\"/?=/{$item['id']}\">";
+            $menu .= $item['name_ru'];
+            $menu .= "</a>";
 
 
             if (count($item['children']) > 0):
                 $menu .= '<ul class="submenu">';
-                $menu .= '<li>';
-                $menu .= "<a href=\"/?=/{$item['id']}\">";
-                $menu .= $item['name_ru'];
-                $menu .= "</a></li></ul>";
+                foreach ($item['children'] as $val):
+
+                    $menu .= '<li>';
+                    $menu .= "<a href=\"/?=/{$val['id']}\">";
+                    $menu .= $val['name_ru'];
+                    $menu .= "</a>";
+
+                    if (count($val['children']) > 0):
+
+                        d($val['children']);
+                        $menu .= '<ul class="submenu">';
+                        foreach ($val['children'] as $v):
+
+                            $menu .= '<li>';
+                            $menu .= "<a href=\"/?=/{$v['id']}\">";
+                            $menu .= $v['name_ru'];
+                            $menu .= "</a></li>";
+                        endforeach;
+                        $menu .= "</ul>";
+                        renderTemplate($val['children']);
+                    endif;
+                    $menu .= "</li>";
+                endforeach;
+                $menu .= "</ul>";
                 renderTemplate($item['children']);
             endif;
             $menu .= ' </li > ';
