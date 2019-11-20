@@ -23,8 +23,10 @@ class Home extends Controller
 
         $data['locale'] = $this->locale;
         $data['title'] = 'Главная';
-        $data['menu'] = menu();
+        $data['tree'] = menu();
 
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header',$data);
         echo view('index',$data);
         echo view('templates/footer',$data);
