@@ -81,6 +81,33 @@
     <div class="row header-bottom">
         <div class="col-1"></div>
         <?php
+        function Process_Array($arr, $depth) {
+            $retVal = '<div class="col-1">
+                            <nav>
+                                <ul class="topmenu">';
+
+            foreach($arr as $k => $v) {
+                for($i = 0; $i < $depth; $i++)
+                    $retVal .= '&nbsp;&nbsp;';
+                $retVal .= '<li class="verh"><a href="/catalog/' . $k . '" >' . @$v['name_ru'] . '</a>';
+
+                if(is_array($v)) {
+                    $retVal .= '<ul class="submenu"><li>' . Process_Array($v, $depth + 1) . '</li></ul>';
+                }
+                else {
+                    $retVal .= '<li>' . $v . '</li>';
+                }
+            }
+            $retVal .= '</li>
+                           </ul>
+                         </nav>
+                       </div>';
+            return $retVal;
+        }
+
+
+
+
 
         function getTree($dataset)
         {
@@ -101,48 +128,60 @@
         }
 
         $tree = getTree($menu);
-
-        //Шаблон для вывода меню в виде дерева
-        function tplMenu($category)
-        {
-
-            $menus = '';
-            $menus .= '<div class="col-1">
-                        <nav>
-                           <ul class="topmenu">
-                                <li class="verh">
-                                    <a href="/catalog/' . $category['id'] . '" >' . $category['name_ru'] . '</a>';
-
-            if (isset($category['childs'])) {
-
-                $menus .= '<ul class="submenu"><li><a href="/catalog/">' . showCat($category['childs']) . '</a></li></ul>';
-
-            }
-            $menus .= '        </li>
-                            </ul>
-                          </nav>
-                        </div>';
-
-            return $menus;
-        }
-
-        /**
-         * Рекурсивно считываем наш шаблон
-         **/
-        function showCat($data)
-        {
-            $string = '';
-            foreach ($data as $item) {
-                $string .= tplMenu($item);
-            }
-            return $string;
-        }
-
-        //Получаем HTML разметку
-        $cat_menu = showCat($tree);
-
-        //Выводим на экран
-        echo $cat_menu;
+        echo Process_Array($tree, 0);
+//
+//        //Шаблон для вывода меню в виде дерева
+//        function tplMenu($category,$locale)
+//        {
+//
+//            $menus = '<div class="col-1">
+//                        <nav>
+//                           <ul class="topmenu">';
+//            echo $category['parent'];
+//            //if($category['parent'] == 0) {
+//                $menus .= '
+//                                <li class="verh">
+//                                    <a href="/'.$locale.'/catalog/' . $category['id'] . '" >' . $category['name_ru'] . '</a>';
+//            //}
+//
+//                if (isset($category['childs'])) {
+//
+//                    $menus .= '<ul class="submenu"><li><a href="/catalog/">' . showCat($category['childs'],$locale) . '</a></li></ul>';
+//
+//                }
+//
+//                $menus .= '        </li>
+//                            </ul>
+//                          </nav>
+//                        </div>';
+//
+//            return $menus;
+//        }
+//
+//        /**
+//         * Рекурсивно считываем наш шаблон
+//         **/
+//        function showCat($data,$locale)
+//        {
+//            $string = '';
+//            if(!empty($data)) {
+//                foreach ($data as $item) {
+//                    $string .= tplMenu($item, $locale);
+//                }
+//
+//                return $string;
+//            }
+//            else{
+//                return false;
+//            }
+//
+//        }
+//
+//        //Получаем HTML разметку
+//        $cat_menu = showCat($tree,$locale);
+//
+//        //Выводим на экран
+//        echo $cat_menu;
 
         ?>
     </div>
