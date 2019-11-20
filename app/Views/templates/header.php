@@ -14,8 +14,8 @@
     <div class="row header-top">
         <div class="col-4"></div>
         <div class="col-4">
-            <a href="/<?= $locale;?>"><?= lang('Language.home'); ?></a>
-            <a href="/<?= $locale;?>/catalog"><?= lang('Language.cat'); ?></a>
+            <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a>
+            <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a>
             <a href=""><?= lang('Language.article'); ?></a>
             <a href=""><?= lang('Language.delivery'); ?></a>
             <a href=""><?= lang('Language.contact'); ?></a>
@@ -23,13 +23,12 @@
         <div class="col-4">
             <?php
 
-            if(!session('name_user')){
+            if (!session('name_user')) {
 
-                echo "<a href='/".$locale."/login'>".lang('Language.login')."</a>";
+                echo "<a href='/" . $locale . "/login'>" . lang('Language.login') . "</a>";
                 //echo "<a href='/".$locale."/login'>".lang('Language.noacc2')."</a>";
-            }
-            else {
-            echo lang('Language.hello').' '.strtoupper(session('name_user'));
+            } else {
+                echo lang('Language.hello') . ' ' . strtoupper(session('name_user'));
             }
             ?>
         </div>
@@ -38,7 +37,7 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col-2"><a href="/<?= $locale;?>"><img src="/img/logo_for_site.png" class="logo"></a></div>
+                <div class="col-2"><a href="/<?= $locale; ?>"><img src="/img/logo_for_site.png" class="logo"></a></div>
                 <div class="col-3">
                     <div style="float:left"><img src="/img/clock-white.png"></div>
                     <div style="margin-left: 45px;"><?= lang('Language.grafik-head') ?></div>
@@ -64,15 +63,15 @@
                     </button>
                 </div>
                 <div class="col-2" style="text-align: center;">
-                    <a href="/<?=$locale;?>/cart">
-                    <img src="/img/cart.png">
-                    <div class="item-cart">
-                        <?php
-                        $cart = new \App\Models\CatalogModel();
-                        $item = $cart->checkCart(session('id_product'));
-                       echo $item[0]['cou'];
-                        ?>
-                    </div>
+                    <a href="/<?= $locale; ?>/cart">
+                        <img src="/img/cart.png">
+                        <div class="item-cart">
+                            <?php
+                            $cart = new \App\Models\CatalogModel();
+                            $item = $cart->checkCart(session('id_product'));
+                            echo $item[0]['cou'];
+                            ?>
+                        </div>
                     </a>
                 </div>
                 <div class="col-1"></div>
@@ -82,58 +81,69 @@
     <div class="row header-bottom">
         <div class="col-1"></div>
         <?php
-        $i = 0;
-        $y = 0;
-        foreach ($menu as $menu_item):
-            if ($locale == 'ru'):
-                echo '
-                     <div class="col-1">
-                        <nav>
-                            <ul class="topmenu">
-                                 <li ><a href="#">' . $menu_item->name_cat_ru . "</a>";
-                echo '<ul class="submenu">';
-                foreach ($smenu[$i] as $sub_cat_ru) {
-                    echo '<li><a href="/' . $locale . '/catalog/' . $sub_cat_ru['id_sub'] . '">' . $sub_cat_ru['sub_name_ru'] . '</a>';
-                    echo '<ul class="submenu">';
-                    foreach ($ssmenu[$y] as $sub_sub_cat_ru) {
-                        echo '<li><a href="/' . $locale . '/catalog/' . $sub_cat_ru['id_sub'] . '/' . $sub_sub_cat_ru['id_sub_sub'] . '">' . $sub_sub_cat_ru['name_sub_sub_ru'] . "</a></li>";
-                    }
-                    echo "</ul>
-                                                    </li>
-                                                ";
-                    $y++;
-                }
-                echo "</ul></li>";
-                $i++;
-                echo "    </ul>
-                        </nav>
-                    </div>";
-            else:
-                echo '
-                     <div class="col-1">
-                        <nav>
-                            <ul class="topmenu">
-                                 <li ><a href="#">' . $menu_item->name_cat_ua . "</a>";
-                echo '<ul class="submenu">';
-                foreach ($smenu[$i] as $sub_cat_ua) {
-                    echo '<li><a href="/' . $locale . '/catalog/' . $sub_cat_ua['id_sub'] . '">' . $sub_cat_ua['sub_name_ua'] . '</a>';
-                    echo '<ul class="submenu">';
-                    foreach ($ssmenu[$y] as $sub_sub_cat_ua) {
-                        echo '<li><a href="/' . $locale . '/catalog/' . $sub_cat_ua['id_sub'] . '/' . $sub_sub_cat_ua['id_sub_sub'] . '">' . $sub_sub_cat_ua['name_sub_sub_ua'] . "</a></li>";
-                    }
-                    echo "</ul>
-                                                    </li>
-                                                ";
-                    $y++;
-                }
-                echo "</ul></li>";
-                $i++;
-                echo "    </ul>
-                        </nav>
-                    </div>";
-            endif;
 
-        endforeach;
+        function getTree($dataset)
+        {
+            $tree = array();
+
+            foreach ($dataset as $id => &$node) {
+                //Если нет вложений
+
+                if (!$node['parent']) {
+
+                    $tree[$id] = &$node;
+                } else {
+                    //Если есть потомки то перебераем массив
+                    $dataset[$node['parent']]['childs'][$id] = &$node;
+                }
+            }
+            return $tree;
+        }
+
+        $tree = getTree($menu);
+
+        //Шаблон для вывода меню в виде дерева
+        function tplMenu($category)
+        {
+
+            $menus = '';
+            $menus .= '<div class="col-1">
+                        <nav>
+                           <ul class="topmenu">
+                                <li class="verh">
+                                    <a href="/catalog/' . $category['id'] . '" >' . $category['name_ru'] . '</a>';
+
+            if (isset($category['childs'])) {
+
+                $menus .= '<ul class="submenu"><li><a href="/catalog/">' . showCat($category['childs']) . '</a></li></ul>';
+
+            }
+            $menus .= '        </li>
+                            </ul>
+                          </nav>
+                        </div>';
+
+            return $menus;
+        }
+
+        /**
+         * Рекурсивно считываем наш шаблон
+         **/
+        function showCat($data)
+        {
+            $string = '';
+            foreach ($data as $item) {
+                $string .= tplMenu($item);
+            }
+            return $string;
+        }
+
+        //Получаем HTML разметку
+        $cat_menu = showCat($tree);
+
+        //Выводим на экран
+        echo $cat_menu;
+
         ?>
     </div>
     <?php

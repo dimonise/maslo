@@ -23,9 +23,8 @@ class Home extends Controller
 
         $data['locale'] = $this->locale;
         $data['title'] = 'Главная';
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
+        $data['menu'] = menu();
+
         echo view('templates/header',$data);
         echo view('index',$data);
         echo view('templates/footer',$data);

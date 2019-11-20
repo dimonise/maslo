@@ -30,10 +30,10 @@ class UserModel extends Model
     function get_all_users()
     {
 
-//        $this->builder->select('id_user, name_user');
+
         $this->builder->orderBy('id_user', 'asc');
 
-        return $this->builder->paginate(10);
+        return $this->builder->get()->getResultArray();
     }
         
     /*
