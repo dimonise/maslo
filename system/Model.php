@@ -434,10 +434,8 @@ class Model
 
 		$row = $builder->limit($limit, $offset)
 				->get();
-
-		$this->tempReturnType     = $this->returnType;
-
-        $row = $row->getResult($this->tempReturnType);
+        $this->tempReturnType     = $this->returnType;
+		$row = $row->getResult($this->tempReturnType);
 
 		$row = $this->trigger('afterFind', ['data' => $row, 'limit' => $limit, 'offset' => $offset]);
 

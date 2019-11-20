@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/assets/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -180,7 +180,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="<?php echo '/';?>">
+                        <a href="<?php echo '//';?>">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
@@ -190,10 +190,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'cart/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/cart/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'cart/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/cart/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -203,10 +203,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'category/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/category/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'category/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/category/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -216,10 +216,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'feature/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/feature/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'feature/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/feature/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -229,10 +229,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -242,10 +242,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'news/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/news/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'news/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/news/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -255,10 +255,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'product/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/product/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'product/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/product/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -268,10 +268,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'product_cat_link/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/product_cat_link/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'product_cat_link/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/product_cat_link/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -281,10 +281,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'product_feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/product_feature_val/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'product_feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/product_feature_val/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -294,10 +294,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'product_img/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/product_img/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'product_img/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/product_img/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -307,10 +307,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -320,10 +320,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'sub_sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/sub_sub_cat/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'sub_sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/sub_sub_cat/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -333,10 +333,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo 'user/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/user/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo 'user/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/user/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>

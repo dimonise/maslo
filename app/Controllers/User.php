@@ -21,16 +21,10 @@ class User extends Controller{
     function index()
     {
 
-        $pager = \Config\Services::pager();
-
-
         $data = [
-            'users' => $this->model->paginate(1),
-            'pager' => $this->model->pager,
-            'locale' => $this->locale
+            'users' => $this->model->paginate(20),
+            'pager' => $this->model->pager
         ];
-
-
 
         echo view('admin/header',$data);
         echo view('admin/user/index',$data);
@@ -66,8 +60,8 @@ class User extends Controller{
 //				'char_fac' => service('request')->getVar('char_fac'),
             );
             
-            $user_id = $this->model->add_user($params);
-            $this->index();
+            $this->model->add_user($params);
+            return redirect()->to('/user/index');
         }
         else
         {
@@ -111,8 +105,8 @@ class User extends Controller{
 //				'char_fac' => service('request')->getVar('char_fac'),
                 );
 
-                $this->model->update_user($id_user,$params);            
-                $this->index();
+                $this->model->update_user($id_user,$params);
+                return redirect()->to('/user/index');
             }
             else
             {
@@ -137,7 +131,7 @@ class User extends Controller{
         if(isset($user[0]['id_user']))
         {
             $this->model->delete_user($id_user);
-            $this->index();
+            return redirect()->to('/user/index');
         }
         else
             echo 'The user you are trying to delete does not exist.';

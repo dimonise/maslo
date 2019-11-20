@@ -89,7 +89,6 @@ $routes->get('{locale}/catalog/(:num)', 'Catalog::subcat/$1');
 $routes->get('{locale}/catalog/(:num)/(:num)', 'Catalog::subsubcat/$1/$2');
 $routes->get('{locale}/product/(:num)', 'Product::index/$1');
 $routes->get('{locale}/cart', 'Product::cart');
-//$routes->get('{locale}/admin', 'Admin::index');
 $routes->get('{locale}/admin', 'User::index');
 /**
  * --------------------------------------------------------------------

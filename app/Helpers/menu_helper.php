@@ -2,23 +2,17 @@
 
 use App\Models\MenuModel;
 
-function menuCat()
-{
+function menu(){
     $model = new MenuModel();
-    return $model->getCategory();
+    $cat = [];
+    foreach ($model->getMenu() as $item){
+        $cat[$item['id']] = $item;
+    }
+
+    return $cat;
 }
 
-function menuSubCat()
-{
-    $model = new MenuModel();
-    return $model->getSubCat();
-}
 
-function menuSubSubCat()
-{
-    $model = new MenuModel();
-    return $model->getSubSubCat();
-}
 
 function getNameCat($id)
 {
