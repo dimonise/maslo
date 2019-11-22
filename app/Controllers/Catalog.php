@@ -22,9 +22,10 @@ class Catalog extends Controller
     {
         $data['locale'] = $this->locale;
         $data['title'] = 'Каталог';
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
+        $data['tree'] = menu();
+
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
 
         $catalog = new CatalogModel();
         $data['last'] = $catalog->getLastNine();
@@ -36,11 +37,13 @@ class Catalog extends Controller
 
     public function subcat($id){
         $data['locale'] = $this->locale;
-        $data['title_prep'] = getNameSubCat($id);
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
-        $data['title'] = $data['title_prep'][0]['sub_name_'.$this->locale];
+        $data['title_prep'] = menu($id);
+        $data['tree'] = menu();
+
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
+
+        $data['title'] = $data['title_prep'][0]['name_'.$this->locale];
         $catalog = new CatalogModel();
 
         $data['last'] = $catalog->getSubCatProd($id);
@@ -50,21 +53,7 @@ class Catalog extends Controller
         echo view('templates/footer',$data);
     }
 
-    public function subsubcat($id_sub,$id_sub_sub){
-        $data['locale'] = $this->locale;
-        $data['title_prep'] = getNameSubSubCat($id_sub_sub);
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
-        $data['title'] = $data['title_prep'][0]['name_sub_sub_'.$this->locale];
-        $catalog = new CatalogModel();
 
-        $data['last'] = $catalog->getSubSubCatProd($id_sub,$id_sub_sub);
-
-        echo view('templates/header',$data);
-        echo view('catalog',$data);
-        echo view('templates/footer',$data);
-    }
     //--------------------------------------------------------------------
 
 }

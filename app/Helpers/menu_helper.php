@@ -2,10 +2,10 @@
 
 use App\Models\MenuModel;
 
-function menu()
+function menu($id=null)
 {
     $model = new MenuModel();
-    return $model->getMenu();
+    return $model->getMenu($id);
 }
 
 function createTree($data)
@@ -44,7 +44,7 @@ function generateElemTree(&$treeElem, $parents)
  */
 function renderTemplate($data)
 {
-
+    $locale  =  service('request')->getLocale();
     if (is_array($data)):
         $menu = '';
         foreach ($data as $item):
@@ -53,8 +53,8 @@ function renderTemplate($data)
                          <nav>';
             $menu .= '<ul class="topmenu">';
             $menu .= '<li class="verh">';
-            $menu .= "<a href=\"/?=/{$item['id']}\">";
-            $menu .= $item['name_ru'];
+            $menu .= "<a href=\"/{$locale}/catalog/{$item['id']}\">";
+            $menu .= $item['name_'.$locale];
             $menu .= "</a>";
 
 
@@ -63,19 +63,18 @@ function renderTemplate($data)
                 foreach ($item['children'] as $val):
 
                     $menu .= '<li>';
-                    $menu .= "<a href=\"/?=/{$val['id']}\">";
-                    $menu .= $val['name_ru'];
+                    $menu .= "<a href=\"/{$locale}/catalog/{$val['id']}\">";
+                    $menu .= $val['name_'.$locale];
                     $menu .= "</a>";
 
                     if (count($val['children']) > 0):
 
-                        d($val['children']);
                         $menu .= '<ul class="submenu">';
                         foreach ($val['children'] as $v):
 
                             $menu .= '<li>';
-                            $menu .= "<a href=\"/?=/{$v['id']}\">";
-                            $menu .= $v['name_ru'];
+                            $menu .= "<a href=\"/{$locale}/catalog/{$v['id']}\">";
+                            $menu .= $v['name_'.$locale];
                             $menu .= "</a></li>";
                         endforeach;
                         $menu .= "</ul>";
@@ -93,5 +92,3 @@ function renderTemplate($data)
     return $menu;
 }
 
-
-//https://prowebmastering.ru/rekursiya-php.html

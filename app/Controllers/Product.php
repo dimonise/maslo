@@ -27,9 +27,9 @@ class Product extends Controller
     {
         $data['locale'] = $this->locale;
 
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
 
         $product = new CatalogModel();
 
@@ -77,15 +77,19 @@ class Product extends Controller
     public function cart(){
         $data['locale'] = $this->locale;
 
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
 
         $data['title'] = lang('Language.cart');
 
         $product = new CatalogModel();
-
-        $data['product'] = $product->Cart();
+        if (!session('name_user')) {
+            $user = session_id();
+        } else {
+            $user = session('name_user');
+        }
+        $data['product'] = $product->Cart($user);
         echo view('templates/header', $data);
         echo view('cart', $data);
         echo view('templates/footer', $data);
@@ -100,7 +104,7 @@ class Product extends Controller
             $product = new CatalogModel();
 
             $product->delCart($prodID,$userID);
-
+return json_encode('deleted');
         }
     }
 }

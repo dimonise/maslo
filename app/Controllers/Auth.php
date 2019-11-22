@@ -26,9 +26,9 @@ class Auth extends Controller
     {
         $data['locale'] = $this->locale;
         $data['title'] = lang('Language.login');
-        $data['menu'] = menuCat();
-        $data['smenu'] = menuSubCat();
-        $data['ssmenu'] = menuSubSubCat();
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header', $data);
         echo view('login');
         echo view('templates/footer', $data);
@@ -38,7 +38,9 @@ class Auth extends Controller
     {
         $data['locale'] = $this->locale;
         $data['title'] = "Регистрация";
-
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header', $data);
         echo view('registration', $data);
         echo view('templates/footer', $data);
@@ -83,7 +85,8 @@ class Auth extends Controller
                         'lang' => $data['locale']
 
                     );
-                    $this->session->set($arr);
+                    $session = session();
+                    $session->set($arr);
                     return redirect()->to('/');
                 }
             }
@@ -115,7 +118,8 @@ class Auth extends Controller
 
 
             );
-            $this->session->set($arr);
+            $session = session();
+            $session->set($arr);
             return redirect()->to('/');
 
         }
@@ -225,7 +229,9 @@ class Auth extends Controller
         $lang = $this->locale;
         $data['title'] = "Авторизация";
         $data['txt'] = 'Пользователь с таким email существует! <a href="/' . $lang . '/login" style="color:green;text-decoration: underline"> Авторизуйтесь! </a>';
-
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header-login', $data);
         echo view('success', $data);
         echo view('templates/footer-login', $data['locale']);
@@ -237,7 +243,9 @@ class Auth extends Controller
         $data['title'] = "Авторизация";
         $data['txt'] = 'Поздравляем! Вы успешно зарегистрировались на нашем портале. 
                 В течении нескольких минут на указанный Вами при регистрации email придет письмо со ссылкой для активации Вашего аккаунта.';
-
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header', $data);
         echo view('success', $data);
         echo view('templates/footer', $data);
@@ -275,7 +283,8 @@ class Auth extends Controller
                             'lang' => $data['locale'],
                             //'money' => $money[0]->money
                         );
-                        $this->session->set($arr);
+                        $session = session();
+                        $session->set($arr);
 //                        var_dump( $this->session->userdata());die;
                         return redirect()->to('/');
                     } else {
@@ -294,7 +303,9 @@ class Auth extends Controller
     {
         $data['locale'] = $this->locale;
         $data['title'] = "Восстановление пароля";
-
+        $data['tree'] = menu();
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
         echo view('templates/header', $data);
         echo view('forgot', $data);
         echo view('templates/footer', $data);

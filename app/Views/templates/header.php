@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="utf-8">
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,7 +29,9 @@
                 echo "<a href='/" . $locale . "/login'>" . lang('Language.login') . "</a>";
                 //echo "<a href='/".$locale."/login'>".lang('Language.noacc2')."</a>";
             } else {
-                echo lang('Language.hello') . ' ' . strtoupper(session('name_user'));
+                $user = session('name_user');
+                echo lang('Language.hello') . ' ' . $user;
+                echo "<a href='/".$locale."/logout' style='margin-left:5%;color:red'>".lang('Language.logout')."</a>";
             }
             ?>
         </div>
@@ -68,7 +71,12 @@
                         <div class="item-cart">
                             <?php
                             $cart = new \App\Models\CatalogModel();
-                            $item = $cart->checkCart(session('id_product'));
+                            if (!session('name_user')) {
+                                $user = session_id();
+                            } else {
+                                $user = session('name_user');
+                            }
+                            $item = $cart->checkCart($user);
                             echo $item[0]['cou'];
                             ?>
                         </div>
@@ -81,63 +89,7 @@
     <div class="row header-bottom">
         <div class="col-1"></div>
         <?php
-
-       echo $mmm;
-                //Шаблон для вывода меню в виде дерева
-//                function tplMenu($id, $category,$locale)
-//                {
-//
-//                    $menus = '<div class="col-1">
-//                                <nav>
-//                                   <ul class="topmenu">';
-//                    if(@$category[$id]['parent']) {
-//                        echo $category[$id]['parent'];
-//                    }
-//                    //if($category['parent'] == 0) {
-//                        $menus .= '
-//                                        <li class="verh">
-//                                            <a href="/'.$locale.'/catalog/' . $category[$id]['id'] . '" >' . $category[$id]['name_ru'] . '</a>';
-//                    //}
-//
-//                        if (isset($category['childs'])) {
-//
-//                            $menus .= '<ul class="submenu"><li><a href="/catalog/">' . showCat($category['childs'],$locale) . '</a></li></ul>';
-//
-//                        }
-//
-//                        $menus .= '        </li>
-//                                    </ul>
-//                                  </nav>
-//                                </div>';
-//
-//                    return $menus;
-//                }
-//
-//                /**
-//                 * Рекурсивно считываем наш шаблон
-//                 **/
-//                function showCat($data,$locale)
-//                {
-//                    $string = '';
-//                    if(!empty($data)) {
-//                        foreach ($data as $id=>$item) {
-//                            $string .= tplMenu($id, $item, $locale);
-//                        }
-//
-//                        return $string;
-//                    }
-//                    else{
-//                        return false;
-//                    }
-//
-//                }
-//
-//                //Получаем HTML разметку
-//                $cat_menu = showCat($tree,$locale);
-//
-//                //Выводим на экран
-//                echo $cat_menu;
-
+        echo $mmm;
         ?>
     </div>
     <?php

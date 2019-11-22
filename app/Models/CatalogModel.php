@@ -52,14 +52,15 @@ class CatalogModel extends Model
         return $data;
     }
 
-    public function checkCart(){
-        $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ?",[session('user')])->getResultArray();
+    public function checkCart($user){
+        $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ?",[$user])->getResultArray();
 
         return $data;
     }
 
-    public function Cart(){
-        $data = $this->db->query("SELECT * FROM `cart` c LEFT JOIN `product` as p ON c.id_product = p.oem WHERE user = ? /*GROUP BY c.user*/",[session('user')])->getResultArray();
+    public function Cart($user){
+
+        $data = $this->db->query("SELECT * FROM `cart` c LEFT JOIN `product` as p ON c.id_product = p.oem WHERE user = ? /*GROUP BY c.user*/",[$user])->getResultArray();
 
         return $data;
     }

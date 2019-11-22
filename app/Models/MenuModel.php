@@ -15,19 +15,23 @@ use CodeIgniter\Model;
 class MenuModel extends Model
 {
 
-    protected  $db;
+    protected $db;
 
     public function __construct()
     {
-       $this->db = \Config\Database::connect();
+        $this->db = \Config\Database::connect();
     }
 
 
-    public function getMenu(){
-        $data = $this->db->query("SELECT * FROM menu")->getResultArray();
-    return $data;
+    public function getMenu($id = null)
+    {
+        if ($id == null) {
+            $data = $this->db->query("SELECT * FROM menu")->getResultArray();
+        } else {
+            $data = $this->db->query("SELECT * FROM menu WHERE id = ?", [$id])->getResultArray();
+        }
+        return $data;
     }
-
 
 
 }
