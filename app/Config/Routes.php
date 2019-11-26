@@ -87,6 +87,7 @@ $routes->get('{locale}/forgot', 'Auth::forgot_view');
 $routes->get('{locale}/catalog', 'Catalog::index');
 $routes->get('{locale}/catalog/(:num)', 'Catalog::subcat/$1');
 $routes->get('{locale}/catalog/(:num)/(:num)', 'Catalog::subsubcat/$1/$2');
+$routes->get('{locale}/catalog/(:num)/(:num)/(:num)', 'Catalog::subsubsubcat/$1/$2/$3');
 $routes->get('{locale}/product/(:num)', 'Product::index/$1');
 $routes->get('{locale}/cart', 'Product::cart');
 $routes->get('{locale}/admin', 'User::index');

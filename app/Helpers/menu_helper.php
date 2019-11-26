@@ -2,7 +2,7 @@
 
 use App\Models\MenuModel;
 
-function menu($id=null)
+function menu($id = null)
 {
     $model = new MenuModel();
     return $model->getMenu($id);
@@ -44,7 +44,7 @@ function generateElemTree(&$treeElem, $parents)
  */
 function renderTemplate($data)
 {
-    $locale  =  service('request')->getLocale();
+    $locale = service('request')->getLocale();
     if (is_array($data)):
         $menu = '';
         foreach ($data as $item):
@@ -54,7 +54,7 @@ function renderTemplate($data)
             $menu .= '<ul class="topmenu">';
             $menu .= '<li class="verh">';
             $menu .= "<a href=\"/{$locale}/catalog/{$item['id']}\">";
-            $menu .= $item['name_'.$locale];
+            $menu .= $item['name_' . $locale];
             $menu .= "</a>";
 
 
@@ -63,8 +63,8 @@ function renderTemplate($data)
                 foreach ($item['children'] as $val):
 
                     $menu .= '<li>';
-                    $menu .= "<a href=\"/{$locale}/catalog/{$val['id']}\">";
-                    $menu .= $val['name_'.$locale];
+                    $menu .= "<a href=\"/{$locale}/catalog/{$item['id']}/{$val['id']}\">";
+                    $menu .= $val['name_' . $locale];
                     $menu .= "</a>";
 
                     if (count($val['children']) > 0):
@@ -73,8 +73,8 @@ function renderTemplate($data)
                         foreach ($val['children'] as $v):
 
                             $menu .= '<li>';
-                            $menu .= "<a href=\"/{$locale}/catalog/{$v['id']}\">";
-                            $menu .= $v['name_'.$locale];
+                            $menu .= "<a href=\"/{$locale}/catalog/{$item['id']}/{$val['id']}/{$v['id']}\">";
+                            $menu .= $v['name_' . $locale];
                             $menu .= "</a></li>";
                         endforeach;
                         $menu .= "</ul>";
@@ -92,3 +92,68 @@ function renderTemplate($data)
     return $menu;
 }
 
+/**
+ * @param $data
+ * Рендерим вид для админки
+ */
+function renderTemplateAdmin($data)
+{
+
+    if (is_array($data)):
+        $menu = '';
+
+        foreach ($data as $item):
+
+            $menu .= '<tr>
+                            <td>' . $item['id'] . '</td>
+                            <td>' . $item['parent'] . '</td>
+                            <td class="subtd">' . $item['name_ru'] . '</td>
+                            <td class="subtd">' . $item['name_ua'] . '</td>
+                            <td>
+                                <a href="' . site_url('menu/edit/' . $item['id']) . '" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                                <a href="' . site_url('menu/remove/' . $item['id']) . '" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            </td>
+                      </tr>';
+            if (count($item['children']) > 0):
+
+                foreach ($item['children'] as $val):
+
+                    $menu .= '<tr class="sub">
+                            <td>' . $val['id'] . '</td>
+                            <td>' . $val['parent'] . '</td>
+                            <td class="subtd">' . $val['name_ru'] . '</td>
+                            <td class="subtd">' . $val['name_ua'] . '</td>
+                            <td>
+                                <a href="' . site_url('menu/edit/' . $val['id']) . '" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                                <a href="' . site_url('menu/remove/' . $val['id']) . '" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            </td>
+                      </tr>';
+                    if (count($val['children']) > 0):
+
+
+                        foreach ($val['children'] as $v):
+
+                            $menu .= '<tr class="subsub">
+                            <td>' . $v['id'] . '</td>
+                            <td >' . $v['parent'] . '</td>
+                            <td class="subtd">' . $v['name_ru'] . '</td>
+                            <td class="subtd">' . $v['name_ua'] . '</td>
+                            <td>
+                                <a href="' . site_url('menu/edit/' . $v['id']) . '" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                                <a href="' . site_url('menu/remove/' . $v['id']) . '" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            </td>
+                      </tr>';
+                        endforeach;
+
+                        renderTemplate($val['children']);
+                    endif;
+
+                endforeach;
+                renderTemplate($item['children']);
+            endif;
+
+        endforeach;
+
+    endif;
+    return $menu;
+}

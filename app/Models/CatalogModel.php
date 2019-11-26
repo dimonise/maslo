@@ -32,7 +32,7 @@ class CatalogModel extends Model
     public function getSubCatProd($id)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id])->getResultArray();
 
         return $data;
     }
@@ -40,7 +40,15 @@ class CatalogModel extends Model
     public function getSubSubCatProd($id_sub,$id_sub_sub)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_sub_cat=? AND pcl.id_sub_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub,$id_sub_sub])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub,$id_sub_sub])->getResultArray();
+
+        return $data;
+    }
+
+    public function getSubSubSubCatProd($id_sub,$id_sub_sub,$id_sub_sub_sub)
+    {
+
+        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? AND pcl.id_sub_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub,$id_sub_sub,$id_sub_sub_sub])->getResultArray();
 
         return $data;
     }

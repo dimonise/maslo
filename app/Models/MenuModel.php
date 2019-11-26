@@ -20,6 +20,7 @@ class MenuModel extends Model
     public function __construct()
     {
         $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('menu');
     }
 
 
@@ -33,5 +34,45 @@ class MenuModel extends Model
         return $data;
     }
 
+    /*
+        * Get menu by id
+        */
+    function get_menu($id)
+    {
+        return $this->builder->getWhere(['id'=>$id])->getResultArray();
+    }
 
+    /*
+     * Get all menu
+     */
+    function get_all_menu()
+    {
+        $this->builder->orderBy('id', 'desc');
+        return $this->builder->get()->getResultArray();
+    }
+
+    /*
+     * function to add new menu
+     */
+    function add_menu($params)
+    {
+        $this->builder->insert($params);
+    }
+
+    /*
+     * function to update menu
+     */
+    function update_menu($id,$params)
+    {
+        $this->builder->where('id',$id);
+        return $this->builder->update($params);
+    }
+
+    /*
+     * function to delete menu
+     */
+    function delete_menu($id)
+    {
+        return $this->builder->delete(['id'=>$id]);
+    }
 }

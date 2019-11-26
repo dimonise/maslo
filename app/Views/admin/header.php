@@ -160,7 +160,7 @@
         <a href="/assets/index3.html" class="brand-link">
             <img src="/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">АДМИНИСТРАТОР</span>
         </a>
 
         <!-- Sidebar -->
@@ -199,14 +199,14 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-desktop"></i> <span>Category</span>
+                            <i class="fa fa-desktop"></i> <span>Категории</span>
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo '/category/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/menu/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo '/category/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/menu/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
@@ -251,14 +251,14 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-desktop"></i> <span>Product</span>
+                            <i class="fa fa-desktop"></i> <span>Товары</span>
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="<?php echo '/product/add';?>"><i class="fa fa-plus"></i> Добавить</a>
+                                <a href="<?php echo '/productadmin/add';?>"><i class="fa fa-plus"></i> Добавить</a>
                             </li>
                             <li>
-                                <a href="<?php echo '/product/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
+                                <a href="<?php echo '/productadmin/index';?>"><i class="fa fa-list-ul"></i> Просмотр</a>
                             </li>
                         </ul>
                     </li>
