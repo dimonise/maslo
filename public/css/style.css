@@ -462,3 +462,9 @@ button:focus {
 .subsub .subtd{
     padding-left:70px;
 }
+#har_ua{
+    background-color: #fff;
+    width: 35%;
+    margin-right: 10%;
+    float: left;
+}

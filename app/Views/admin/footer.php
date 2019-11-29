@@ -1,10 +1,6 @@
 </div>
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.0
-    </div>
+
 </footer>
 
 <!-- Control Sidebar -->
@@ -29,5 +25,42 @@
 <script src="/resources/js/moment.js"></script>
 <script src="/resources/js/bootstrap-datetimepicker.min.js"></script>
 <script src="/resources/js/global.js"></script>
+<script>
+    function sel_spec() {
+        event.preventDefault();
+        var spec = $('#add-spec-name').val();
+
+        $.ajax({
+            url: 'http://maslo.loc/productadmin/sel_spec',
+            type: 'post',
+            dataType: 'json',
+            data: {spec: spec},
+            success: function (html) {
+                $('#add-spec option').remove();
+                $('#add-spec').append("<option >Выбрать характеристику</option>");
+                for (var i = 0; i < html.length; i++) {
+                    $('#add-spec').append("<option value='" + html[i].id + "'>" + html[i].val_feature_ru + "</option>");
+                }
+
+            },
+
+        })
+    }
+    $('.add-spec').on('click',function(){
+        var name = $('#add-spec').val();
+        var prod = $('#pid').val();
+        $.ajax({
+            url: 'http://maslo.loc/productadmin/savehar',
+            type: 'post',
+            data: {name: name,prod:prod},
+            success: function (html) {
+
+                alert('Характеристика сохранена');
+                location.reload();
+            },
+
+        })
+    });
+</script>
 </body>
 </html>

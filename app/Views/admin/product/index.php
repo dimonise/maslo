@@ -8,10 +8,14 @@
                 </div>
             </div>
             <div class="box-body">
+                <?php
+               // d($product);
+                ?>
                 <table class="table table-striped">
                     <tr>
 						<th>Product Id</th>
 						<th>Oem</th>
+						<th>Img</th>
 						<th>Product Name Ua</th>
 						<th>Product Name Ru</th>
 						<th>Product Key Ua</th>
@@ -27,6 +31,7 @@
                     <tr>
 						<td><?php echo $p['product_id']; ?></td>
 						<td><?php echo $p['oem']; ?></td>
+						<td><img src="<?php echo $p['img']; ?>" style="width: 50px;"></td>
 						<td><?php echo $p['product_name_ua']; ?></td>
 						<td><?php echo $p['product_name_ru']; ?></td>
 						<td><?php echo $p['product_key_ua']; ?></td>

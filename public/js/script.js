@@ -70,3 +70,4 @@ function delProduct(prod_id,user) {
 
     })
 }
+
