@@ -13,6 +13,7 @@ class ProductAdminModel extends Model
         $this->builder = $this->db->table('product');
         $this->link = $this->db->table('product_cat_link');
         $this->har = $this->db->table('product_feature_val');
+        $this->img = $this->db->table('product_img');
     }
 
     /*
@@ -21,7 +22,8 @@ class ProductAdminModel extends Model
     function get_product($product_id)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id 
+        $data = $this->db->query("SELECT * FROM product p 
+                                        LEFT JOIN product_img pim ON p.product_id = pim.prod_id 
                                         LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id 
                                         LEFT JOIN product_feature_val pfv ON p.product_id = pfv.id_product 
                                         LEFT JOIN feature_val fv ON fv.id = pfv.id_feature 
@@ -46,7 +48,8 @@ class ProductAdminModel extends Model
      */
     function get_all_product()
     {
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id 
+
+        $data = $this->db->query("SELECT * FROM product p LEFT JOIN product_img pim ON p.product_id = pim.prod_id 
                                       LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id")->getResultArray();
 
 
@@ -58,8 +61,9 @@ class ProductAdminModel extends Model
      */
     function add_product($params)
     {
-        $this->db->insert('product', $params);
-        return $this->db->insert_id();
+        $params['date_add'] = date('Y-m-d h:i:s', time());
+        $this->builder->insert($params);
+        return $this->db->insertID();
     }
 
     /*
@@ -78,13 +82,31 @@ class ProductAdminModel extends Model
         return $this->link->update($cat);
     }
 
+    function save_img($product_id, $img)
+    {
+        $data = $this->db->query("SELECT * FROM product_img
+                                      WHERE prod_id=?  ", [$product_id])->getResultArray();
+        if (count($data) > 0) {
+            $this->img->where('prod_id', $product_id);
+            $this->img->update($img);
+        } else {
+            $dat = [
+                'prod_id' => $product_id,
+                'img' => $img
+            ];
+            $this->img->insert($dat);
+        }
+    }
 
     /*
      * function to delete product
      */
     function delete_product($product_id)
     {
-        return $this->db->delete('product', array('product_id' => $product_id));
+        $this->img->delete(['prod_id' => $product_id]);
+        $this->har->delete(['id_product' => $product_id]);
+        $this->link->delete(['id_prod' => $product_id]);
+        return $this->builder->delete(['product_id' => $product_id]);
     }
 
     /*
@@ -116,5 +138,35 @@ class ProductAdminModel extends Model
 
         return $this->har->insert($params);
 
+    }
+
+    function update_feature_link($product_id, $name_har, $har)
+    {
+        $this->har->where('id_product', $product_id);
+        $this->har->where('id_name_feature', $name_har);
+        return $this->har->update($har);
+    }
+
+    function find_sub_cat($id_cat)
+    {
+        $data = $this->db->query("SELECT * FROM menu 
+                                      WHERE parent=?  ", [$id_cat])->getResultArray();
+        return $data;
+    }
+
+    function add_product_link($params)
+    {
+        $this->link->insert($params);
+    }
+
+    function add_product_feature($params)
+    {
+
+        return $this->har->insert($params);
+    }
+
+    function del_har_from_prod($id_prod, $id_har)
+    {
+        return $this->har->delete(['id_product' => $id_prod, 'id_feature'=>$id_har]);
     }
 }

@@ -5,9 +5,9 @@ helper('form');
     <div class="col-md-12">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Product Edit</h3>
+                <h3 class="box-title">Редактирование товара</h3>
             </div>
-            <?php echo form_open('productadmin/edit/' . $product[0]['product_id']); ?>
+            <?php echo form_open_multipart('productadmin/edit/' . $product[0]['product_id']); ?>
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -67,12 +67,13 @@ helper('form');
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <img src="<?= $product[0]['img'] ?>"><br>
+
+                            <img src="<?= $product[0]['img'] ?>" width="60%"><br>
                             <input type="file" name="upload">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="oem" class="control-label">Oem</label>
+                        <label for="oem" class="control-label">Артикул</label>
                         <div class="form-group">
                             <input type="text" name="oem"
                                    value="<?php echo(service('request')->getVar('oem') ? service('request')->getVar('oem') : $product[0]['oem']); ?>"
@@ -172,7 +173,12 @@ helper('form');
                                         endif;
                                     endforeach;
 
-                                    echo "</select></td>";
+                                    echo "</select>
+                                            <button type='button' class='close' aria-label='Close' style='color: #f50202;'
+                                            onclick='del_har_edit(".$item['product_id'].",".$item['id_name_har'].")'>
+                                                            <span aria-hidden='true'>&times;</span>
+                                            </button>
+                                            </td>";
                                     echo "</tr>";
                                 }
                                 ?>
@@ -188,7 +194,7 @@ helper('form');
                                 }
                                 ?>
                             </select>
-                            <select name="add-spec" id="add-spec" >
+                            <select name="add-spec0" id="add-spec-val" >
                                 <option >Выбрать характеристику</option>
                             </select>
                             <input type="button" class="add-spec btn btn-warning" value="Сохранить характеристику">
@@ -211,7 +217,7 @@ helper('form');
                                             $sel = 'selected';
                                         endif;
                                         if ($s['id_name_har'] == $item['id_name_har']):
-                                            echo "<option value='" . $s['id_feature'] . "' " . $sel . ">" . $s['val_feature_ua'] . "</option>";
+                                            echo "<option value='" . $s['id_feature'] . "' " . $sel . " disabled>" . $s['val_feature_ua'] . "</option>";
                                         endif;
                                     endforeach;
                                     echo "</select></td></tr>";

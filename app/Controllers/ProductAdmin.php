@@ -4,14 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\ProductAdminModel;
-
+use CodeIgniter\Files\File;
 class ProductAdmin extends Controller
 {
 
     public $model;
     public $locale;
 
-    function __construct()
+    public function __construct()
     {
         $this->locale = service('request')->getLocale();
         $this->model = new ProductAdminModel();
@@ -21,10 +21,10 @@ class ProductAdmin extends Controller
     /*
      * Listing of product
      */
-    function index()
+    public function index()
     {
         $data = [
-            'product' => $this->model->get_all_product(),
+            'product' => $this->model->paginate(20),//$this->model->get_all_product(),
             'pager' => $this->model->pager
         ];
 
@@ -36,8 +36,11 @@ class ProductAdmin extends Controller
     /*
      * Adding a new product
      */
-    function add()
+    public function add()
     {
+
+        $data['spec'] = $this->model->get_all_specifications();
+        $data['spec_sel'] = $this->model->all_specifications();
         if (isset($_POST) && count($_POST) > 0) {
             $params = array(
                 'oem' => service('request')->getVar('oem'),
@@ -52,25 +55,71 @@ class ProductAdmin extends Controller
                 'product_desc_ru' => service('request')->getVar('product_desc_ru'),
             );
 
+            $id_prod = $this->model->add_product($params);
+
             $cat = [
+                'id_prod'=> $id_prod,
                 'id_cat' => service('request')->getVar('category'),
                 'id_sub_cat' => service('request')->getVar('sub_cat'),
                 'id_sub_sub_cat' => service('request')->getVar('sub_sub_cat'),
             ];
 
-            $product_id = $this->model->add_product($params);
-            $product_id = $this->model->add_product_link($cat);
-            return redirect()->to('productadmin/index');
+            $har_name = service('request')->getVar('add-spec-name');
+            $har_val = service('request')->getVar('add-spec');
+            $feature = [];
+
+            foreach($har_name as $val){
+                $feature['id_product'][] = $id_prod;
+                $feature['id_name_feature'][] = $val;
+            }
+            foreach($har_val as $val){
+                $feature['id_feature'][] = $val;
+            }
+            $feature_data = array_merge($feature);
+
+
+            for($i=0;$i<count($feature['id_product']);$i++){
+                $data = [
+                    'id_product'=>$feature_data['id_product'][$i],
+                    'id_name_feature'=>$feature_data['id_name_feature'][$i],
+                    'id_feature'=>$feature_data['id_feature'][$i],
+                ];
+
+                $this->model->add_product_feature($data);
+            }
+
+            $this->model->add_product_link($cat);
+            $file = $this->request->getFile('upload');
+
+            if($file->getName() !=''):
+
+                // Move the file to it's new home
+                $name = $file->getName();
+                $PATH = getcwd();
+                $file->move( $PATH .'\img\product', $name );
+
+                $img = [
+                    'img'=>'/img/product/'.$name
+                ];
+                $this->model->save_img($id_prod,$img);
+
+            endif;
+            return redirect()->to('/productadmin/index');
         } else {
-            $data['_view'] = 'product/add';
-            $this->load->view('layouts/main', $data);
+
+
+            $data['menu'] = menu();
+
+            echo view('admin/header');
+            echo view('admin/product/add', $data);
+            echo view('admin/footer');
         }
     }
 
     /*
      * Editing a product
      */
-    function edit($product_id)
+    public function edit($product_id)
     {
         // check if the product exists before trying to edit it
         $data['product'] = $this->model->get_product($product_id);
@@ -101,15 +150,32 @@ class ProductAdmin extends Controller
                     'id_sub_cat' => service('request')->getVar('sub_cat'),
                     'id_sub_sub_cat' => service('request')->getVar('sub_sub_cat'),
                 ];
-                $this->model->update_product_link($product_id, $cat);
+
 
                 //product specification's
-                dd(service('request')->getVar('spec'));
-//                $har = [
-//                    'id_cat' => service('request')->getVar('category'),
-//                    'id_sub_cat' => service('request')->getVar('sub_cat'),
-//                    'id_sub_sub_cat' => service('request')->getVar('sub_sub_cat'),
-//                ];
+                foreach (service('request')->getVar('spec') as $key => $val):
+
+                    $har = [
+                        'id_feature' => $val[0],
+                    ];
+                    $this->model->update_feature_link($product_id, $key, $har);
+
+                endforeach;
+                $file = $this->request->getFile('upload');
+
+                if($file->getName() !=''):
+
+                    // Move the file to it's new home
+                    $name = $file->getName();
+                    $PATH = getcwd();
+                    $file->move( $PATH .'\img\product', $name );
+
+                    $img = [
+                        'img'=>'/img/product/'.$name
+                    ];
+                    $this->model->save_img($product_id,$img);
+
+                endif;
 
 
                 return redirect()->to('/productadmin/index');
@@ -135,19 +201,20 @@ class ProductAdmin extends Controller
     /*
      * Deleting product
      */
-    function remove($product_id)
+    public function remove($product_id)
     {
-        $product = $this->Product_model->get_product($product_id);
+        $product = $this->model->get_product($product_id);
 
         // check if the product exists before trying to delete it
-        if (isset($product['product_id'])) {
-            $this->Product_model->delete_product($product_id);
-            redirect('product/index');
+        if (isset($product[0]['product_id'])) {
+            $this->model->delete_product($product_id);
+
+            return redirect()->to('/productadmin/index');
         } else
-            show_error('The product you are trying to delete does not exist.');
+            echo'The product you are trying to delete does not exist.';
     }
 
-    function sel_spec()
+    public function sel_spec()
     {
         $id = service('request')->getVar('spec');
         $data = $this->model->get_spec_val($id);
@@ -155,13 +222,40 @@ class ProductAdmin extends Controller
         return json_encode($data);
     }
 
-    function savehar()
+    public function savehar()
     {
         $name = service('request')->getVar('name');
+        $val = service('request')->getVar('val');
         $idprod = service('request')->getVar('prod');
-        $data = ['id_product'=>$idprod, 'id_feature'=>$name];
+        $data = ['id_product' => $idprod, 'id_feature' => $name, 'id_name_feature'=>$val];
         $this->model->save_har_for_prod($data);
         return;
 
+    }
+
+    public function sel_sub()
+    {
+        $id_cat = service('request')->getVar('spec');
+        $data = $this->model->find_sub_cat($id_cat);
+        return json_encode($data);
+    }
+
+    public function addhar()
+    {
+        $data = $this->model->all_specifications();
+        $datas = [];
+        foreach($data as $val){
+            $datas['id'][] = $val['id_name_har'];
+            $datas['name'][] = $val['name_har_ru'];
+        }
+        return json_encode($datas);
+    }
+
+    public function del_har_edit(){
+        $id_prod = service('request')->getVar('id_prod');
+        $id_har = service('request')->getVar('id_name_har');
+
+        $this->model->del_har_from_prod($id_prod,$id_har);
+        return json_encode('ok');
     }
 }
