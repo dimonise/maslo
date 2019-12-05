@@ -36,10 +36,10 @@ helper('form');
 
                         </select>
 
-                        <!--                        <div class="form-group">-->
-                        <!--                            <input type="text" name="oem" value="-->
-                        <?php //echo (service('request')->getVar('oem') ? service('request')->getVar('oem') : $product[0]['oem']); ?><!--" class="form-control" id="oem" />-->
-                        <!--                        </div>-->
+                        <br>
+                        <input type="checkbox" value="1" name="rekomm" > <label>Добавить в рекомендованные</label>
+                        <br>
+                        <input type="checkbox" value="1" name="akcii" > <label>Добавить в акционные</label>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">

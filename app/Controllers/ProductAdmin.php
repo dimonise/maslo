@@ -53,6 +53,8 @@ class ProductAdmin extends Controller
                 'warhouse' => service('request')->getVar('warhouse'),
                 'product_desc_ua' => service('request')->getVar('product_desc_ua'),
                 'product_desc_ru' => service('request')->getVar('product_desc_ru'),
+                'is_rekomm' => service('request')->getVar('rekomm'),
+                'is_akcii' => service('request')->getVar('akcii'),
             );
 
             $id_prod = $this->model->add_product($params);
@@ -129,6 +131,18 @@ class ProductAdmin extends Controller
         if (isset($data['product'][0]['product_id'])) {
             if (isset($_POST) && count($_POST) > 0) {
 
+                if(!empty(service('request')->getVar('rekomm'))){
+                    $rek = service('request')->getVar('rekomm');
+                }
+                else{
+                    $rek = 0;
+                }
+                if(!empty(service('request')->getVar('akcii'))){
+                    $akc = service('request')->getVar('akcii');
+                }
+                else{
+                    $akc = 0;
+                }
                 //product table
                 $params = array(
                     'oem' => service('request')->getVar('oem'),
@@ -140,6 +154,8 @@ class ProductAdmin extends Controller
                     'warhouse' => service('request')->getVar('warhouse'),
                     'product_desc_ua' => service('request')->getVar('product_desc_ua'),
                     'product_desc_ru' => service('request')->getVar('product_desc_ru'),
+                    'is_rekomm' => $rek,
+                    'is_akcii' => $akc,
                 );
 
                 $this->model->update_product($product_id, $params);

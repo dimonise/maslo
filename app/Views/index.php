@@ -1,4 +1,3 @@
-
 <div class="row slider">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -19,55 +18,70 @@
     <div class="col-2"><img src="/img/trust.png"></div>
 </div>
 <div class="row">
-    <div class="col-2 offset-1">
+    <div class="col-11 offset-1">
         <h4><?= lang('Language.rekomm') ?></h4>
         <div id="carousel" class="rekomm slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
+            <div class="owl-carousel owl-theme rekomms">
+                <?php
+
+                foreach ($rekomm as $item) {
+                    ?>
+                    <div class="item">
+                        <a href="/<?= $locale; ?>/product/<?= $item['product_id'] ?>">
+                            <img class="img-fluid" src="<?= $item['img']; ?>"
+                                 alt="<?= $item['product_name_' . $locale] ?>"><br>
+                            <span><?= $item['product_name_' . $locale] ?></span>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-2 offset-1">
+    <div class="col-11 offset-1">
         <h4><?= lang('Language.new') ?></h4>
         <div id="carousel" class="new slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
+            <div class="owl-carousel owl-theme rekomms">
+                <?php
+
+                foreach ($last as $item) {
+                    ?>
+                    <div class="item">
+                        <a href="/<?= $locale; ?>/product/<?= $item['product_id'] ?>">
+                            <img class="img-fluid" src="<?= $item['img']; ?>"
+                                 alt="<?= $item['product_name_' . $locale] ?>"><br>
+                            <span><?= $item['product_name_' . $locale] ?></span>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-2 offset-1">
+    <div class="col-11 offset-1">
         <h4><?= lang('Language.sale') ?></h4>
         <div id="carousel" class="sale slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid" src="..." alt="...">
-                </div>
+            <div class="owl-carousel owl-theme rekomms">
+                <?php
+
+                foreach ($akc as $item) {
+                    ?>
+                    <div class="item">
+                        <a href="/<?= $locale; ?>/product/<?= $item['product_id'] ?>">
+                            <img class="img-fluid" src="<?= $item['img']; ?>"
+                                 alt="<?= $item['product_name_' . $locale] ?>"><br>
+                            <span><?= $item['product_name_' . $locale] ?></span>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>

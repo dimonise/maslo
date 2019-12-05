@@ -86,5 +86,16 @@ class CatalogModel extends Model
         return $data;
     }
 
+    public function getRekomm(){
+        $data = $this->db->query("SELECT *  FROM product p LEFT JOIN product_img pim ON pim.prod_id = p.product_id WHERE `is_rekomm` = '1' ")->getResultArray();
+
+        return $data;
+    }
+
+    public function getAkc(){
+        $data = $this->db->query("SELECT *  FROM product p LEFT JOIN product_img pim ON pim.prod_id = p.product_id WHERE `is_akcii` = '1' ")->getResultArray();
+
+        return $data;
+    }
 
 }

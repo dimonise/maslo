@@ -59,11 +59,19 @@ helper('form');
                             </select>
                             <?php
                         }
+                        $rek = '';
+                        if($product[0]['is_rekomm']==1 ){
+                            $rek = 'checked';
+                        }
+                        $akc = '';
+                        if($product[0]['is_akcii']==1 ){
+                            $akc = 'checked';
+                        }
                         ?>
-                        <!--                        <div class="form-group">-->
-                        <!--                            <input type="text" name="oem" value="-->
-                        <?php //echo (service('request')->getVar('oem') ? service('request')->getVar('oem') : $product[0]['oem']); ?><!--" class="form-control" id="oem" />-->
-                        <!--                        </div>-->
+                        <br>
+                        <input type="checkbox" value="1" name="rekomm" <?php echo $rek; ?>> <label>Добавить в рекомендованные</label>
+                        <br>
+                        <input type="checkbox" value="1" name="akcii" <?php echo $akc; ?>> <label>Добавить в акционные</label>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -186,7 +194,7 @@ helper('form');
                         </div>
 
                         <div class="form-group">
-                            <select name="add-spec-name" id="add-spec-name" onchange="sel_spec();">
+                            <select name="add-spec-name" id="add-spec-name" onchange="sel_spec();" style="height: 31px;">
                                 <option >Выбрать наименование х-ки</option>
                                 <?php
                                 foreach ($spec_sel as $item) {
@@ -194,10 +202,10 @@ helper('form');
                                 }
                                 ?>
                             </select>
-                            <select name="add-spec0" id="add-spec-val" >
+                            <select name="add-spec0" id="add-spec-val"style="height: 31px;" >
                                 <option >Выбрать характеристику</option>
                             </select>
-                            <input type="button" class="add-spec btn btn-warning" value="Сохранить характеристику">
+                            <input type="button" class="add-spec btn btn-warning" value="Сохранить хар-ку">
                         </div>
                     </div>
                     <div class="col-md-6">

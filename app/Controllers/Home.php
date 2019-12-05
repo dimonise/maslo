@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Helpers\Menu;
+use App\Models\CatalogModel;
+
 
 class Home extends Controller
 {
@@ -27,6 +29,13 @@ class Home extends Controller
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        //recomm
+        $rekomm = new CatalogModel();
+        $data['rekomm'] = $rekomm->getRekomm();
+        $data['last'] = $rekomm->getLastNine();
+        $data['akc'] = $rekomm->getAkc();
+
+
         echo view('templates/header',$data);
         echo view('index',$data);
         echo view('templates/footer',$data);

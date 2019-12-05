@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-1"></div>
     <div class="col-3">
-        <?= $product[0]['img'] ? "<img src='".$product[0]['img']."'>" : "<img src='/img/no_photo.png'>"; ?>
+        <?= $product[0]['img'] ? "<img src='".$product[0]['img']."' width='100%'>" : "<img src='/img/no_photo.png' width='100%'>"; ?>
     </div>
     <div class="col-7">
         <h4><?= $product[0]['product_name_' . $locale]; ?></h4>

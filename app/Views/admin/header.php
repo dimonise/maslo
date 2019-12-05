@@ -53,26 +53,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/cart/index">
-                            <span>Корзина</span></a>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/menu/index">
                             <span>Категории</span></a>
                         </a>
-                    </li>
-                    <li>
-                        <a href="/feature_val/index">
-                            <span>Feature Val</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="/news/index">
-                            <span>Новости</span>
-                        </a>
-
                     </li>
                     <li>
                         <a href="/productadmin/index">
@@ -80,22 +63,28 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/feature/index">
+                            <span>Характеристики</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cart/index">
+                            <span>Корзина</span></a>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/news/index">
+                            <span>Новости</span>
+                        </a>
+
+                    </li>
+
+                    <li>
                         <a href="/user/index">
                             <span>Пользователи</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <span>Характеристики</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="/feature/index">
-                                    <span>Feature</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar -->

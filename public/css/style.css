@@ -25,8 +25,9 @@ body {
     background-image: url('/img/head-fon.png');
     text-align: center;
 }
+
 .header-top a {
-    color:#fff;
+    color: #fff;
     margin-right: 2%;
 }
 
@@ -144,9 +145,11 @@ footer {
     color: #939596;
     bottom: 0;
 }
-footer a{
-    color:#939596;
+
+footer a {
+    color: #939596;
 }
+
 #backphone {
     text-align: center;
     background-color: #fff;
@@ -177,10 +180,10 @@ footer a{
 .btn-warning {
     background-color: #fee049;
     border-radius: 0px 25px 25px 0px;
-    height: 51px;
-    top: -1px;
+    height: 31px;
+    padding: 0px 5px !important;
     position: relative;
-    margin-left: -5px;
+
 }
 
 .glyphicon-search:before {
@@ -347,14 +350,15 @@ button:focus {
     background-size: contain;
     min-height: 180px;
 }
-.ban-title{
+
+.ban-title {
     font-size: 25pt;
-    color:#fff;
+    color: #fff;
     padding-top: 5%;
     padding-left: 15%;
 }
 
-.item-cart{
+.item-cart {
     border: 1px solid green;
     border-radius: 25px;
     width: fit-content;
@@ -364,33 +368,43 @@ button:focus {
     left: 55%;
     background-color: #fff;
 }
-.cart-table{
+
+.cart-table {
     float: left;
 }
-.body-cart{
+
+.body-cart {
     min-height: 250px;
     padding-top: 50px;
 }
-.th{
+
+.th {
     background-color: #ff7800;
-    border:1px solid black;
+    border: 1px solid black;
 }
-.td{
-    border:1px solid black;
+
+.td {
+    border: 1px solid black;
 }
-.logo{
+
+.logo {
     position: absolute;
     top: 25%;
 }
+
 /* paginator style */
-.pagination-outer{ text-align: center; }
-.pagination{
+.pagination-outer {
+    text-align: center;
+}
+
+.pagination {
     font-family: 'Rubik', sans-serif;
     padding: 0 30px;
     display: inline-flex;
     position: relative;
 }
-.pagination li a.page-link{
+
+.pagination li a.page-link {
     color: #909090;
     background-color: transparent;
     font-size: 15px;
@@ -404,19 +418,25 @@ button:focus {
     position: relative;
     transition: all 0.4s ease 0s;
 }
+
 .pagination li.active a.page-link,
 .pagination li a.page-link:hover,
-.pagination li.active a.page-link:hover{
+.pagination li.active a.page-link:hover {
     color: #006266;
     background-color: transparent;
 }
-.pagination li a.page-link span{
+
+.pagination li a.page-link span {
     display: block;
     transition: all 0.3s;
 }
-.pagination li a.page-link:hover span{ transform: rotateY(360deg); }
+
+.pagination li a.page-link:hover span {
+    transform: rotateY(360deg);
+}
+
 .pagination li a.page-link:before,
-.pagination li a.page-link:after{
+.pagination li a.page-link:after {
     content: "";
     background-color: #006266;
     height: 3px;
@@ -428,8 +448,9 @@ button:focus {
     z-index: -1;
     transition: all 0.3s;
 }
-.pagination li a.page-link:before{
-    background: linear-gradient(135deg,transparent 49%, #006266 50%);
+
+.pagination li a.page-link:before {
+    background: linear-gradient(135deg, transparent 49%, #006266 50%);
     height: 15px;
     width: 15px;
     transform: translateX(-50%) rotate(45deg);
@@ -437,34 +458,52 @@ button:focus {
     top: -20px;
     left: 50%;
 }
-.pagination li a.page-link:hover:after{ width: 100%; }
-.pagination li a.page-link:hover:before{ top: -10px; }
-.pagination li a.page-link:hover:before,
-.pagination li.active a.page-link:before{
-    top: -10px;
-}
-.pagination li a.page-link:hover:after,
-.pagination li.active a.page-link:after{
+
+.pagination li a.page-link:hover:after {
     width: 100%;
 }
-@media only screen and (max-width: 480px){
-    .pagination{ display: block; }
-    .pagination li{
+
+.pagination li a.page-link:hover:before {
+    top: -10px;
+}
+
+.pagination li a.page-link:hover:before,
+.pagination li.active a.page-link:before {
+    top: -10px;
+}
+
+.pagination li a.page-link:hover:after,
+.pagination li.active a.page-link:after {
+    width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+    .pagination {
+        display: block;
+    }
+
+    .pagination li {
         margin-bottom: 10px;
         display: inline-block;
     }
 }
+
 /*********************************************************************/
 
-.sub .subtd{
-    padding-left:35px;
+.sub .subtd {
+    padding-left: 35px;
 }
-.subsub .subtd{
-    padding-left:70px;
+
+.subsub .subtd {
+    padding-left: 70px;
 }
-#har_ua{
+
+#har_ua {
     background-color: #fff;
     width: 35%;
     margin-right: 10%;
     float: left;
+}
+.owl-nav, .owl-dots {
+    display: none;
 }

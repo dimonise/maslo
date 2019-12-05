@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Models;
 
 
 use CodeIgniter\Model;
- 
+
 class FeatureModel extends Model
 {
     protected $db;
@@ -13,8 +14,9 @@ class FeatureModel extends Model
     {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('feature');
+        $this->builder_val = $this->db->table('feature_val');
     }
-    
+
     /*
      * Get feature by id_name_har
      */
@@ -29,11 +31,39 @@ class FeatureModel extends Model
 
             WHERE
                 `id_name_har` = ?
-        ",array($id_name_har))->row_array();
+        ", array($id_name_har))->getResultArray();
 
         return $feature;
     }
-        
+
+    /*
+         * Get feature value by id_name_har
+         */
+    function get_feature_val($id_name_har)
+    {
+        $feature = $this->db->query("
+            SELECT
+                *
+
+            FROM
+                `feature_val`
+
+            WHERE
+                `id_feature` = ?
+        ", array($id_name_har))->getResultArray();
+
+        return $feature;
+    }
+
+    /*
+     * Save feature value by id_name_har
+     */
+
+    function save_val_har($params)
+    {
+        return $this->builder_val->insert($params);
+    }
+
     /*
      * Get all feature
      */
@@ -41,30 +71,44 @@ class FeatureModel extends Model
     {
         return $this->builder->get()->getResultArray();
     }
-        
+
+    /*
+         * Delete feature value by id_name_har
+         */
+    function del_val_har($params)
+    {
+        $this->builder_val->delete(['id' => $params]);
+    }
+
     /*
      * function to add new feature
      */
     function add_feature($params)
     {
-        $this->db->insert('feature',$params);
-        return $this->db->insert_id();
+        $this->builder->insert($params);
+        return $this->db->insertID();
     }
-    
+
+    function add_feature_val($params)
+    {
+        $this->builder_val->insert($params);
+    }
+
     /*
      * function to update feature
      */
-    function update_feature($id_name_har,$params)
+    function update_feature($id_name_har, $params)
     {
-        $this->db->where('id_name_har',$id_name_har);
-        return $this->db->update('feature',$params);
+        $this->db->where('id_name_har', $id_name_har);
+        return $this->db->update('feature', $params);
     }
-    
+
     /*
      * function to delete feature
      */
     function delete_feature($id_name_har)
     {
-        return $this->db->delete('feature',array('id_name_har'=>$id_name_har));
+        $this->builder_val->delete(['id_feature' => $id_name_har]);
+        return $this->builder->delete(['id_name_har' => $id_name_har]);
     }
 }
