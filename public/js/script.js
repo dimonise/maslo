@@ -298,11 +298,12 @@ $('#search-filtr').on('click', function () {
         dataType: 'json',
         data: $('#filtr').serialize(),
         success: function (html) {
-console.log(html);
-            alert('Сохранено');
-            //location.reload();
+            console.log(html);
+
+
 
         },
 
     })
 });
+

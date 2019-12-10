@@ -28,7 +28,7 @@ class CatalogModel extends Model
 
     public function getLastNine()
     {
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id ORDER BY p.product_id DESC LIMIT 9")->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p  ORDER BY p.product_id DESC LIMIT 9")->getResultArray();
 
         return $data;
     }
@@ -90,45 +90,63 @@ class CatalogModel extends Model
         return $data;
     }
 
-    public function getRekomm(){
+    public function getRekomm()
+    {
         $data = $this->db->query("SELECT *  FROM product p  WHERE `is_rekomm` = '1' ")->getResultArray();
 
         return $data;
     }
 
-    public function getAkc(){
+    public function getAkc()
+    {
         $data = $this->db->query("SELECT *  FROM product p  WHERE `is_akcii` = '1' ")->getResultArray();
 
         return $data;
     }
 
-    public function getBrend(){
+    public function getBrend()
+    {
         $data = $this->db->query("SELECT *  FROM feature ")->getResultArray();
 
         return $data;
     }
-    public function getBrendValue($id){
-        $data = $this->db->query("SELECT *  FROM feature_val WHERE id_feature = ? ",[$id])->getResultArray();
+
+    public function getBrendValue($id)
+    {
+        $data = $this->db->query("SELECT *  FROM feature_val WHERE id_feature = ? ", [$id])->getResultArray();
 
         return $data;
     }
 
-    public function getFiltr($params){
+    public function getFiltr($params)
+    {
 
         $where = '';
-        if(count($params) == 1){
-            $where .= ' id_feature = "'.$params[0].'"';
-        }
-        else {
-            $where .= '  id_feature = "'.$params[0].'"';
-            for ($i=1;$i<count($params);$i++) {
-                $where .= ' OR WHERE id_feature = ' . $params[$i];
-            }
-        }
 
-        $this->builder_f->where($where);
-        $data = $this->builder_f->get();
-dd($data->getResultArray());
+        if ($params) {
+            if (count($params) == 1) {
+                $where .= ' id_feature = "' . $params[0] . '"';
+            } else {
+                $where .= '  id_feature = "' . $params[0] . '"';
+                for ($i = 1; $i < count($params); $i++) {
+                    $where .= ' OR id_feature = ' . $params[$i];
+                }
+            }
+
+            $this->builder_f->where($where);
+            $data = $this->builder_f->get()->getResultArray();
+
+            return $data;
+        }
+        return;
+    }
+
+    public function showProductFiltr($params, $start, $finish)
+    {
+        $where = "`price` >='" . $start . "' AND `price` <='" . $finish."'";
+
+        $data = $this->builder->where($where)->whereIn('product_id', $params)->get();
+
         return $data->getResultArray();
     }
 }

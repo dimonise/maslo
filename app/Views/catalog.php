@@ -16,6 +16,8 @@ $catalog = new CatalogModel();
                     values: [0, 1000],
                     slide: function (event, ui) {
                         $("#amount").val(ui.values[0] + "грн - " + ui.values[1] + 'грн');
+                        $("#startPrice").val(ui.values[0]);
+                        $("#finishPrice").val(ui.values[1]);
                     }
                 });
                 $("#amount").val($("#slider-range").slider("values", 0) +
@@ -28,7 +30,9 @@ $catalog = new CatalogModel();
             <div id="slider-range"></div>
         </div>
         <div class="filtr">
-            <form id="filtr">
+            <form id="filtr" action="/catalog/search_filtr" method="post">
+                <input type="hidden" value="" id="startPrice" name="startPrice">
+                <input type="hidden" value="" id="finishPrice" name="finishPrice">
             <?php //dd($val);
                 foreach($brend as $item){
                     echo "<br><label style='text-transform: uppercase;color:#f6931f'>".$item['name_har_'.$locale]."</label><br>";
@@ -38,9 +42,10 @@ $catalog = new CatalogModel();
                     }
                 }
             ?>
+                <input type="submit" class="btn btn-info" value="<?= lang('Language.sech')?>" id="search-filtr">
             </form>
         </div>
-        <input type="button" class="btn btn-info" value="<?= lang('Language.sech')?>" id="search-filtr">
+<!--        <input type="button" class="btn btn-info" value="--><?//= lang('Language.sech')?><!--" id="search-filtr">-->
 
     </div>
 
@@ -67,7 +72,7 @@ $catalog = new CatalogModel();
                     echo "<a href='/" . $locale . "/product/" . $product['product_id'] . "'>";
                     echo "<div class='prod'>";
                     echo "<img src='" . $product['img'] . "' width='100%'>";
-                    echo $product['product_name_' . $locale];
+                    echo $product['product_name_' . $locale].', '.$product['price'].'грн';
                     echo "</div>";
                     echo "</a>";
                     echo "</div>";
