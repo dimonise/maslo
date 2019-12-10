@@ -290,3 +290,19 @@ $('#add-val-field').on('click',function(){
         '                        <input type="text" name="val_har_ru[]" value="" class="form-control" id=""/>\n' +
         '                    </div>');
 });
+
+$('#search-filtr').on('click', function () {
+    $.ajax({
+        url: '/catalog/search_filtr',
+        type: 'post',
+        dataType: 'json',
+        data: $('#filtr').serialize(),
+        success: function (html) {
+console.log(html);
+            alert('Сохранено');
+            //location.reload();
+
+        },
+
+    })
+});

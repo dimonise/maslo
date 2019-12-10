@@ -504,6 +504,16 @@ button:focus {
     margin-right: 10%;
     float: left;
 }
+
 .owl-nav, .owl-dots {
     display: none;
+}
+
+.filtr {
+    margin-bottom: 20px;
+}
+
+.prod img {
+    min-height: 200px;
+    max-height: 200px;
 }

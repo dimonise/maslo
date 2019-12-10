@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\ProductAdminModel;
-use CodeIgniter\Files\File;
-class ProductAdmin extends Controller
+
+class Productadmin extends Controller
 {
 
     public $model;

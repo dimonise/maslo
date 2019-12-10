@@ -16,10 +16,14 @@ class CatalogModel extends Model
 {
 
     protected $db;
+    protected $builder;
 
-    public function __construct()
+    function __construct()
     {
         $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('product');
+        $this->builder_f = $this->db->table('product_feature_val');
+
     }
 
     public function getLastNine()
@@ -32,7 +36,7 @@ class CatalogModel extends Model
     public function getSubCatProd($id)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p  LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id])->getResultArray();
 
         return $data;
     }
@@ -40,7 +44,7 @@ class CatalogModel extends Model
     public function getSubSubCatProd($id_sub, $id_sub_sub)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub, $id_sub_sub])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p  LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub, $id_sub_sub])->getResultArray();
 
         return $data;
     }
@@ -48,7 +52,7 @@ class CatalogModel extends Model
     public function getSubSubSubCatProd($id_sub, $id_sub_sub, $id_sub_sub_sub)
     {
 
-        $data = $this->db->query("SELECT * FROM product p JOIN product_img pim ON p.product_id = pim.prod_id LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? AND pcl.id_sub_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub, $id_sub_sub, $id_sub_sub_sub])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product p  LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=? AND pcl.id_sub_cat=? AND pcl.id_sub_sub_cat=? ORDER BY p.product_id DESC LIMIT 9 ", [$id_sub, $id_sub_sub, $id_sub_sub_sub])->getResultArray();
 
         return $data;
     }
@@ -59,14 +63,14 @@ class CatalogModel extends Model
         $data = $this->db->query("SELECT * FROM `product` p LEFT JOIN `product_feature_val` pfv ON p.product_id = pfv.id_product 
                                 LEFT JOIN feature_val fv ON fv.id = pfv.id_feature 
                                 LEFT JOIN feature f ON f.id_name_har=fv.id_feature 
-                                LEFT JOIN product_img pim ON pim.prod_id = p.product_id WHERE p.product_id = ?", [$id_product])->getResultArray();
+                                WHERE p.product_id = ?", [$id_product])->getResultArray();
 
         return $data;
     }
 
     public function checkCart($user)
     {
-        $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ?", [$user])->getResultArray();
+        $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ? GROUP BY id_cart", [$user])->getResultArray();
 
         return $data;
     }
@@ -87,15 +91,44 @@ class CatalogModel extends Model
     }
 
     public function getRekomm(){
-        $data = $this->db->query("SELECT *  FROM product p LEFT JOIN product_img pim ON pim.prod_id = p.product_id WHERE `is_rekomm` = '1' ")->getResultArray();
+        $data = $this->db->query("SELECT *  FROM product p  WHERE `is_rekomm` = '1' ")->getResultArray();
 
         return $data;
     }
 
     public function getAkc(){
-        $data = $this->db->query("SELECT *  FROM product p LEFT JOIN product_img pim ON pim.prod_id = p.product_id WHERE `is_akcii` = '1' ")->getResultArray();
+        $data = $this->db->query("SELECT *  FROM product p  WHERE `is_akcii` = '1' ")->getResultArray();
 
         return $data;
     }
 
+    public function getBrend(){
+        $data = $this->db->query("SELECT *  FROM feature ")->getResultArray();
+
+        return $data;
+    }
+    public function getBrendValue($id){
+        $data = $this->db->query("SELECT *  FROM feature_val WHERE id_feature = ? ",[$id])->getResultArray();
+
+        return $data;
+    }
+
+    public function getFiltr($params){
+
+        $where = '';
+        if(count($params) == 1){
+            $where .= ' id_feature = "'.$params[0].'"';
+        }
+        else {
+            $where .= '  id_feature = "'.$params[0].'"';
+            for ($i=1;$i<count($params);$i++) {
+                $where .= ' OR WHERE id_feature = ' . $params[$i];
+            }
+        }
+
+        $this->builder_f->where($where);
+        $data = $this->builder_f->get();
+dd($data->getResultArray());
+        return $data->getResultArray();
+    }
 }

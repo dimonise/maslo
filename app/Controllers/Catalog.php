@@ -8,12 +8,13 @@ use App\Models\CatalogModel;
 class Catalog extends Controller
 {
     public $locale;
-
+    public $model;
 
     public function __construct()
     {
 
         $this->locale  =  service('request')->getLocale();
+        $this->model = new CatalogModel();
         helper('menu');
 
     }
@@ -27,8 +28,11 @@ class Catalog extends Controller
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 
-        $catalog = new CatalogModel();
-        $data['last'] = $catalog->getLastNine();
+
+        $data['last'] = $this->model->paginate(9);
+        $data['pager'] = $this->model->pager;
+
+        $data['brend'] = $this->model->getBrend();
 
         echo view('templates/header',$data);
         echo view('catalog',$data);
@@ -90,6 +94,11 @@ class Catalog extends Controller
     }
 
 
-    //--------------------------------------------------------------------
+   public function search_filtr(){
+        $filtr = service('request')->getVar('filtr');
+
+        $getProduct = $this->model->getFiltr($filtr);
+        return json_encode($getProduct);
+   }
 
 }

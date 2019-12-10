@@ -23,7 +23,6 @@ class ProductAdminModel extends Model
     {
 
         $data = $this->db->query("SELECT * FROM product p 
-                                        LEFT JOIN product_img pim ON p.product_id = pim.prod_id 
                                         LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id 
                                         LEFT JOIN product_feature_val pfv ON p.product_id = pfv.id_product 
                                         LEFT JOIN feature_val fv ON fv.id = pfv.id_feature 
@@ -84,17 +83,11 @@ class ProductAdminModel extends Model
 
     function save_img($product_id, $img)
     {
-        $data = $this->db->query("SELECT * FROM product_img
-                                      WHERE prod_id=?  ", [$product_id])->getResultArray();
+        $data = $this->db->query("SELECT * FROM product
+                                      WHERE product_id=?  ", [$product_id])->getResultArray();
         if (count($data) > 0) {
-            $this->img->where('prod_id', $product_id);
-            $this->img->update($img);
-        } else {
-            $dat = [
-                'prod_id' => $product_id,
-                'img' => $img
-            ];
-            $this->img->insert($dat);
+            $this->builder->where('product_id', $product_id);
+            $this->builder->update($img);
         }
     }
 

@@ -82,7 +82,7 @@
                                 $user = session('name_user');
                             }
                             $item = $cart->checkCart($user);
-                            echo $item[0]['cou'];
+                            echo @$item[0]['cou'];
                             ?>
                         </div>
                     </a>
