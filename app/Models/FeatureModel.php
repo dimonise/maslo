@@ -111,4 +111,10 @@ class FeatureModel extends Model
         $this->builder_val->delete(['id_feature' => $id_name_har]);
         return $this->builder->delete(['id_name_har' => $id_name_har]);
     }
+
+    function get_cats(){
+        $data = $this->db->query("SELECT *  FROM menu WHERE parent = 0 ")->getResultArray();
+
+        return $data;
+    }
 }

@@ -60,18 +60,20 @@ helper('form');
                             <?php
                         }
                         $rek = '';
-                        if($product[0]['is_rekomm']==1 ){
+                        if ($product[0]['is_rekomm'] == 1) {
                             $rek = 'checked';
                         }
                         $akc = '';
-                        if($product[0]['is_akcii']==1 ){
+                        if ($product[0]['is_akcii'] == 1) {
                             $akc = 'checked';
                         }
                         ?>
                         <br>
-                        <input type="checkbox" value="1" name="rekomm" <?php echo $rek; ?>> <label>Добавить в рекомендованные</label>
+                        <input type="checkbox" value="1" name="rekomm" <?php echo $rek; ?>> <label>Добавить в
+                            рекомендованные</label>
                         <br>
-                        <input type="checkbox" value="1" name="akcii" <?php echo $akc; ?>> <label>Добавить в акционные</label>
+                        <input type="checkbox" value="1" name="akcii" <?php echo $akc; ?>> <label>Добавить в
+                            акционные</label>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -167,43 +169,48 @@ helper('form');
                                 <?php
                                 foreach ($product as $item) {
 
+                                    if (!empty($item['id_name_har'])):
                                     echo "<tr>";
-                                    echo "<td>" . $item['name_har_ru'] . "</td><td>
-                                    <select name='spec[{$item['id_name_har']}][]'>";
+                                    echo "<td>" . $item['name_har_ru'] . "</td><td>";
 
-                                    foreach ($spec as $s):
-                                        $sel = '';
-                                        if ($s['val_feature_ru'] == $item['val_feature_ru']):
-                                            $sel = 'selected';
-                                        endif;
-                                        if ($s['id_name_har'] == $item['id_name_har']):
-                                            echo "<option value='" . $s['id'] . "' " . $sel . ">" . $s['val_feature_ru'] . "</option>";
-                                        endif;
-                                    endforeach;
+                                        echo "<select name='spec[{$item['id_name_har']}][]'>";
 
-                                    echo "</select>
+                                        foreach ($spec as $s):
+                                            $sel = '';
+                                            if ($s['val_feature_ru'] == $item['val_feature_ru']):
+                                                $sel = 'selected';
+                                            endif;
+                                            if ($s['id_name_har'] == $item['id_name_har']):
+                                                echo "<option value='" . $s['id'] . "' " . $sel . ">" . $s['val_feature_ru'] . "</option>";
+                                            endif;
+                                        endforeach;
+
+                                        echo "</select>
                                             <button type='button' class='close' aria-label='Close' style='color: #f50202;'
-                                            onclick='del_har_edit(".$item['product_id'].",".$item['id_name_har'].")'>
+                                            onclick='del_har_edit(" . $item['product_id'] . "," . $item['id_name_har'] . ")'>
                                                             <span aria-hidden='true'>&times;</span>
-                                            </button>
-                                            </td>";
+                                            </button>";
+
+                                    echo "</td>";
                                     echo "</tr>";
+                                    endif;
                                 }
                                 ?>
                             </table>
                         </div>
 
                         <div class="form-group">
-                            <select name="add-spec-name" id="add-spec-name" onchange="sel_spec();" style="height: 31px;">
-                                <option >Выбрать наименование х-ки</option>
+                            <select name="add-spec-name" id="add-spec-name" onchange="sel_spec();"
+                                    style="height: 31px;">
+                                <option>Выбрать наименование х-ки</option>
                                 <?php
                                 foreach ($spec_sel as $item) {
                                     echo "<option value='{$item['id_name_har']}'>{$item['name_har_ru']}</option>";
                                 }
                                 ?>
                             </select>
-                            <select name="add-spec0" id="add-spec-val"style="height: 31px;" >
-                                <option >Выбрать характеристику</option>
+                            <select name="add-spec0" id="add-spec-val" style="height: 31px;">
+                                <option>Выбрать характеристику</option>
                             </select>
                             <input type="button" class="add-spec btn btn-warning" value="Сохранить хар-ку">
                         </div>
@@ -235,24 +242,25 @@ helper('form');
                         </div>
                         <div class="form-group">
 
-                            <p>Характеристики на украинском будут добавлены автоматически в зависимости от выбранных справа</p>
+                            <p>Характеристики на украинском будут добавлены автоматически в зависимости от выбранных
+                                справа</p>
 
-                    </div>
-                    <div class="col-md-6">
-                        <label for="date_add" class="control-label">Дата добавления</label>
-                        <div class="form-group">
-                            <?= $product[0]['date_add']; ?>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="date_add" class="control-label">Дата добавления</label>
+                            <div class="form-group">
+                                <?= $product[0]['date_add']; ?>
 
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check"></i> Сохранить
+                    </button>
+                </div>
+                <?php echo form_close(); ?>
             </div>
-            <div class="box-footer">
-                <button type="submit" class="btn btn-success">
-                    <i class="fa fa-check"></i> Сохранить
-                </button>
-            </div>
-            <?php echo form_close(); ?>
         </div>
     </div>
-</div>

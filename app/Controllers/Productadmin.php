@@ -243,7 +243,7 @@ class Productadmin extends Controller
         $name = service('request')->getVar('name');
         $val = service('request')->getVar('val');
         $idprod = service('request')->getVar('prod');
-        $data = ['id_product' => $idprod, 'id_feature' => $name, 'id_name_feature'=>$val];
+        $data = ['id_product' => $idprod, 'id_feature' => $val, 'id_name_feature'=>$name];
         $this->model->save_har_for_prod($data);
         return;
 

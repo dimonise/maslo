@@ -65,7 +65,7 @@ class Feature extends Controller
         // check if the feature exists before trying to edit it
         $data['feature'] = $this->model->get_feature($id_name_har);
         $data['feature_val'] = $this->model->get_feature_val($id_name_har);
-
+        $data['cats'] = $this->model->get_cats();
         if (isset($data['feature'][0]['id_name_har'])) {
             if (isset($_POST) && count($_POST) > 0) {
                 $params = array(

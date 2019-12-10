@@ -1,5 +1,7 @@
 <?php
+
 use App\Models\CatalogModel;
+
 $catalog = new CatalogModel();
 ?>
 <div class="row">
@@ -7,6 +9,15 @@ $catalog = new CatalogModel();
     <div class="col-1"></div>
     <div class="col-2">
         <h5 class="head-paragraph"><?= lang('Language.filtr'); ?></h5>
+        <?php
+        if (@$startPrice) {
+            $start = $startPrice;
+            $finish = $finishPrice;
+        } else {
+            $start = 0;
+            $finish = 1000;
+        }
+        ?>
         <script>
             $(function () {
                 $("#slider-range").slider({
@@ -20,8 +31,10 @@ $catalog = new CatalogModel();
                         $("#finishPrice").val(ui.values[1]);
                     }
                 });
-                $("#amount").val($("#slider-range").slider("values", 0) +
-                    "грн - " + $("#slider-range").slider("values", 1) + 'грн');
+                $("#amount").val(<?= $start;?> +
+                    "грн - " + <?= $finish;?> +'грн');
+                $("#startPrice").val(<?= $start;?>);
+                $("#finishPrice").val(<?= $finish;?>);
             });
         </script>
         <div class="filtr">
@@ -33,19 +46,27 @@ $catalog = new CatalogModel();
             <form id="filtr" action="/catalog/search_filtr" method="post">
                 <input type="hidden" value="" id="startPrice" name="startPrice">
                 <input type="hidden" value="" id="finishPrice" name="finishPrice">
-            <?php //dd($val);
-                foreach($brend as $item){
-                    echo "<br><label style='text-transform: uppercase;color:#f6931f'>".$item['name_har_'.$locale]."</label><br>";
+                <?php //dd($val);
+                foreach ($brend as $item) {
+                    echo "<br><label style='text-transform: uppercase;color:#f6931f'>" . $item['name_har_' . $locale] . "</label><br>";
                     $value = $catalog->getBrendValue($item['id_name_har']);
-                    foreach($value as $val){
-                        echo "<span><input type='checkbox' value='".$val['id']."' name='filtr[]'>".$val['val_feature_'.$locale]."</span><br>";
+                    foreach ($value as $val) {
+                        if (@$filtr):
+                            if (in_array($val['id'], $filtr, false)) {
+                                $check = 'checked';
+                            } else {
+                                $check = '';
+                            }
+                        endif;
+                        echo "<span><input type='checkbox' value='" . $val['id'] . "' name='filtr[]' " . @$check . ">" . $val['val_feature_' . $locale] . "</span><br>";
                     }
                 }
-            ?>
-                <input type="submit" class="btn btn-info" value="<?= lang('Language.sech')?>" id="search-filtr">
+                ?>
+                <input type="submit" class="btn btn-info" value="<?= lang('Language.sech') ?>" id="search-filtr">
             </form>
         </div>
-<!--        <input type="button" class="btn btn-info" value="--><?//= lang('Language.sech')?><!--" id="search-filtr">-->
+        <!--        <input type="button" class="btn btn-info" value="-->
+        <? //= lang('Language.sech')?><!--" id="search-filtr">-->
 
     </div>
 
@@ -72,7 +93,7 @@ $catalog = new CatalogModel();
                     echo "<a href='/" . $locale . "/product/" . $product['product_id'] . "'>";
                     echo "<div class='prod'>";
                     echo "<img src='" . $product['img'] . "' width='100%'>";
-                    echo $product['product_name_' . $locale].', '.$product['price'].'грн';
+                    echo $product['product_name_' . $locale] . ', ' . $product['price'] . 'грн';
                     echo "</div>";
                     echo "</a>";
                     echo "</div>";
