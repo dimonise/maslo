@@ -91,6 +91,7 @@ $routes->get('{locale}/catalog/(:num)/(:num)/(:num)', 'Catalog::subsubsubcat/$1/
 $routes->get('{locale}/product/(:num)', 'Product::index/$1');
 $routes->get('{locale}/cart', 'Product::cart');
 $routes->get('{locale}/admin', 'User::index');
+$routes->get('{locale}/cabinet', 'Cabinet::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

@@ -36,6 +36,7 @@
             } else {
                 $user = session('name_user');
                 echo lang('Language.hello') . ' ' . $user;
+                echo "<a href='/".$locale."/cabinet' style='margin-left:5%;color:#10ff00'>".lang('Language.cabinet')."</a>";
                 echo "<a href='/".$locale."/logout' style='margin-left:5%;color:red'>".lang('Language.logout')."</a>";
             }
             ?>
