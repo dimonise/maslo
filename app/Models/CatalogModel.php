@@ -149,4 +149,17 @@ class CatalogModel extends Model
 
         return $data->getResultArray();
     }
+
+    public function sort($sort,$onpage){
+        if($sort==1){
+            $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price ASC LIMIT $onpage")->getResultArray();
+
+            return $data;
+        }
+        elseif($sort==2){
+            $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price DESC LIMIT $onpage")->getResultArray();
+
+            return $data;
+        }
+    }
 }

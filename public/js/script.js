@@ -42,7 +42,7 @@ $(function () {
         pause: 'hover',
         ride: 'carousel',
         wrap: true,
-        item:4
+        item: 4
     });
 });
 
@@ -70,26 +70,26 @@ function inCart(prod_id) {
     event.preventDefault();
 
     $.ajax({
-        url: 'http://maslo.loc/product/inCart',
+        url: '/product/inCart',
         type: 'post',
         //dataType:'json',
-        data: {id: prod_id,count:$('#kolvo').val()},
+        data: {id: prod_id, count: $('#kolvo').val()},
         success: function (html) {
             console.log(html);
-            alert(html+' in cart');
+            alert(html + ' in cart');
         },
 
     })
 }
 
-function delProduct(prod_id,user) {
+function delProduct(prod_id, user) {
     event.preventDefault();
 
     $.ajax({
-        url: 'http://maslo.loc/product/delCart',
+        url: '/product/delCart',
         type: 'post',
-        dataType:'json',
-        data: {prod_id: prod_id,user:user},
+        dataType: 'json',
+        data: {prod_id: prod_id, user: user},
         success: function (html) {
 
             alert('Product deleted');
@@ -105,7 +105,7 @@ function sel_spec() {
     var spec = $('#add-spec-name').val();
 
     $.ajax({
-        url: 'http://maslo.loc/productadmin/sel_spec',
+        url: '/productadmin/sel_spec',
         type: 'post',
         dataType: 'json',
         data: {spec: spec},
@@ -120,14 +120,15 @@ function sel_spec() {
 
     })
 }
-$('.add-spec').on('click',function(){
+
+$('.add-spec').on('click', function () {
     var name = $('#add-spec-name').val();
     var prod = $('#pid').val();
     var val = $('#add-spec-val').val();
     $.ajax({
-        url: 'http://maslo.loc/productadmin/savehar',
+        url: '/productadmin/savehar',
         type: 'post',
-        data: {name: name,prod:prod,val:val},
+        data: {name: name, prod: prod, val: val},
         success: function (html) {
 
             alert('Характеристика сохранена');
@@ -136,23 +137,23 @@ $('.add-spec').on('click',function(){
 
     })
 });
-$('#add-har').on('click',function(){
+$('#add-har').on('click', function () {
 
     $.ajax({
-        url: 'http://maslo.loc/productadmin/addhar',
+        url: '/productadmin/addhar',
         type: 'post',
-        dataType:'json',
+        dataType: 'json',
         success: function (html) {
             var count = $('.cats').length + 1;
-            $('.specifications').append('<select name="add-spec-name[]" id="add-spec-name'+count+'" class="cats" onchange="sel_specc('+count+');"><option >Выбрать наименование х-ки</option>');
+            $('.specifications').append('<select name="add-spec-name[]" id="add-spec-name' + count + '" class="cats" onchange="sel_specc(' + count + ');"><option >Выбрать наименование х-ки</option>');
 
             for (var i = 0; i < html.id.length; i++) {
-                $('#add-spec-name'+count).append("<option value='" + html.id[i] + "'>" + html.name[i] + "</option>");
+                $('#add-spec-name' + count).append("<option value='" + html.id[i] + "'>" + html.name[i] + "</option>");
             }
 
-            $('.specifications').append('</select><select name="add-spec[]" id="add-spec'+count+'" ><option >Выбрать характеристику</option>');
+            $('.specifications').append('</select><select name="add-spec[]" id="add-spec' + count + '" ><option >Выбрать характеристику</option>');
             $('.specifications').append('</select><button type="button" class="close" style="color: #f50202;" aria-label="Close" \n' +
-                '                                            onclick="del_har_add('+count+')"><span aria-hidden="true">&times;</span>\n' +
+                '                                            onclick="del_har_add(' + count + ')"><span aria-hidden="true">&times;</span>\n' +
                 '                                            </button><br>');
 
         },
@@ -163,18 +164,18 @@ $('#add-har').on('click',function(){
 
 function sel_specc(count) {
     event.preventDefault();
-    var spec = $('#add-spec-name'+count).val();
+    var spec = $('#add-spec-name' + count).val();
 
     $.ajax({
-        url: 'http://maslo.loc/productadmin/sel_spec',
+        url: '/productadmin/sel_spec',
         type: 'post',
         dataType: 'json',
         data: {spec: spec},
         success: function (html) {
-            $('#add-spec'+count+' option').remove();
-            $('#add-spec'+count).append("<option >Выбрать характеристику</option>");
+            $('#add-spec' + count + ' option').remove();
+            $('#add-spec' + count).append("<option >Выбрать характеристику</option>");
             for (var i = 0; i < html.length; i++) {
-                $('#add-spec'+count).append("<option value='" + html[i].id + "'>" + html[i].val_feature_ru + "</option>");
+                $('#add-spec' + count).append("<option value='" + html[i].id + "'>" + html[i].val_feature_ru + "</option>");
             }
 
         },
@@ -187,7 +188,7 @@ function to_sub_cat() {
     var spec = $('#category').val();
 
     $.ajax({
-        url: 'http://maslo.loc/productadmin/sel_sub',
+        url: '/productadmin/sel_sub',
         type: 'post',
         dataType: 'json',
         data: {spec: spec},
@@ -208,7 +209,7 @@ function to_sub_sub_cat() {
     var spec = $('#sub_cat').val();
 
     $.ajax({
-        url: 'http://maslo.loc/productadmin/sel_sub',
+        url: '/productadmin/sel_sub',
         type: 'post',
         dataType: 'json',
         data: {spec: spec},
@@ -224,13 +225,13 @@ function to_sub_sub_cat() {
     })
 }
 
-function del_har_edit(id_prod,id_name_har){
+function del_har_edit(id_prod, id_name_har) {
 
     $.ajax({
         url: '/productadmin/del_har_edit',
         type: 'post',
         dataType: 'json',
-        data: {id_prod:id_prod,id_name_har:id_name_har},
+        data: {id_prod: id_prod, id_name_har: id_name_har},
         success: function (html) {
 
             alert('Характеристика удалена');
@@ -241,13 +242,14 @@ function del_har_edit(id_prod,id_name_har){
     })
 
 }
-function del_val_edit(id_feature){
+
+function del_val_edit(id_feature) {
 
     $.ajax({
         url: '/feature/del_val',
         type: 'post',
         dataType: 'json',
-        data: {id:id_feature},
+        data: {id: id_feature},
         success: function (html) {
 
             alert('Значение характеристики удалено');
@@ -259,18 +261,18 @@ function del_val_edit(id_feature){
 
 }
 
-function del_har_add(id){
-    $('.specifications').find('#add-spec-name'+id).remove();
-    $('.specifications').find('#add-spec'+id).remove();
+function del_har_add(id) {
+    $('.specifications').find('#add-spec-name' + id).remove();
+    $('.specifications').find('#add-spec' + id).remove();
 
 }
 
-$('#add-val').on('click', function(){
+$('#add-val').on('click', function () {
     $.ajax({
         url: '/feature/save_val_har',
         type: 'post',
         dataType: 'json',
-        data: {ua:$('#val_ua').val(),ru:$('#val_ru').val(),id:$('#id').val()},
+        data: {ua: $('#val_ua').val(), ru: $('#val_ru').val(), id: $('#id').val()},
         success: function (html) {
 
             alert('Сохранено');
@@ -281,7 +283,7 @@ $('#add-val').on('click', function(){
     })
 });
 
-$('#add-val-field').on('click',function(){
+$('#add-val-field').on('click', function () {
 
     $('.val-new').append(' <div class="col-md-6">\n' +
         '                        <input type="text" name="val_har_ua[]" value="" class="form-control" id=""/>\n' +
@@ -301,9 +303,41 @@ $('#search-filtr').on('click', function () {
             console.log(html);
 
 
-
         },
 
     })
 });
+
+function sorts(lang) {
+    var sort = $('#sort').val();
+    var onpage = $('#onpage').val();
+    $.ajax({
+        url: '/catalog/sort',
+        type: 'post',
+        dataType: 'json',
+        data: {sort: sort,onpage:onpage},
+        success: function (html) {
+            $('body').find('.sort-section').empty();
+
+            for (var i = 0; i < html.length; i++) {
+                if(lang === 'ua') {
+                                var prod = html[i].product_name_ua;
+                            }
+                            else{
+                                var prod = html[i].product_name_ru;
+                            }
+                $('.sort-section').append('<div class="col-4">\n' +
+                    '                    <a href="/'+lang+ '/product/'+html[i].product_id+'">\n' +
+                    '                    <div class="prod">\n' +
+                    '                    <img src="' + html[i].img+ '" width="100%">\n' +
+                                            prod +','+ html[i].price+'грн\n' +
+                    '                    </div>\n' +
+                    '                    </a>\n' +
+                    '                    </div>');
+            }
+
+        },
+
+    })
+}
 

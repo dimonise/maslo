@@ -77,14 +77,24 @@ $catalog = new CatalogModel();
         <div class="row">
             <div class="col-6 grey">
                 <span>СОРТИРОВКА: </span>
+                <select name="sort" id="sort" onchange="sorts('<?= $locale;?>');">
+                    <option value="0"><?= lang('Language.sel_sort');?></option>
+                    <option value="1"><?= lang('Language.sort_up');?></option>
+                    <option value="2"><?= lang('Language.sort_down');?></option>
+                </select>
             </div>
             <div class="col-3 grey right">
                 <span><?= lang('Language.on-page'); ?></span>
+                <select name="onpage" id="onpage" onchange="sorts('<?= $locale;?>');">
+                    <option value="9">9</option>
+                    <option value="18">18</option>
+                    <option value="36">36</option>
+                </select>
             </div>
         </div>
 
         <div class="col-9">
-            <div class="row">
+            <div class="row sort-section">
                 <?php
 
                 foreach ($last as $product):
