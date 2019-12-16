@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
+use App\Models\CabinetModel as Cabinet;
 
 
 class Product extends Controller
@@ -35,6 +36,8 @@ class Product extends Controller
 
         $data['product'] = $product->showProduct($id_prod);
         $data['title'] = $data['product'][0]['product_name_' . $this->locale];
+
+
         echo view('templates/header', $data);
         echo view('product', $data);
         echo view('templates/footer', $data);
@@ -54,10 +57,10 @@ class Product extends Controller
             $product = new CatalogModel();
             $getProductInfo = $product->showProduct($prodID);
 
-            if (!session('name_user')) {
+            if (!session('id_user')) {
                 $user = session_id();
             } else {
-                $user = session('name_user');
+                $user = session('id_user');
             }
             $data = [
                 'id_product' => $getProductInfo[0]['oem'],
@@ -69,12 +72,13 @@ class Product extends Controller
             //$this->session->set($data);
             $builder->insert($data);
 
-            return json_encode($getProductInfo[0]['product_name_'.$this->locale], JSON_UNESCAPED_UNICODE);
+            return json_encode($getProductInfo[0]['product_name_' . $this->locale], JSON_UNESCAPED_UNICODE);
         }
 
     }
 
-    public function cart(){
+    public function cart()
+    {
         $data['locale'] = $this->locale;
 
         $data['tree'] = menu();
@@ -84,18 +88,23 @@ class Product extends Controller
         $data['title'] = lang('Language.cart');
 
         $product = new CatalogModel();
-        if (!session('name_user')) {
+        if (!session('id_user')) {
             $user = session_id();
         } else {
-            $user = session('name_user');
+            $user = session('id_user');
         }
         $data['product'] = $product->Cart($user);
+        $cabinet = new Cabinet();
+
+        $data['oblast'] = $cabinet->getOblast();
+        $data['allrayon'] = $cabinet->getRayonAll();
         echo view('templates/header', $data);
         echo view('cart', $data);
         echo view('templates/footer', $data);
     }
 
-    public function delCart(){
+    public function delCart()
+    {
         if ($this->request->isAJAX()) {
 
             $prodID = service('request')->getVar('prod_id');
@@ -103,8 +112,8 @@ class Product extends Controller
 
             $product = new CatalogModel();
 
-            $product->delCart($prodID,$userID);
-return json_encode('deleted');
+            $product->delCart($prodID, $userID);
+            return json_encode('deleted');
         }
     }
 }

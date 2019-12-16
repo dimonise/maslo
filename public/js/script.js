@@ -341,3 +341,40 @@ function sorts(lang) {
     })
 }
 
+function getrayon() {
+    var id = $('#region').val();
+    $.ajax({
+        url: '/cabinet/search_rayon',
+        type: 'post',
+        dataType: 'json',
+        data: {id:id},
+        success: function (html) {
+            $('#rayon').html('<select name="rayon" id="rayons"class="form-control" onchange="getcity()">');
+            for(var i=0; i < html.length; i++){
+                $('#rayons').append('<option value="'+html[i].id_rayon+'">'+html[i].rayon+'</option>');
+            }
+            $('#rayon').append('</select>');
+
+        },
+
+    })
+}
+
+function getcity() {
+    var id = $('#rayons').val();
+    $.ajax({
+        url: '/cabinet/search_city',
+        type: 'post',
+        dataType: 'json',
+        data: {id:id},
+        success: function (html) {
+            $('#city').html('<select name="city" id="citys"class="form-control">');
+            for(var i=0; i < html.length; i++){
+                $('#citys').append('<option value="'+html[i].city_name+'">'+html[i].city_name+'</option>');
+            }
+            $('#city').append('</select>');
+
+        },
+
+    })
+}

@@ -38,7 +38,8 @@ class Cabinet extends Controller
         $data['user'] = $this->model->getUser($id);
         $data['pager'] = $this->model->pager;
 
-        /*$data['brend'] = $this->model->getBrend();*/
+        $data['oblast'] = $this->model->getOblast();
+        $data['allrayon'] = $this->model->getRayonAll();
 
         echo view('templates/header', $data);
         echo view('cabinet', $data);
@@ -69,9 +70,10 @@ class Cabinet extends Controller
 //                    'money' => service('request')->getVar('money'),
 //				'factory' => service('request')->getVar('factory'),
 //				'edrpo' => service('request')->getVar('edrpo'),
-//				'pay_activ' => service('request')->getVar('pay_activ'),
-//				'data_pay' => service('request')->getVar('data_pay'),
-//				'char_fac' => service('request')->getVar('char_fac'),
+				'region' => service('request')->getVar('region'),
+				'rayon' => service('request')->getVar('rayon'),
+				'city' => service('request')->getVar('city'),
+				'address' => trim(service('request')->getVar('address')),
                 );
 
                 $this->model->update_user($id_user, $params);
@@ -79,5 +81,21 @@ class Cabinet extends Controller
             }
         } else
             echo 'The user you are trying to edit does not exist.';
+    }
+
+    function search_rayon(){
+        $id = service('request')->getVar('id');
+
+        $data = $this->model->getRayon($id);
+
+        return json_encode($data);
+    }
+
+    function search_city(){
+        $id = service('request')->getVar('id');
+
+        $data = $this->model->getCity($id);
+
+        return json_encode($data);
     }
 }
