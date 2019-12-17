@@ -41,7 +41,7 @@ if (session('name_user')) {
             <?php
 
             echo form_open("orders/confirm/" . session('id_user'));
-            echo "<h5><input type='radio' style='margin-top:50px'  name='deliv' value='NP'>" . lang('Language.np') . "</h5>";
+            echo "<h5><input type='radio' checked style='margin-top:50px'  name='deliv' value='NP'>" . lang('Language.np') . "</h5>";
             echo "<h5 style='width:100%;margin-top:10px;text-align: center'>" . lang('Language.del_info') . "</h5>";
             ?>
             <div class="box-body">
@@ -130,11 +130,29 @@ if (session('name_user')) {
                             <input name="address" class="form-control" style="height: 38px;" value="">
                         </div>
                     </div>
-
+                    <div class="col-md-12">
+                    <?php echo "<h5 style='width:100%;margin-top:50px;text-align: center'>" . lang('Language.ili') . "</h5>"; ?>
+                    <?php echo "<h5 ><input type='radio' name='deliv' value='SAM'>" . lang('Language.del_info_sam') . "</h5>"; ?>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="name_user_sam" class="control-label"><?= lang('Language.ima'); ?></label>
+                        <div class="form-group">
+                            <input type="text" name="name_user_sam"
+                                   value="<?php echo($user['name_user'] ? $user['name_user'] : ''); ?>"
+                                   class="form-control" id="name_user_sam"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sname_user_sam" class="control-label"><?= lang('Language.lname'); ?></label>
+                        <div class="form-group">
+                            <input type="text" name="sname_user_sam"
+                                   value="<?php echo($user['sname_user'] ? $user['sname_user'] : ''); ?>"
+                                   class="form-control" id="sname_user_sam"/>
+                        </div>
+                    </div>
 
                 </div>
-                <?php echo "<h5 style='width:100%;margin-top:50px;text-align: center'>" . lang('Language.ili') . "</h5>"; ?>
-                <?php echo "<h5 ><input type='radio' name='deliv' value='SAM'>" . lang('Language.del_info_sam') . "</h5>"; ?>
+
             </div>
 
         </div>

@@ -25,6 +25,9 @@ class OrdersModel
         $this->builder_city = $this->db->table('city');
     }
 
+    function getOrders(){
+        return $this->builder->where('id_user',session('id_user'))->get()->getResultArray();
+    }
 
     function confirm($id_user, $params)
     {

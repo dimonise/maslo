@@ -22,6 +22,7 @@ class CabinetModel extends Model
         $this->builder_obl = $this->db->table('region');
         $this->builder_rayon = $this->db->table('rayon');
         $this->builder_city = $this->db->table('city');
+        $this->builder_mail = $this->db->table('quest');
     }
 
     function getUser($id){
@@ -51,4 +52,7 @@ class CabinetModel extends Model
         return $this->builder_rayon->get()->getResultArray();
     }
 
+    function sendEmail($params){
+        $this->builder_mail->insert($params);
+    }
 }

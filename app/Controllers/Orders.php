@@ -49,16 +49,26 @@ class Orders extends Controller
 
         $prod = '';
         foreach ($product as $val) {
-            $prod .= $val['id_product'] . '\n';
+            $prod .= $val['id_product'] . "({$val['count_product']} шт.), ";
         }
 
-        $params = [
-            'id_order' => 1,
-            'id_user' => $id_user,
-            'name_user' => service('request')->getVar('name_user'),
-            'product' => $prod,
-            'address' => $oblast[0]['name'] . ' ' . $rayon[0]['rayon'] . ' ' . $city . ' ' . $punkt
-        ];
+        if (service('request')->getVar('deliv') == 'NP'):
+            $params = [
+                'id_order' => 1,
+                'id_user' => $id_user,
+                'name_user' => service('request')->getVar('name_user').' '.service('request')->getVar('sname_user'),
+                'product' => $prod,
+                'address' => $oblast[0]['name'] . ', ' . $rayon[0]['rayon'] . ', ' . $city . ' №' . $punkt
+            ];
+        else:
+            $params = [
+                'id_order' => 1,
+                'id_user' => $id_user,
+                'name_user' => service('request')->getVar('name_user_sam').' '.service('request')->getVar('sname_user_sam'),
+                'product' => $prod,
+                'address' => 'Заберу сам'
+            ];
+        endif;
         $data['order'] = $this->model->confirm($id_user, $params);
 
         echo view('templates/header', $data);

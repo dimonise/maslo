@@ -76,14 +76,13 @@ helper('form');
                                 <option>-- ОБЛАСТЬ --</option>
                                 <?php
                                 foreach ($oblast as $obl):
-                                    if($obl['id_region'] == $user[0]['region']){
+                                    if ($obl['id_region'] == $user[0]['region']) {
                                         $sel = 'selected';
-                                    }
-                                    else{
+                                    } else {
                                         $sel = '';
                                     }
                                     ?>
-                                    <option value="<?= $obl['id_region']; ?>" <?= $sel;?>><?= $obl['name']; ?></option>
+                                    <option value="<?= $obl['id_region']; ?>" <?= $sel; ?>><?= $obl['name']; ?></option>
                                 <?php
                                 endforeach;
                                 ?>
@@ -97,13 +96,12 @@ helper('form');
                                 <option>-- РАЙОН --</option>
                                 <?php
                                 foreach ($allrayon as $rayon) {
-                                    if($rayon['id_rayon'] == $user[0]['rayon']){
+                                    if ($rayon['id_rayon'] == $user[0]['rayon']) {
                                         $sel = 'selected';
-                                    }
-                                    else{
+                                    } else {
                                         $sel = '';
                                     }
-                                    echo '<option value="' . $rayon['id_rayon'] . '" '.$sel.'>' . $rayon['rayon'] . '</option>';
+                                    echo '<option value="' . $rayon['id_rayon'] . '" ' . $sel . '>' . $rayon['rayon'] . '</option>';
                                 }
                                 ?>
                             </select>
@@ -115,8 +113,8 @@ helper('form');
                             <select name="city" class="form-control">
                                 <option style="text-transform: uppercase">-- <?= lang('Language.city'); ?> --</option>
                                 <?php
-                                if($user[0]['city']){
-                                  echo  '<option value="'.$user[0]['city'].'" selected>'.$user[0]['city'].'</option>';
+                                if ($user[0]['city']) {
+                                    echo '<option value="' . $user[0]['city'] . '" selected>' . $user[0]['city'] . '</option>';
                                 }
                                 ?>
                             </select>
@@ -125,7 +123,8 @@ helper('form');
                     <div class="col-md-6">
                         <label for="address" class="control-label"><?= lang('Language.addr'); ?></label>
                         <div class="form-group" id="addr">
-                            <textarea name="address" class="form-control" style="height: 38px;"><?= $user[0]['address']?></textarea>
+                            <textarea name="address" class="form-control"
+                                      style="height: 38px;"><?= $user[0]['address'] ?></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -151,48 +150,52 @@ helper('form');
                                    class="form-control" id="active"/>
                         </div>
                     </div>
-
-                    <!--                    <div class="col-md-6">-->
-                    <!--                        <label for="money" class="control-label">Деньги на счету</label>-->
-                    <!--                        <div class="form-group">-->
-                    <!--                            <input type="text" name="money"-->
-                    <!--                                   value="-->
-                    <?php //echo(service('request')->getVar('money') ? service('request')->getVar('money') : $user[0]['money']); ?><!--"-->
-                    <!--                                   class="form-control" id="money"/>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-
-
                 </div>
             </div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-success">
-                    <i class="fa fa-check"></i> Save
+                    <i class="fa fa-check"></i> <?= lang('Language.save'); ?>
                 </button>
             </div>
             <?php echo form_close(); ?>
         </div>
         <div id="tabs-2">
-            <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id
-                nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie
-                lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula
-                suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur
-                ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque
-                convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare
-                leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+            <table class="table table-striped">
+                <th><?= lang('Language.norder'); ?></th>
+                <th><?= lang('Language.dorder'); ?></th>
+                <th><?= lang('Language.porder'); ?></th>
+                <th><?= lang('Language.sorder'); ?></th>
+                <?php
+                foreach ($orders as $order) {
+                    echo "<tr>";
+                    echo "<td>{$order['id_order']}</td><td>{$order['date']}</td><td>{$order['product']}</td><td>{$order['status_'.$locale]}</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </table>
         </div>
         <div id="tabs-3">
-            <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula
-                accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent
-                taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu
-                urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem
-                enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-            <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla
-                facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti.
-                Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio.
-                Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat
-                porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas
-                commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+            <?php echo form_open('cabinet/quest/' . $user[0]['id_user']); ?>
+            <legend><?= lang('Language.star'); ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label style="color:#ff0000" class="control-label">*</label>
+                        <input type="text" name="subject"
+                               placeholder="<?= lang('Language.subj'); ?>"
+                               required
+                               class="form-control"><br>
+                        <label
+                                style="color:#ff0000" class="control-label">*</label>
+                        <textarea name="quest"
+                                  class="form-control"
+                                  required
+                                  placeholder="<?= lang('Language.textsub'); ?>"></textarea><br>
+                        <input type="hidden" name="komu" value="0">
+                    </div>
+                </div>
+                <input type="submit" value="OK">
+
+                <?php echo form_close(); ?>
         </div>
     </div>
 </div>

@@ -257,16 +257,18 @@ class Auth extends Controller
         $data['locale'] = $this->locale;
 
 
-        $login = service('request')->getPost('email');
-        $password = md5(service('request')->getPost('password'));
+        $login = service('request')->getVar('email');
+        $password = md5(service('request')->getVar('password'));
 
         if (!empty($login) && isset($login)) {
             $builder = $this->db->table('users');
             $builder->where('email_user', $login);
             $builder->where('active', 1);
             $query = $builder->get()->getResult();
-//dd($query);
-            if ($query[0]->email_user) {
+
+//d($login);
+d($query);
+            if ($query) {
                 foreach ($query as $val) {
 
                     if ($val->password == $password) {
