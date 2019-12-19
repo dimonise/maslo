@@ -11,16 +11,18 @@ namespace App\Controllers;
 use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
 use App\Models\CabinetModel as Cabinet;
-
+use App\Controllers\Search as Search;
 
 class Product extends Controller
 {
     protected $request;
+    public $search;
 
     public function __construct()
     {
         $this->session = \Config\Services::session();
         $this->locale = service('request')->getLocale();
+        $this->search = new Search();
         helper('menu');
     }
 
@@ -36,7 +38,7 @@ class Product extends Controller
 
         $data['product'] = $product->showProduct($id_prod);
         $data['title'] = $data['product'][0]['product_name_' . $this->locale];
-
+        $data['search'] = $this->search->index();
 
         echo view('templates/header', $data);
         echo view('product', $data);
@@ -98,6 +100,8 @@ class Product extends Controller
 
         $data['oblast'] = $cabinet->getOblast();
         $data['allrayon'] = $cabinet->getRayonAll();
+        $data['search'] = $this->search->index();
+
         echo view('templates/header', $data);
         echo view('cart', $data);
         echo view('templates/footer', $data);

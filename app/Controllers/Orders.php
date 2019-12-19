@@ -5,17 +5,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\OrdersModel;
+use App\Controllers\Search as Search;
 
 class Orders extends Controller
 {
     public $locale;
     public $model;
+    public $search;
 
     public function __construct()
     {
 
         $this->locale = service('request')->getLocale();
         $this->model = new OrdersModel();
+        $this->search = new Search();
         helper('menu');
 
     }
@@ -70,6 +73,7 @@ class Orders extends Controller
             ];
         endif;
         $data['order'] = $this->model->confirm($id_user, $params);
+        $data['search'] = $this->search->index();
 
         echo view('templates/header', $data);
         echo view('order', $data);

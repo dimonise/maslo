@@ -10,15 +10,18 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\NewsModel;
-
+use App\Controllers\Search as Search;
 
 class News extends Controller
 {
     public $locale;
+    public $search;
 
     public function __construct()
     {
         $this->locale = service('request')->getLocale();
+        $this->search = new Search();
+        helper('menu');
     }
 
     public function index()
@@ -30,6 +33,14 @@ class News extends Controller
             'news' => $model->getNews(),
             'title' => 'News archive',
         ];
+        $data['locale'] = $this->locale;
+        $data['title'] = 'Главная';
+        $data['tree'] = menu();
+
+        $data['search'] = $this->search->index();
+
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
 
         echo view('templates/header', $data);
         echo view('news/overview', $data);
@@ -47,6 +58,14 @@ class News extends Controller
         }
 
         $data['title'] = $data['news']['title_news_' . $this->locale];
+        $data['locale'] = $this->locale;
+        $data['title'] = 'Главная';
+        $data['tree'] = menu();
+
+        $data['search'] = $this->search->index();
+
+        $tree = createTree($data['tree']);
+        $data['mmm'] = renderTemplate($tree);
 
         echo view('templates/header', $data);
         echo view('news/view', $data);

@@ -3,16 +3,18 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\CartModel;
- 
+use App\Controllers\Search as Search;
 class Cart extends Controller{
 
     public $model;
     public $locale;
+    public $search;
 
     function __construct()
     {
         $this->locale  =  service('request')->getLocale();
         $this->model = new CartModel();
+        $this->search = new Search();
     }
 
     /*
@@ -25,7 +27,7 @@ class Cart extends Controller{
             'cart' => $this->model->paginate(25),
             'pager' => $this->model->pager
         ];
-
+        $data['search'] = $this->search->index();
         echo view('admin/header',$data);
         echo view('admin/cart/index',$data);
         echo view('admin/footer');
@@ -63,7 +65,7 @@ class Cart extends Controller{
     {   
         // check if the cart exists before trying to edit it
         $data['cart'] = $this->model->get_cart($id_cart);
-        
+        $data['search'] = $this->search->index();
         if(isset($data['cart'][0]['id_cart']))
         {
             if(isset($_POST) && count($_POST) > 0)     

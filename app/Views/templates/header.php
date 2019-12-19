@@ -15,6 +15,21 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="/js/owl-carousel/dist/owl.carousel.min.js"></script>
+    <script>
+
+        $( function() {
+            var availableTags = [
+            <?php
+                   foreach($search as $ser){
+                       echo "'".$ser['product_name_'.$locale]."',";
+                    }
+            ?>
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        } );
+    </script>
 </head>
 <body>
 <div class="container-liquid">
@@ -67,7 +82,7 @@
                 <div class="col-2"></div>
                 <div class="col-1"></div>
                 <div class="col-6">
-                    <input type="text" placeholder="<?= lang('Language.search') ?>" id="search">
+                    <input type="text" placeholder="<?= lang('Language.search') ?>" id="tags">
                     <button type="button" class="btn btn-warning"><i
                                 class="fa fa-search"></i><?= lang('Language.sech') ?>
                     </button>

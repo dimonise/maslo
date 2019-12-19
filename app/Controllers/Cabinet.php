@@ -12,12 +12,13 @@ use App\Controllers\BaseController as Controller;
 use App\Models\CabinetModel;
 use App\Models\OrdersModel;
 use App\Models\UserModel;
-
+use App\Controllers\Search as Search;
 class Cabinet extends Controller
 {
     public $locale;
     public $model;
     public $order;
+    public $search;
 
     public function __construct()
     {
@@ -25,7 +26,7 @@ class Cabinet extends Controller
         $this->locale = service('request')->getLocale();
         $this->model = new CabinetModel();
         $this->order = new OrdersModel();
-
+        $this->search = new Search();
         helper('menu');
 
     }
@@ -35,7 +36,7 @@ class Cabinet extends Controller
         $data['locale'] = $this->locale;
         $data['title'] = lang('Language.cabinet');
         $data['tree'] = menu();
-
+        $data['search'] = $this->search->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 

@@ -4,17 +4,19 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
-
+use App\Controllers\Search as Search;
 class Catalog extends Controller
 {
     public $locale;
     public $model;
+    public $search;
 
     public function __construct()
     {
 
         $this->locale = service('request')->getLocale();
         $this->model = new CatalogModel();
+        $this->search = new Search();
         helper('menu');
 
     }
@@ -27,7 +29,7 @@ class Catalog extends Controller
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['search'] = $this->search->index();
 
         $data['last'] = $this->model->paginate(9);
         $data['pager'] = $this->model->pager;
@@ -50,7 +52,7 @@ class Catalog extends Controller
 
         $data['title'] = $data['title_prep'][0]['name_' . $this->locale];
         $catalog = new CatalogModel();
-
+        $data['search'] = $this->search->index();
         $data['last'] = $catalog->getSubCatProd($id);
         $data['brend'] = $this->model->getBrend();
 
@@ -67,7 +69,7 @@ class Catalog extends Controller
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['search'] = $this->search->index();
         $data['title'] = $data['title_prep'][0]['name_' . $this->locale];
         $catalog = new CatalogModel();
 
@@ -89,7 +91,7 @@ class Catalog extends Controller
         $data['brend'] = $this->model->getBrend();
         $data['title'] = $data['title_prep'][0]['name_' . $this->locale];
         $catalog = new CatalogModel();
-
+        $data['search'] = $this->search->index();
         $data['last'] = $catalog->getSubSubSubCatProd($cat, $podcat, $subpodcat);
 
         echo view('templates/header', $data);
@@ -103,7 +105,7 @@ class Catalog extends Controller
         $data['startPrice'] = service('request')->getVar('startPrice');
         $data['finishPrice'] = service('request')->getVar('finishPrice');
         $data['filtr'] = service('request')->getVar('filtr');
-
+        $data['search'] = $this->search->index();
         $getProductId = $this->model->getFiltr($data['filtr']);
         if ($getProductId) {
             $id = [];

@@ -5,17 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController as Controller;
 use App\Helpers\Menu;
 use App\Models\CatalogModel;
-
+use App\Controllers\Search as Search;
 
 class Home extends Controller
 {
      public $locale;
+     public $search;
 
 
     public function __construct()
     {
 
         $this->locale  =  service('request')->getLocale();
+        $this->search = new Search();
         helper('menu');
 
     }
@@ -26,6 +28,8 @@ class Home extends Controller
         $data['locale'] = $this->locale;
         $data['title'] = 'Главная';
         $data['tree'] = menu();
+
+        $data['search'] = $this->search->index();
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);

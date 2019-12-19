@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Helpers\Menu;
-
+use App\Controllers\Search as Search;
 class Auth extends Controller
 {
 
@@ -12,12 +12,14 @@ class Auth extends Controller
     protected $table = 'users';
     private $db;
     private $session;
+    private $search;
 
     public function __construct()
     {
         $this->locale = service('request')->getLocale();
         $this->db = \Config\Database::connect();
         $this->session = \Config\Services::session();
+        $this->search = new Search();
         helper(['form', 'url', 'menu']);
     }
 
@@ -29,6 +31,7 @@ class Auth extends Controller
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
         echo view('templates/header', $data);
         echo view('login');
         echo view('templates/footer', $data);
@@ -41,6 +44,7 @@ class Auth extends Controller
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
         echo view('templates/header', $data);
         echo view('registration', $data);
         echo view('templates/footer', $data);
@@ -232,6 +236,7 @@ class Auth extends Controller
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
         echo view('templates/header-login', $data);
         echo view('success', $data);
         echo view('templates/footer-login', $data['locale']);
@@ -246,6 +251,7 @@ class Auth extends Controller
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
         echo view('templates/header', $data);
         echo view('success', $data);
         echo view('templates/footer', $data);
@@ -308,6 +314,7 @@ d($query);
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
         echo view('templates/header', $data);
         echo view('forgot', $data);
         echo view('templates/footer', $data);
