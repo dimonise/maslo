@@ -315,22 +315,21 @@ function sorts(lang) {
         url: '/catalog/sort',
         type: 'post',
         dataType: 'json',
-        data: {sort: sort,onpage:onpage},
+        data: {sort: sort, onpage: onpage},
         success: function (html) {
             $('body').find('.sort-section').empty();
 
             for (var i = 0; i < html.length; i++) {
-                if(lang === 'ua') {
-                                var prod = html[i].product_name_ua;
-                            }
-                            else{
-                                var prod = html[i].product_name_ru;
-                            }
+                if (lang === 'ua') {
+                    var prod = html[i].product_name_ua;
+                } else {
+                    var prod = html[i].product_name_ru;
+                }
                 $('.sort-section').append('<div class="col-4">\n' +
-                    '                    <a href="/'+lang+ '/product/'+html[i].product_id+'">\n' +
+                    '                    <a href="/' + lang + '/product/' + html[i].product_id + '">\n' +
                     '                    <div class="prod">\n' +
-                    '                    <img src="' + html[i].img+ '" width="100%">\n' +
-                                            prod +','+ html[i].price+'грн\n' +
+                    '                    <img src="' + html[i].img + '" width="100%">\n' +
+                    prod + ',' + html[i].price + 'грн\n' +
                     '                    </div>\n' +
                     '                    </a>\n' +
                     '                    </div>');
@@ -347,11 +346,11 @@ function getrayon() {
         url: '/cabinet/search_rayon',
         type: 'post',
         dataType: 'json',
-        data: {id:id},
+        data: {id: id},
         success: function (html) {
             $('#rayon').html('<select name="rayon" id="rayons"class="form-control" onchange="getcity()">');
-            for(var i=0; i < html.length; i++){
-                $('#rayons').append('<option value="'+html[i].id_rayon+'">'+html[i].rayon+'</option>');
+            for (var i = 0; i < html.length; i++) {
+                $('#rayons').append('<option value="' + html[i].id_rayon + '">' + html[i].rayon + '</option>');
             }
             $('#rayon').append('</select>');
 
@@ -366,11 +365,11 @@ function getcity() {
         url: '/cabinet/search_city',
         type: 'post',
         dataType: 'json',
-        data: {id:id},
+        data: {id: id},
         success: function (html) {
             $('#city').html('<select name="city" id="citys"class="form-control">');
-            for(var i=0; i < html.length; i++){
-                $('#citys').append('<option value="'+html[i].city_name+'">'+html[i].city_name+'</option>');
+            for (var i = 0; i < html.length; i++) {
+                $('#citys').append('<option value="' + html[i].city_name + '">' + html[i].city_name + '</option>');
             }
             $('#city').append('</select>');
 
@@ -378,3 +377,18 @@ function getcity() {
 
     })
 }
+
+$('#searcher').on('click', function () {
+    var tags = $('#tags').val();
+    $.ajax({
+        url: '/catalog/search',
+        type: 'post',
+        dataType: 'json',
+        data: {id: tags},
+        success: function (html) {
+            $(location).attr('href',html);
+
+        },
+
+    })
+});

@@ -68,6 +68,17 @@ class CatalogModel extends Model
         return $data;
     }
 
+    public function showProductSearch($product,$lang)
+    {
+
+        $data = $this->db->query("SELECT * FROM `product` p LEFT JOIN `product_feature_val` pfv ON p.product_id = pfv.id_product 
+                                LEFT JOIN feature_val fv ON fv.id = pfv.id_feature 
+                                LEFT JOIN feature f ON f.id_name_har=fv.id_feature 
+                                WHERE p.product_name_{$lang} LIKE ?", [$product])->getResultArray();
+
+        return $data;
+    }
+
     public function checkCart($user)
     {
         $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ? GROUP BY id_cart", [$user])->getResultArray();

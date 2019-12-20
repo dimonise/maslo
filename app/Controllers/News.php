@@ -12,35 +12,35 @@ use App\Controllers\BaseController as Controller;
 use App\Models\NewsModel;
 use App\Controllers\Search as Search;
 
+
 class News extends Controller
 {
     public $locale;
     public $search;
+    public $model;
 
     public function __construct()
     {
         $this->locale = service('request')->getLocale();
         $this->search = new Search();
+        $this->model = new NewsModel();
         helper('menu');
     }
 
     public function index()
     {
 
-        $model = new NewsModel();
-        $data = [
-            'locale' => $this->locale,
-            'news' => $model->getNews(),
-            'title' => 'News archive',
-        ];
-        $data['locale'] = $this->locale;
-        $data['title'] = 'Главная';
-        $data['tree'] = menu();
 
-        $data['search'] = $this->search->index();
+        $data['locale'] = $this->locale;
+        $data['title'] = lang('Language.news-title');
+        $data['tree'] = menu();
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
+        $data['search'] = $this->search->index();
+
+        $data['news'] = $this->model->paginate(12);
+        $data['pager'] = $this->model->pager;
 
         echo view('templates/header', $data);
         echo view('news/overview', $data);
@@ -51,15 +51,14 @@ class News extends Controller
     {
 
         $data['locale'] = $this->locale;
-        $model = new NewsModel();
-        $data['news'] = $model->getNews($id_news);
+        $data['news'] = $this->model->getNews($id_news);
         if (empty($data['news'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $id_news);
         }
 
         $data['title'] = $data['news']['title_news_' . $this->locale];
         $data['locale'] = $this->locale;
-        $data['title'] = 'Главная';
+        //$data['title'] = 'Главная';
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();

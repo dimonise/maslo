@@ -11,7 +11,7 @@
                 <?php
                // d($product);
                 ?>
-                <table class="table table-striped">
+                <table class="table table-striped" style="font-size:14px">
                     <tr>
 						<th>Id</th>
 						<th>Артикул</th>

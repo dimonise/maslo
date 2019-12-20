@@ -8,14 +8,14 @@
                 </div>
             </div>
             <div class="box-body">
-                <table class="table table-striped">
+                <table class="table table-striped" style="font-size:14px">
                     <tr>
-						<th>Id Cart</th>
-						<th>Id Product</th>
-						<th>Count Product</th>
-						<th>Price</th>
-						<th>Img</th>
-						<th>User</th>
+						<th>Id</th>
+						<th>Артикул</th>
+						<th>Количество</th>
+						<th>Стоимость за единицу</th>
+						<th>Изображение</th>
+						<th>Покупатель</th>
 						<th>Actions</th>
                     </tr>
                     <?php foreach($cart as $c){ ?>
@@ -24,7 +24,7 @@
 						<td><?php echo $c['id_product']; ?></td>
 						<td><?php echo $c['count_product']; ?></td>
 						<td><?php echo $c['price']; ?></td>
-						<td><img src="<?php echo $c['img']; ?>" style="width:20%"></td>
+						<td><img src="<?php echo $c['img']; ?>" style="width:10%"></td>
 						<td><?php echo $c['user']; ?></td>
 						<td>
                             <a href="<?php echo site_url('cart/edit/'.$c['id_cart']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 

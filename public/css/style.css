@@ -520,3 +520,10 @@ button:focus {
 #tags{
     width: 80%;
 }
+.title-news-color{
+    position: absolute;
+    top: 10%;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    padding: 15px;
+}

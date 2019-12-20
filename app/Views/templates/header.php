@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -83,7 +84,7 @@
                 <div class="col-1"></div>
                 <div class="col-6">
                     <input type="text" placeholder="<?= lang('Language.search') ?>" id="tags">
-                    <button type="button" class="btn btn-warning"><i
+                    <button type="button" class="btn btn-warning" id="searcher"><i
                                 class="fa fa-search"></i><?= lang('Language.sech') ?>
                     </button>
                 </div>
@@ -119,7 +120,7 @@
     if ($uri->getSegment(2)){
     ?>
     <div class="banner">
-        <h5 class="ban-title"><?= $title; ?></h5>
+        <h5 class="ban-title" style="text-transform: uppercase;"><?= $title; ?></h5>
     </div>
 <?php
 }

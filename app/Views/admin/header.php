@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/news/index">
+                        <a href="/newsadmin/index">
                             <span>Новости</span>
                         </a>
 

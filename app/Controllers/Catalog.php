@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
 use App\Controllers\Search as Search;
+
 class Catalog extends Controller
 {
     public $locale;
@@ -31,7 +32,7 @@ class Catalog extends Controller
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
 
-        $data['last'] = $this->model->paginate(9);
+        $data['last'] = $this->model->paginate(2);
         $data['pager'] = $this->model->pager;
 
         $data['brend'] = $this->model->getBrend();
@@ -102,6 +103,7 @@ class Catalog extends Controller
 
     public function search_filtr()
     {
+
         $data['startPrice'] = service('request')->getVar('startPrice');
         $data['finishPrice'] = service('request')->getVar('finishPrice');
         $data['filtr'] = service('request')->getVar('filtr');
@@ -137,13 +139,29 @@ class Catalog extends Controller
 
     }
 
-    public function sort(){
+    public function sort()
+    {
         $sort = service('request')->getVar('sort');
         $onpage = service('request')->getVar('onpage');
 
-        $data=$this->model->sort($sort,$onpage);
+        $data = $this->model->sort($sort, $onpage);
 
         return json_encode($data);
     }
 
+    public function search()
+    {
+        $prod = service('request')->getVar('id');
+
+        $data['locale'] = $this->locale;
+
+
+        $product = new CatalogModel();
+
+        $dataId = $product->showProductSearch($prod, $data['locale']);
+        $url = '/' . $data['locale'] . '/product/' . $dataId[0]['product_id'];
+
+
+        echo json_encode($url);
+    }
 }
