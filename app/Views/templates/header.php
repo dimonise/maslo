@@ -39,9 +39,10 @@
         <div class="col-4">
             <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a>
             <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a>
-            <a href=""><?= lang('Language.article'); ?></a>
-            <a href=""><?= lang('Language.delivery'); ?></a>
-            <a href=""><?= lang('Language.contact'); ?></a>
+            <a href="/<?= $locale; ?>/about"><?= lang('Language.about'); ?></a>
+            <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a>
+            <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a>
+            <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a>
         </div>
         <div class="col-4">
             <?php

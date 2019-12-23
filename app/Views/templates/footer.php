@@ -9,11 +9,11 @@
         </div>
         <div class="col-1"></div>
         <div class="col-3">
-            <a href=""><?= lang('Language.home'); ?></a><br>
-            <a href=""><?= lang('Language.cat'); ?></a><br>
-            <a href=""><?= lang('Language.article'); ?></a><br>
-            <a href=""><?= lang('Language.delivery'); ?></a><br>
-            <a href=""><?= lang('Language.contact'); ?></a></div>
+            <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a><br>
+            <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a><br>
+            <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
+            <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
+            <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a></div>
         <div class="col-3">
             <?= lang('Language.footer-text') ?>
         </div>

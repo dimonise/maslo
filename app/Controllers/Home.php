@@ -6,17 +6,18 @@ use App\Controllers\BaseController as Controller;
 use App\Helpers\Menu;
 use App\Models\CatalogModel;
 use App\Controllers\Search as Search;
+use App\Models\NewsModel;
 
 class Home extends Controller
 {
-     public $locale;
-     public $search;
+    public $locale;
+    public $search;
 
 
     public function __construct()
     {
 
-        $this->locale  =  service('request')->getLocale();
+        $this->locale = service('request')->getLocale();
         $this->search = new Search();
         helper('menu');
 
@@ -35,19 +36,21 @@ class Home extends Controller
         $data['mmm'] = renderTemplate($tree);
         //recomm
         $rekomm = new CatalogModel();
+        $news = new NewsModel();
         $data['rekomm'] = $rekomm->getRekomm();
         $data['last'] = $rekomm->getLastNine();
         $data['akc'] = $rekomm->getAkc();
+        $data['lastn'] = $news->lastFour();
 
-
-        echo view('templates/header',$data);
-        echo view('index',$data);
-        echo view('templates/footer',$data);
+        echo view('templates/header', $data);
+        echo view('index', $data);
+        echo view('templates/footer', $data);
     }
 
-public function admin(){
-    echo view('admin/admin');
-}
+    public function admin()
+    {
+        echo view('admin/admin');
+    }
     //--------------------------------------------------------------------
 
 }

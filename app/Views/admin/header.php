@@ -48,7 +48,7 @@
                 <ul class="sidebar-menu">
 
                     <li>
-                        <a href="<?php echo '//'; ?>">
+                        <a href="/">
                             <i class="fa fa-dashboard"></i> <span>Вернуться на сайт</span>
                         </a>
                     </li>

@@ -92,6 +92,9 @@ $routes->get('{locale}/product/(:num)', 'Product::index/$1');
 $routes->get('{locale}/cart', 'Product::cart');
 $routes->get('{locale}/admin', 'User::index');
 $routes->get('{locale}/cabinet', 'Cabinet::index');
+$routes->get('{locale}/about', 'StaticPage::about');
+$routes->get('{locale}/delivery', 'StaticPage::delivery');
+$routes->get('{locale}/contact', 'StaticPage::contact');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
