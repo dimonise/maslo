@@ -392,3 +392,8 @@ $('#searcher').on('click', function () {
 
     })
 });
+
+function changeStat(){
+    var statru = $('#status_ru').val();
+    $('#status_ua').val(statru);
+}

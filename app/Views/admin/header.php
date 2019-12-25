@@ -27,6 +27,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/ckeditor/ckeditor.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -73,12 +74,20 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/ordersadmin/index">
+                            <span>Заказы</span></a>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/newsadmin/index">
                             <span>Новости</span>
                         </a>
-
                     </li>
-
+                    <li>
+                        <a href="/staticadmin/index">
+                            <span>Статические страницы</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="/user/index">
                             <span>Пользователи</span>

@@ -27,5 +27,6 @@
 <script src="/resources/js/global.js"></script>
 <script src="/js/script.js"></script>
 
+
 </body>
 </html>

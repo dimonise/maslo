@@ -84,3 +84,13 @@ helper('form');
 		</div>
     </div>
 </div>
+<script>
+    CKEDITOR.replace( 'text_news_ua', {
+        extraPlugins: 'easyimage',
+        removePlugins: 'image',
+    } );
+    CKEDITOR.replace( 'text_news_ru', {
+        extraPlugins: 'easyimage',
+        removePlugins: 'image',
+    } );
+</script>

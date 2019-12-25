@@ -48,6 +48,7 @@ class Orders extends Controller
         $rayon = $this->model->getRayon(service('request')->getVar('rayon'));
         $city = service('request')->getVar('city');
         $punkt = service('request')->getVar('address');
+        $phone = service('request')->getVar('user_phone_life');
         $product = $this->model->getCart($id_user);
 
         $prod = '';
@@ -61,7 +62,7 @@ class Orders extends Controller
                 'id_user' => $id_user,
                 'name_user' => service('request')->getVar('name_user').' '.service('request')->getVar('sname_user'),
                 'product' => $prod,
-                'address' => $oblast[0]['name'] . ', ' . $rayon[0]['rayon'] . ', ' . $city . ' №' . $punkt
+                'address' => $oblast[0]['name'] . ', ' . $rayon[0]['rayon'] . ', ' . $city . ' №' . $punkt.', телефон - '.$phone,
             ];
         else:
             $params = [
