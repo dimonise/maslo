@@ -16,7 +16,7 @@ $(document).ready(function () {
                 items: 4
             },
             1000: {
-                items: 8
+                items: 4
             }
         }
     })

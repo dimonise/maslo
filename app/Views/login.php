@@ -8,10 +8,10 @@
 
             <p><?= lang('Language.or');?></p>
             <form action="/auth/login" class="inlogin" method="post">
-                <input class="reg-form" type="text" name="email" placeholder="Email"><br>
-                <input class="reg-form" type="password" name="password" placeholder="Пароль"><br>
+                <input class="reg-form form-control" type="text" name="email" placeholder="Email"><br>
+                <input class="reg-form form-control" type="password" name="password" placeholder="Пароль"><br>
                 <input type="hidden" value="<?= $locale; ?>" name="lang">
-                <input class="reg-form" type="submit" value="<?= lang('Language.login');?>"><br>
+                <input class="reg-form btn btn-info" type="submit" value="<?= lang('Language.login');?>"><br>
                 <a href="/<?= $locale;?>/forgot" class="fog-form"><?= lang('Language.forgot');?></a>
             </form>
         </div>

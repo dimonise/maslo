@@ -27,8 +27,8 @@
                             <td><?php echo $s['description_stat_ru']; ?></td>
                             <td><?php echo $s['title_stat_ua']; ?></td>
                             <td><?php echo $s['title_stat_ru']; ?></td>
-                            <td><?php echo $s['text_stat_ua']; ?></td>
-                            <td><?php echo $s['text_stat_ru']; ?></td>
+                            <td><?php echo mb_strimwidth($s['text_stat_ua'],0,50,'...', 'UTF-8'); ?></td>
+                            <td><?php echo mb_strimwidth($s['text_stat_ru'],0,50,'...', 'UTF-8'); ?> </td>
                             <td>
                                 <a href="<?php echo site_url('staticadmin/edit/' . $s['id_stat']); ?>"
                                    class="btn btn-info btn-xs">Edit</a>

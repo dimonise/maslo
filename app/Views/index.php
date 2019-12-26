@@ -134,13 +134,15 @@
 
         <?php
         foreach ($lastn as $lnews):
-        ?>
-        <div class="col-2">
-            <img src="<?= $lnews['img_news'];?>">
-            <p class="news-date"><?= $lnews['data'];?></p>
-            <p class="title-news"><?= $lnews['title_news_'.$locale];?></p>
-            <p class="body-news"><?= $lnews['text_news_'.$locale];?></p>
-        </div>
+            ?>
+            <div class="col-2">
+                <a href="<?= $locale ?>/news/<?= $lnews['id_news'] ?>" style="text-decoration: none">
+                    <img src="<?= $lnews['img_news']; ?>">
+                    <p class="news-date"><?= $lnews['data']; ?></p>
+                    <p class="title-news"><?= $lnews['title_news_' . $locale]; ?></p>
+                    <p class="body-news"><?= $lnews['text_news_' . $locale]; ?></p>
+                </a>
+            </div>
         <?php
         endforeach;
         ?>
