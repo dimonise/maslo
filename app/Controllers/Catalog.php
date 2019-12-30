@@ -104,11 +104,14 @@ class Catalog extends Controller
     public function search_filtr()
     {
 
-        $data['startPrice'] = service('request')->getVar('startPrice');
-        $data['finishPrice'] = service('request')->getVar('finishPrice');
+        $start = service('request')->getVar('startPrice');
+        $finish = service('request')->getVar('finishPrice');
+        $price = service('request')->getVar('price');
         $data['filtr'] = service('request')->getVar('filtr');
         $data['search'] = $this->search->index();
+
         $getProductId = $this->model->getFiltr($data['filtr']);
+
         if ($getProductId) {
             $id = [];
             foreach ($getProductId as $item) {
@@ -118,7 +121,15 @@ class Catalog extends Controller
         } else {
             $id = 0;
         }
-        $getProduct = $this->model->showProductFiltr($id, $data['startPrice'], $data['finishPrice']);
+        if(!isset($price)){
+            $start = null;
+            $finish = null;
+        }
+        $getProduct = $this->model->showProductFiltr($id, $start, $finish);
+
+        $data['startPrice'] = service('request')->getVar('startPrice');
+        $data['finishPrice'] = service('request')->getVar('finishPrice');
+
 
         $data['locale'] = $this->locale;
         $data['title'] = 'Каталог';

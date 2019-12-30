@@ -7,13 +7,13 @@ helper('form');
 		<label for="parent" class="col-md-4 control-label">Menu</label>
 		<div class="col-md-8">
 			<select name="parent" class="form-control">
-				<option value="">select menu</option>
+				<option value="">Выбрать родительское меню</option>
 				<?php 
 				foreach($all_menu as $menu)
 				{
 					$selected = ($menu['id'] == service('request')->getVar('parent')) ? ' selected="selected"' : "";
-
-					echo '<option value="'.$menu['id'].'" '.$selected.'>'.$menu['name_ru'].'</option>';
+                    if($menu['parent'] ==  0 ) {$a = " (корневое)";} else {$a = '';}
+					echo '<option value="'.$menu['id'].'" '.$selected.'>'.$menu['name_ru'].$a.'</option>';
 				} 
 				?>
 			</select>

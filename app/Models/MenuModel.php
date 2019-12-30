@@ -47,7 +47,7 @@ class MenuModel extends Model
      */
     function get_all_menu()
     {
-        $this->builder->orderBy('id', 'desc');
+        $this->builder->orderBy('id');
         return $this->builder->get()->getResultArray();
     }
 

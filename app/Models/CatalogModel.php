@@ -68,7 +68,7 @@ class CatalogModel extends Model
         return $data;
     }
 
-    public function showProductSearch($product,$lang)
+    public function showProductSearch($product, $lang)
     {
 
         $data = $this->db->query("SELECT * FROM `product` p LEFT JOIN `product_feature_val` pfv ON p.product_id = pfv.id_product 
@@ -154,20 +154,30 @@ class CatalogModel extends Model
 
     public function showProductFiltr($params, $start, $finish)
     {
-        $where = "`price` >='" . $start . "' AND `price` <='" . $finish."'";
 
-        $data = $this->builder->where($where)->whereIn('product_id', $params)->get();
+
+        if ($start != NULL && $finish != NULL):
+
+            $where = "`price` >='" . $start . "' AND `price` <='" . $finish . "'";
+            $data = $this->builder->where($where)->whereIn('product_id', $params)->get();
+        else:
+            if ($params != 0):
+                $data = $this->builder->whereIn('product_id', $params)->get();
+            else:
+                $data = $this->builder->where('product_id', $params)->get();
+            endif;
+        endif;
 
         return $data->getResultArray();
     }
 
-    public function sort($sort,$onpage){
-        if($sort==1){
+    public function sort($sort, $onpage)
+    {
+        if ($sort == 1) {
             $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price ASC LIMIT $onpage")->getResultArray();
 
             return $data;
-        }
-        elseif($sort==2){
+        } elseif ($sort == 2) {
             $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price DESC LIMIT $onpage")->getResultArray();
 
             return $data;

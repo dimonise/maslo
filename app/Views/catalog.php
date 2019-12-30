@@ -40,10 +40,12 @@ $catalog = new CatalogModel();
         <div class="filtr">
             <label for="amount"><?= lang('Language.cena'); ?>:</label>
             <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            <div id="slider-range"></div>
+            <div id="slider-range"></div><form id="filtr" action="/catalog/search_filtr" method="post">
+            <label for="inprice"><?= lang('Language.withprice'); ?></label>
+            <input type="checkbox" value="1" name="price">
         </div>
         <div class="filtr">
-            <form id="filtr" action="/catalog/search_filtr" method="post">
+
                 <input type="hidden" value="" id="startPrice" name="startPrice">
                 <input type="hidden" value="" id="finishPrice" name="finishPrice">
                 <?php //dd($val);
@@ -96,23 +98,30 @@ $catalog = new CatalogModel();
         <div class="col-9">
             <div class="row sort-section">
                 <?php
+if(count($last) > 0) {
+    foreach ($last as $product):
 
-                foreach ($last as $product):
-
-                    echo "<div class='col-4'>";
-                    echo "<a href='/" . $locale . "/product/" . $product['product_id'] . "'>";
-                    echo "<div class='prod'>";
-                    echo "<img src='" . $product['img'] . "' width='100%'>";
-                    echo $product['product_name_' . $locale] . ', ' . $product['price'] . 'грн';
-                    echo "</div>";
-                    echo "</a>";
-                    echo "</div>";
-                endforeach;
-                $pager = \Config\Services::pager();
+        echo "<div class='col-4'>";
+        echo "<a href='/" . $locale . "/product/" . $product['product_id'] . "'>";
+        echo "<div class='prod'>";
+        echo "<img src='" . $product['img'] . "' width='100%'>";
+        echo $product['product_name_' . $locale] . ', ' . $product['price'] . 'грн';
+        echo "</div>";
+        echo "</a>";
+        echo "</div>";
+    endforeach;
+    $pager = \Config\Services::pager();
+}
+else{
+    echo lang('Language.noproduct');
+}
                 ?>
 
             </div>
         </div>
     </div>
-</div><?= $pager->links() ?>
+</div><?
+if(count($last) > 0) {
+    echo $pager->links();
+} ?>
 </div>
