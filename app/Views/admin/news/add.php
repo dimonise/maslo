@@ -5,7 +5,8 @@ helper('form');
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">News Add</h3>
+              	<h3 class="box-title">Добавить новость</h3>
+                <h5 style="color:red">Все поля обязательны к заполнению</h5>
             </div>
             <?php echo form_open_multipart('newsadmin/add'); ?>
           	<div class="box-body">
@@ -13,37 +14,37 @@ helper('form');
 					<div class="col-md-6">
 						<label for="keywords_news_ua" class="control-label">Ключевые слова Ua</label>
 						<div class="form-group">
-							<input type="text" name="keywords_news_ua" value="<?php echo service('request')->getVar('keywords_news_ua'); ?>" class="form-control" id="keywords_news_ua" />
+							<input type="text" required  name="keywords_news_ua" value="<?php echo service('request')->getVar('keywords_news_ua'); ?>" class="form-control" id="keywords_news_ua" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="keywords_news_ru" class="control-label">Ключевые слова Ru</label>
 						<div class="form-group">
-							<input type="text" name="keywords_news_ru" value="<?php echo service('request')->getVar('keywords_news_ru'); ?>" class="form-control" id="keywords_news_ru" />
+							<input type="text" required  name="keywords_news_ru" value="<?php echo service('request')->getVar('keywords_news_ru'); ?>" class="form-control" id="keywords_news_ru" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="description_news_ua" class="control-label">Описание Ua</label>
 						<div class="form-group">
-							<input type="text" name="description_news_ua" value="<?php echo service('request')->getVar('description_news_ua'); ?>" class="form-control" id="description_news_ua" />
+							<input type="text" required  name="description_news_ua" value="<?php echo service('request')->getVar('description_news_ua'); ?>" class="form-control" id="description_news_ua" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="description_news_ru" class="control-label">Описание Ru</label>
 						<div class="form-group">
-							<input type="text" name="description_news_ru" value="<?php echo service('request')->getVar('description_news_ru'); ?>" class="form-control" id="description_news_ru" />
+							<input type="text" required  name="description_news_ru" value="<?php echo service('request')->getVar('description_news_ru'); ?>" class="form-control" id="description_news_ru" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="title_news_ua" class="control-label">Заголовок Ua</label>
 						<div class="form-group">
-							<input type="text" name="title_news_ua" value="<?php echo service('request')->getVar('title_news_ua'); ?>" class="form-control" id="title_news_ua" />
+							<input type="text" required  name="title_news_ua" value="<?php echo service('request')->getVar('title_news_ua'); ?>" class="form-control" id="title_news_ua" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="title_news_ru" class="control-label">Заголовок Ru</label>
 						<div class="form-group">
-							<input type="text" name="title_news_ru" value="<?php echo service('request')->getVar('title_news_ru'); ?>" class="form-control" id="title_news_ru" />
+							<input type="text" required  name="title_news_ru" value="<?php echo service('request')->getVar('title_news_ru'); ?>" class="form-control" id="title_news_ru" />
 						</div>
 					</div>
 					<div class="col-md-6">

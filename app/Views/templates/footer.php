@@ -2,33 +2,33 @@
 
 <footer class="navbar-static-bottom">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-2">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
             <div style="float:left"><img src="/img/clock-grey.png"></div>
             <div style="margin-left: 50px;"><?= lang('Language.grafik-head') ?></div>
         </div>
-        <div class="col-1"></div>
-        <div class="col-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
             <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a><br>
             <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a><br>
             <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
             <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
             <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a></div>
-        <div class="col-3">
+        <div class="col-md-3">
             <?= lang('Language.footer-text') ?>
         </div>
     </div>
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-2">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
             <div style="float:left"><img src="/img/point-grey.png"></div>
             <div style="margin-left: 50px;"><?= lang('Language.grafik') ?></div>
         </div>
-        <div class="col-2">
+        <div class="col-md-2">
 
         </div>
-        <div class="col-2"></div>
-        <div class="col-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
             <form method="post" id="backphone" name="backphone">
                 <input type="text" name="fname" style="float:left" placeholder="<?= lang('Language.fname') ?>"
                        onkeyup="return proverkaChar(this);" onchange="return proverkaChar(this);" required>

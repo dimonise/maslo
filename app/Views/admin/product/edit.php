@@ -6,6 +6,7 @@ helper('form');
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Редактирование товара</h3>
+                <h5 style="color:red">Все поля обязательны к заполнению</h5>
             </div>
             <?php echo form_open_multipart('productadmin/edit/' . $product[0]['product_id']); ?>
             <div class="box-body">
@@ -78,7 +79,7 @@ helper('form');
                     <div class="col-md-6">
                         <div class="form-group">
 
-                            <img src="<?= $product[0]['img'] ?>" width="60%"><br>
+                            <img src="<?= $product[0]['img'] ?>" width="30%"><br>
                             <input type="file" name="upload">
                         </div>
                     </div>
@@ -87,7 +88,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="oem"
                                    value="<?php echo(service('request')->getVar('oem') ? service('request')->getVar('oem') : $product[0]['oem']); ?>"
-                                   class="form-control" id="oem"/>
+                                   class="form-control" id="oem" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -98,7 +99,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="product_name_ua"
                                    value="<?php echo(service('request')->getVar('product_name_ua') ? service('request')->getVar('product_name_ua') : $product[0]['product_name_ua']); ?>"
-                                   class="form-control" id="product_name_ua"/>
+                                   class="form-control" id="product_name_ua" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -106,7 +107,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="product_name_ru"
                                    value="<?php echo(service('request')->getVar('product_name_ru') ? service('request')->getVar('product_name_ru') : $product[0]['product_name_ru']); ?>"
-                                   class="form-control" id="product_name_ru"/>
+                                   class="form-control" id="product_name_ru" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -114,7 +115,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="product_key_ua"
                                    value="<?php echo(service('request')->getVar('product_key_ua') ? service('request')->getVar('product_key_ua') : $product[0]['product_key_ua']); ?>"
-                                   class="form-control" id="product_key_ua"/>
+                                   class="form-control" id="product_key_ua" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -122,7 +123,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="product_key_ru"
                                    value="<?php echo(service('request')->getVar('product_key_ru') ? service('request')->getVar('product_key_ru') : $product[0]['product_key_ru']); ?>"
-                                   class="form-control" id="product_key_ru"/>
+                                   class="form-control" id="product_key_ru" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -130,7 +131,7 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="price"
                                    value="<?php echo(service('request')->getVar('price') ? service('request')->getVar('price') : $product[0]['price']); ?>"
-                                   class="form-control" id="price"/>
+                                   class="form-control" id="price" required/>
                         </div>
                     </div>
 
@@ -139,20 +140,20 @@ helper('form');
                         <div class="form-group">
                             <input type="text" name="warhouse"
                                    value="<?php echo(service('request')->getVar('warhouse') ? service('request')->getVar('warhouse') : $product[0]['warhouse']); ?>"
-                                   class="form-control" id="warhouse"/>
+                                   class="form-control" id="warhouse" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="product_desc_ua" class="control-label">Описание Ua</label>
                         <div class="form-group">
-                            <textarea name="product_desc_ua" class="form-control"
+                            <textarea name="product_desc_ua" class="form-control" required
                                       id="product_desc_ua"><?php echo(service('request')->getVar('product_desc_ua') ? service('request')->getVar('product_desc_ua') : $product[0]['product_desc_ua']); ?></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="product_desc_ru" class="control-label">Описание Ru</label>
                         <div class="form-group">
-                            <textarea name="product_desc_ru" class="form-control"
+                            <textarea name="product_desc_ru" class="form-control" required
                                       id="product_desc_ru"><?php echo(service('request')->getVar('product_desc_ru') ? service('request')->getVar('product_desc_ru') : $product[0]['product_desc_ru']); ?></textarea>
                         </div>
                     </div>

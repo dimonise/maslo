@@ -51,7 +51,7 @@ if (session('name_user')) {
                         <div class="form-group">
                             <input type="text" name="name_user"
                                    value="<?php echo($user['name_user'] ? $user['name_user'] : ''); ?>"
-                                   class="form-control" id="name_user"/>
+                                   class="form-control" id="name_user" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -59,7 +59,7 @@ if (session('name_user')) {
                         <div class="form-group">
                             <input type="text" name="sname_user"
                                    value="<?php echo($user['sname_user'] ? $user['sname_user'] : ''); ?>"
-                                   class="form-control" id="sname_user"/>
+                                   class="form-control" id="sname_user" required/>
                         </div>
                     </div>
 
@@ -69,7 +69,7 @@ if (session('name_user')) {
                         <div class="form-group">
                             <input type="text" name="user_phone_life"
                                    value="<?php echo($user['user_phone_life'] ? $user['user_phone_life'] : ''); ?>"
-                                   class="form-control" id="user_phone_life"/>
+                                   class="form-control" id="user_phone_life" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -127,7 +127,7 @@ if (session('name_user')) {
                     <div class="col-md-6">
                         <label for="address" class="control-label"><?= lang('Language.addnp'); ?></label>
                         <div class="form-group" id="addr">
-                            <input name="address" class="form-control" style="height: 38px;" value="">
+                            <input name="address" class="form-control" style="height: 38px;" value="" required>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -139,7 +139,7 @@ if (session('name_user')) {
                         <div class="form-group">
                             <input type="text" name="name_user_sam"
                                    value="<?php echo($user['name_user'] ? $user['name_user'] : ''); ?>"
-                                   class="form-control" id="name_user_sam"/>
+                                   class="form-control" id="name_user_sam" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -147,7 +147,7 @@ if (session('name_user')) {
                         <div class="form-group">
                             <input type="text" name="sname_user_sam"
                                    value="<?php echo($user['sname_user'] ? $user['sname_user'] : ''); ?>"
-                                   class="form-control" id="sname_user_sam"/>
+                                   class="form-control" id="sname_user_sam" required/>
                         </div>
                     </div>
 

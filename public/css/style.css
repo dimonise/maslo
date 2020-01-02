@@ -527,3 +527,8 @@ button:focus {
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
     padding: 15px;
 }
+.scroller{
+    width:100%;
+    max-height: 300px;
+    min-height: 300px;
+}

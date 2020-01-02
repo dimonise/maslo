@@ -84,6 +84,6 @@ class CartModel extends Model
      */
     function delete_cart($id_cart)
     {
-        return $this->db->delete('cart',array('id_cart'=>$id_cart));
+        return $this->builder->delete(array('id_cart'=>$id_cart));
     }
 }

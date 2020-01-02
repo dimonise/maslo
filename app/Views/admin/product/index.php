@@ -2,10 +2,11 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Product Listing</h3>
+                <h3 class="box-title">Товары</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('productadmin/add'); ?>" class="btn btn-success btn-sm">Add</a>
+                    <a href="<?php echo site_url('productadmin/add'); ?>" class="btn btn-success btn-sm">Добавить новый товар</a>
                 </div>
+                <br>
             </div>
             <div class="box-body">
                 <?php

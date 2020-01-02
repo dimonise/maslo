@@ -6,6 +6,7 @@ helper('form');
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Новый товар</h3>
+                <h5 style="color:red">Все поля обязательны к заполнению</h5>
             </div>
             <?php echo form_open_multipart('productadmin/add'); ?>
             <div class="box-body">
@@ -142,6 +143,7 @@ helper('form');
                         <div class="button">
                             <input type="button" value="+ Еще характеристика" id="add-har" class="btn btn-info">
                         </div>
+                        <br>
                     </div>
                     <div class="col-md-6">
 

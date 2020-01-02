@@ -26,13 +26,13 @@ helper('form');
 					<div class="col-md-6">
 						<label for="date" class="control-label">Дата заказа</label>
 						<div class="form-group">
-							<input type="text" name="date" value="<?php echo (service('request')->getVar('date') ? service('request')->getVar('date') : $order[0]['date']); ?>" class="has-datetimepicker form-control" id="date" />
+							<input type="text" readonly name="date" value="<?php echo  date('d.m.Y H:i:s',strtotime($order[0]['date'])); ?>" class=" form-control" id="date" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="address" class="control-label">Адрес доставки и телефон</label>
 						<div class="form-group">
-							<input type="text" name="address" value="<?php echo (service('request')->getVar('address') ? service('request')->getVar('address') : $order[0]['address']); ?>" class="form-control" id="address" />
+							<input type="text"  name="address" value="<?php echo (service('request')->getVar('address') ? service('request')->getVar('address') : $order[0]['address']); ?>" class="form-control" id="address" />
 						</div>
 					</div>
 

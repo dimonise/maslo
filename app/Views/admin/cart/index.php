@@ -2,10 +2,8 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Cart Listing</h3>
-            	<div class="box-tools">
-                    <a href="<?php echo site_url('cart/add'); ?>" class="btn btn-success btn-sm">Add</a> 
-                </div>
+                <h3 class="box-title">Корзина</h3>
+
             </div>
             <div class="box-body">
                 <table class="table table-striped" style="font-size:14px">

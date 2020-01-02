@@ -97,16 +97,16 @@ class Cart extends Controller{
      */
     function remove($id_cart)
     {
-        $cart = $this->Cart_model->get_cart($id_cart);
+        $cart = $this->model->get_cart($id_cart);
 
         // check if the cart exists before trying to delete it
-        if(isset($cart['id_cart']))
+        if(isset($cart[0]['id_cart']))
         {
-            $this->Cart_model->delete_cart($id_cart);
-            redirect('cart/index');
+            $this->model->delete_cart($id_cart);
+            return redirect()->to('cart/index');
         }
         else
-            show_error('The cart you are trying to delete does not exist.');
+            echo 'The cart you are trying to delete does not exist.';
     }
     
 }
