@@ -1,3 +1,6 @@
+<?php
+helper('form');
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -5,6 +8,13 @@
                 <h3 class="box-title">Товары</h3>
             	<div class="box-tools">
                     <a href="<?php echo site_url('productadmin/add'); ?>" class="btn btn-success btn-sm">Добавить новый товар</a>
+                    <a href="<?php echo site_url('productadmin/export'); ?>" class="btn btn-info btn-sm" style="float:right">Експорт</a>
+                    <?php
+                    $attributes = ['id' => 'form_id'];
+                    echo form_open_multipart('productadmin/import', $attributes); ?>
+                    <input type="file" name="import" id="import" class="btn btn-primary btn-sm" value="Импорт" onchange='document.getElementById("form_id").submit()'>
+                    <label for="import">Импорт</label>
+                    <?php form_close(); ?>
                 </div>
                 <br>
             </div>

@@ -162,4 +162,8 @@ class ProductAdminModel extends Model
     {
         return $this->har->delete(['id_product' => $id_prod, 'id_feature'=>$id_har]);
     }
+
+    function get_clear_product(){
+       return $this->builder->get()->getResultArray();
+    }
 }
