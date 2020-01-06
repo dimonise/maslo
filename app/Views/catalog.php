@@ -6,8 +6,8 @@ $catalog = new CatalogModel();
 ?>
 <div class="row">
     <!-- filtr -->
-    <div class="col-1"></div>
-    <div class="col-2">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
         <h5 class="head-paragraph"><?= lang('Language.filtr'); ?></h5>
         <?php
         if (@$startPrice) {
@@ -74,10 +74,10 @@ $catalog = new CatalogModel();
     </div>
 
     <!-- body catalog -->
-    <div class="col-9">
+    <div class="col-md-9">
         <h5 class="head-paragraph-main"><?= lang('Language.last-prod'); ?></h5>
         <div class="row">
-            <div class="col-6 grey">
+            <div class="col-md-6 grey">
                 <span>СОРТИРОВКА: </span>
                 <select name="sort" id="sort" onchange="sorts('<?= $locale; ?>');">
                     <option value="0"><?= lang('Language.sel_sort'); ?></option>
@@ -85,7 +85,7 @@ $catalog = new CatalogModel();
                     <option value="2"><?= lang('Language.sort_down'); ?></option>
                 </select>
             </div>
-            <div class="col-3 grey right">
+            <div class="col-md-3 grey right">
                 <span><?= lang('Language.on-page'); ?></span>
                 <select name="onpage" id="onpage" onchange="sorts('<?= $locale; ?>');">
                     <option value="9">9</option>
@@ -95,13 +95,13 @@ $catalog = new CatalogModel();
             </div>
         </div>
 
-        <div class="col-9">
+        <div class="col-md-9">
             <div class="row sort-section">
                 <?php
                 if (count($last) > 0) {
                     foreach ($last as $product):
 
-                        echo "<div class='col-4'>";
+                        echo "<div class='col-md-4'>";
                         echo "<a href='/" . $locale . "/product/" . $product['product_id'] . "'>";
                         echo "<div class='prod'>";
                         echo "<img src='" . $product['img'] . "' width='100%'>";

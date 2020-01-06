@@ -136,6 +136,7 @@ body {
 .about-body {
     color: #636465;
     line-height: 225%;
+    text-align: justify;
 }
 
 footer {
@@ -558,4 +559,21 @@ button:focus {
 }
 #import + label {
     cursor: pointer; /* "hand" cursor */
+}
+.cart{
+
+    text-align: center;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+}
+.line {
+    border: 1px solid #ffffff;
+}
+.cart-big{
+    display:flex;
+}
+.cart-small{
+    display:none;
 }

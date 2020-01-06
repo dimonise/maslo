@@ -49,7 +49,7 @@ function renderTemplate($data)
         $menu = '';
         foreach ($data as $item):
 
-            $menu .= '<div class="col-1">
+            $menu .= '<div class="col-md-1">
                          <nav>';
             $menu .= '<ul class="topmenu">';
             $menu .= '<li class="verh">';

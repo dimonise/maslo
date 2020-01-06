@@ -2,19 +2,32 @@
 
 <footer class="navbar-static-bottom">
     <div class="row">
+        <div class="col-md-3 foot-menu-xs">
+            <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a><br>
+            <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a><br>
+            <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
+            <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
+            <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a>
+        <br><br>
+        </div>
+
+        <div class="col-md-3 foot-text-xs">
+            <?= lang('Language.footer-text') ?><br><br>
+        </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
             <div style="float:left"><img src="/img/clock-grey.png"></div>
             <div style="margin-left: 50px;"><?= lang('Language.grafik-head') ?></div>
+            <br>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-3">
+        <div class="col-md-3 foot-menu-big">
             <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a><br>
             <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a><br>
             <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
             <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
             <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a></div>
-        <div class="col-md-3">
+        <div class="col-md-3 foot-text-big">
             <?= lang('Language.footer-text') ?>
         </div>
     </div>
@@ -23,6 +36,7 @@
         <div class="col-md-2">
             <div style="float:left"><img src="/img/point-grey.png"></div>
             <div style="margin-left: 50px;"><?= lang('Language.grafik') ?></div>
+            <br>
         </div>
         <div class="col-md-2">
 
@@ -39,6 +53,11 @@
                        onchange="return proverka(this);" required>
                 <input type="button" value="<?= lang('Language.phone') ?>" class="btn btn-success">
             </form>
+            <br>
+        </div>
+        <div class="copyright">
+            <hr class="line">
+            <div>&copy;D&P  <?php echo (date('Y')); ?> All rights reserved</div>
         </div>
     </div>
 

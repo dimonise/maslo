@@ -325,7 +325,7 @@ function sorts(lang) {
                 } else {
                     var prod = html[i].product_name_ru;
                 }
-                $('.sort-section').append('<div class="col-4">\n' +
+                $('.sort-section').append('<div class="col-md-4">\n' +
                     '                    <a href="/' + lang + '/product/' + html[i].product_id + '">\n' +
                     '                    <div class="prod">\n' +
                     '                    <img src="' + html[i].img + '" width="100%">\n' +
