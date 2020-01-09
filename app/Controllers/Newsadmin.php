@@ -129,8 +129,8 @@ class Newsadmin extends Controller{
                 echo view('admin/footer');
             }
         }
-        else
-            echo 'The news you are trying to edit does not exist.';
+//        else
+//            echo 'The news you are trying to edit does not exist.';
     } 
 
     /*
