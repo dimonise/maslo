@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
+use ckeditor;
 
 class Admin extends Controller
 {

@@ -85,8 +85,8 @@ helper('form');
 		</div>
     </div>
 </div>
-<?= base_url();?>
 <script>
-    CKEDITOR.replace( 'text_news_ua');
-    CKEDITOR.replace( 'text_news_ru');
+    CKEDITOR.replace( 'text_news_ua' );
+    CKEDITOR.replace( 'text_news_ru' );
+
 </script>

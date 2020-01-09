@@ -1,0 +1,120 @@
+@media (min-width: 375px) and (max-width: 419px) {
+    .logo {
+        left: 60%;
+    }
+
+    #tags {
+        width: 74%;
+        text-align: center;
+        font-size: 13px;
+        height: 31px;
+    }
+
+    /*.offset-1 {*/
+    /*    display: none;*/
+    /*}*/
+    .news {
+        background-image: none;
+        background-color: #a9a6a0;
+    }
+
+    .imgab {
+        display: none;
+    }
+
+    .foot-menu-xs {
+        display: block;
+    }
+
+    .foot-text-xs {
+        display: block;
+    }
+
+    .foot-menu-big {
+        display: none;
+    }
+
+    .foot-text-big {
+        display: none;
+    }
+
+    .cart {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .static-adv div {
+        text-align: center;
+    }
+
+    .static-adv img {
+        width: 60%;
+    }
+    .manufacture div{
+        width: 50%;
+    }
+    .off{
+        display: none;
+    }
+    .banner{
+        min-height: 44px;
+    }
+    .ban-title {
+        font-size: 15pt;
+        color: #fff;
+        padding-top: 2%;
+        padding-left: 15%;
+    }
+
+    .header-bottom .col-md-1{
+        width:50% ;
+    }
+    #tabs-2{
+        font-size: 13px;
+        padding-left:0px !important;
+    }
+    .lc .col-md-12{
+        padding: 0px !important;
+    }
+    .value{
+        width:75%;
+    }
+    .har{
+        margin-left: 20%;
+    }
+    .incart{
+        font-size: 13px;
+    }
+    .cart-big{
+        display:none;
+    }
+    .cart-small{
+        display:block;
+    }
+    .clear-padd{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .ui-tabs .ui-tabs-nav li{
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 420px) {
+    .foot-menu-xs {
+        display: none;
+    }
+
+    .foot-text-xs {
+        display: none;
+    }
+
+    .foot-menu-big {
+        display: block;
+    }
+
+    .foot-text-big {
+        display: block;
+    }
+
+}

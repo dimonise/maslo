@@ -11,7 +11,8 @@
     </div>
 </div>
 <div class="row static-adv">
-    <div class="col-md-2 offset-1"><img src="/img/stab.png"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2 "><img src="/img/stab.png"></div>
     <div class="col-md-2"><img src="/img/best-price.png"></div>
     <div class="col-md-2"><img src="/img/quality.png"></div>
     <div class="col-md-2"><img src="/img/price.png"></div>
@@ -19,7 +20,8 @@
 </div>
 
 <div class="row">
-    <div class="col-md-11 offset-1">
+    <div class="col-md-1"></div>
+    <div class="col-md-11 ">
         <h4><?= lang('Language.sale') ?></h4>
         <div id="carousel" class="sale slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
@@ -55,7 +57,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-11 offset-1">
+    <div class="col-md-1"></div>
+    <div class="col-md-11 ">
         <h4><?= lang('Language.rekomm') ?></h4>
         <div id="carousel" class="rekomm slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
@@ -81,21 +84,21 @@
     <div class="col-md-12 manufacture-title"><h4><?= lang('Language.manufacture') ?></h4></div>
 </div>
 <div class="row manufacture">
-    <div class="col-md-2"></div>
+    <div class="col-md-2 off"></div>
     <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
 </div>
 <div class="row manufacture">
-    <div class="col-md-2"></div>
+    <div class="col-md-2 off"></div>
     <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
 </div>
 <div class="row manufacture ">
-    <div class="col-md-2"></div>
+    <div class="col-md-2 off"></div>
     <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
     <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
@@ -128,7 +131,8 @@
 </div>
 
 <div class="row">
-    <div class="col-md-11 offset-1">
+    <div class="col-md-1"></div>
+    <div class="col-md-11 ">
         <h4><?= lang('Language.new') ?></h4>
         <div id="carousel" class="new slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
@@ -159,7 +163,7 @@
     <div class="col-md-7 about-body">
         <p><?= $about[0]['text_stat_'.$locale]; ?></p>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 imgab">
         <img src="/img/about.png">
     </div>
 </div>

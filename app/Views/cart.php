@@ -12,32 +12,59 @@ if (session('name_user')) {
 }
 ?>
 <div class="row body-cart">
-    <div class="col-2"></div>
-    <div class="col-8">
-        <div class="row">
-            <div class="col-1 th">№</div>
-            <div class="col-2 th">Артикул</div>
-            <div class="col-3 th"><?= lang('Language.nam'); ?></div>
-            <div class="col-2 th"><?= lang('Language.colvo'); ?></div>
-            <div class="col-2 th"><?= lang('Language.price'); ?></div>
-            <div class="col-2 th"></div>
+    <div class="col-md-2 off"></div>
+    <div class="col-md-8 clear-padd">
+        <div class="row cart-big">
+            <div class="col-md-1 th" >№</div>
+            <div class="col-md-2 th" >Артикул</div>
+            <div class="col-md-3 th"><?= lang('Language.nam'); ?></div>
+            <div class="col-md-2 th"><?= lang('Language.colvo'); ?></div>
+            <div class="col-md-2 th"><?= lang('Language.price'); ?></div>
+            <div class="col-md-2 th"></div>
             <?php
             $i = 1;
             $summ = 0;
             foreach ($product as $item):
-                echo "      <div class='col-1 td'>" . $i . "</div>
-                        <div class='col-2 td'>" . $item['id_product'] . "</div>
-                        <div class='col-3 td'>" . $item['product_name_' . $locale] . "</div>
-                        <div class='col-2 td'>" . $item['count_product'] . "</div>
-                        <div class='col-2 td'>" . $item['price'] * $item['count_product'] . "грн.</div>
-                        <div class='col-2 td'><a href='#' onclick='delProduct(" . $item['id_cart'] . ",\"" . $item['user'] . "\"); return false;'>" . lang('Language.del') . "</a></div>";
+                echo "      <div class='col-md-1 td' style='width: 7.6%'>" . $i . "</div>
+                        <div class='col-md-2 td'>" . $item['id_product'] . "</div>
+                        <div class='col-md-3 td'>" . $item['product_name_' . $locale] . "</div>
+                        <div class='col-md-2 td'>" . $item['count_product'] . "</div>
+                        <div class='col-md-2 td'>" . $item['price'] * $item['count_product'] . "грн.</div>
+                        <div class='col-md-2 td'><a href='#' onclick='delProduct(" . $item['id_cart'] . ",\"" . $item['user'] . "\"); return false;'>" . lang('Language.del') . "</a></div>";
                 $i++;
                 $summ += $item['price'] * $item['count_product'];
             endforeach;
             ?>
         </div>
+        <div class="row cart-small">
+            <table style="width: 100%;text-align: center">
+                <th class="th">№</th>
+                <th class="th">Артикул</th>
+                <th class="th"><?= lang('Language.nam'); ?></th>
+                <th class="th"><?= lang('Language.colvo'); ?></th>
+                <th class="th"><?= lang('Language.price'); ?></th>
+                <th class="th"></th>
+                <?php
+                $i = 1;
+                $summ = 0;
+                foreach ($product as $item):
+                    echo "<tr>
+                        <td class=' td' >" . $i . "</td>
+                        <td class=' td' >" . $item['id_product'] . "</td>
+                        <td class=' td' '>" . $item['product_name_' . $locale] . "</td>
+                        <td class=' td' >" . $item['count_product'] . "</td>
+                        <td class=' td' >" . $item['price'] * $item['count_product'] . "грн.</td>
+                        <td class=' td' ><a href='#' onclick='delProduct(" . $item['id_cart'] . ",\"" . $item['user'] . "\"); return false;'>" . lang('Language.del') . "</a></td></tr>";
+                    $i++;
+                    $summ += $item['price'] * $item['count_product'];
+                endforeach;
+                ?>
+            </table>
+
+
+        </div>
         <div class="row">
-            <div class="col-12"><?= lang('Language.allsumm') . '&nbsp;' . $summ; ?>&nbsp; грн.</div>
+            <div class="col-md-12"><?= lang('Language.allsumm') . '&nbsp;' . $summ; ?>&nbsp; грн.</div>
             <?php
 
             echo form_open("orders/confirm/" . session('id_user'));
@@ -127,10 +154,12 @@ if (session('name_user')) {
                     <div class="col-md-6">
                         <label for="address" class="control-label"><?= lang('Language.addnp'); ?></label>
                         <div class="form-group" id="addr">
-                            <input name="address" class="form-control" style="height: 38px;" value="" required>
+                            <input name="address" class="form-control" style="height: 38px;" value="" >
                         </div>
                     </div>
-                    <div class="col-md-12">
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-12" >
                     <?php echo "<h5 style='width:100%;margin-top:50px;text-align: center'>" . lang('Language.ili') . "</h5>"; ?>
                     <?php echo "<h5 ><input type='radio' name='deliv' value='SAM'>" . lang('Language.del_info_sam') . "</h5>"; ?>
                     </div>
@@ -142,7 +171,7 @@ if (session('name_user')) {
                                    class="form-control" id="name_user_sam" required/>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" >
                         <label for="sname_user_sam" class="control-label"><?= lang('Language.lname'); ?></label>
                         <div class="form-group">
                             <input type="text" name="sname_user_sam"
@@ -156,11 +185,11 @@ if (session('name_user')) {
             </div>
 
         </div>
-        <div class="col-12">
+        <div class="col-md-12">
             <button type="submit" class="btn btn-success "> <?= lang('Language.ord') ?></button>
             <?php echo form_close(); ?>
         </div>
     </div>
 </div>
-<div class="col-2"></div>
+<div class="col-md-2"></div>
 </div>

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/media.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/js/owl-carousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/js/owl-carousel/dist/assets/owl.theme.default.min.css">
@@ -35,8 +36,8 @@
 <body>
 <div class="container-liquid">
     <div class="row header-top">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
             <a href="/<?= $locale; ?>"><?= lang('Language.home'); ?></a>
             <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a>
             <a href="/<?= $locale; ?>/about"><?= lang('Language.about'); ?></a>
@@ -44,7 +45,7 @@
             <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a>
             <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <?php
 
             if (!session('name_user')) {
@@ -61,35 +62,35 @@
         </div>
     </div>
     <div class="row header-middle">
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-2"><a href="/<?= $locale; ?>"><img src="/img/logo_for_site.png" class="logo"></a></div>
-                <div class="col-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><a href="/<?= $locale; ?>"><img src="/img/logo_for_site.png" class="logo"></a></div>
+                <div class="col-md-3">
                     <div style="float:left"><img src="/img/clock-white.png"></div>
                     <div style="margin-left: 45px;"><?= lang('Language.grafik-head') ?></div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div style="float:left"><img src="/img/point-white.png"></div>
                     <div style="margin-left: 45px;"><?= lang('Language.grafik') ?></div>
                 </div>
-                <div class="col-2" style="text-align: center;">
+                <div class="col-md-2" style="text-align: center;">
                     <a href="#backphone" class="btn btn-success"><?= lang('Language.phone') ?></a>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-md-1"></div>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="row searcher">
-                <div class="col-2"></div>
-                <div class="col-1"></div>
-                <div class="col-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
                     <input type="text" placeholder="<?= lang('Language.search') ?>" id="tags">
                     <button type="button" class="btn btn-warning" id="searcher"><i
                                 class="fa fa-search"></i><?= lang('Language.sech') ?>
                     </button>
                 </div>
-                <div class="col-2" style="text-align: center;">
+                <div class="col-md-2 cart"  >
                     <a href="/<?= $locale; ?>/cart">
                         <img src="/img/cart.png">
                         <div class="item-cart">
@@ -106,12 +107,12 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-md-1"></div>
             </div>
         </div>
     </div>
     <div class="row header-bottom">
-        <div class="col-1"></div>
+        <div class="col-md-1 off"></div>
         <?php
         echo $mmm;
         ?>
