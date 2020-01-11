@@ -3,33 +3,33 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'en-ca', {
+	euro: 'Euro sign', // MISSING
+	lsquo: 'Left single quotation mark', // MISSING
+	rsquo: 'Right single quotation mark', // MISSING
+	ldquo: 'Left double quotation mark', // MISSING
+	rdquo: 'Right double quotation mark', // MISSING
+	ndash: 'En dash', // MISSING
+	mdash: 'Em dash', // MISSING
+	iexcl: 'Inverted exclamation mark', // MISSING
+	cent: 'Cent sign', // MISSING
+	pound: 'Pound sign', // MISSING
+	curren: 'Currency sign', // MISSING
+	yen: 'Yen sign', // MISSING
+	brvbar: 'Broken bar', // MISSING
+	sect: 'Section sign', // MISSING
+	uml: 'Diaeresis', // MISSING
+	copy: 'Copyright sign', // MISSING
+	ordf: 'Feminine ordinal indicator', // MISSING
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'Not sign', // MISSING
+	reg: 'Registered sign', // MISSING
+	macr: 'Macron', // MISSING
+	deg: 'Degree sign', // MISSING
+	sup2: 'Superscript two', // MISSING
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Micro sign', // MISSING
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
 	cedil: 'Cedilla', // MISSING
@@ -46,7 +46,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	Atilde: 'Latin capital letter A with tilde', // MISSING
 	Auml: 'Latin capital letter A with diaeresis', // MISSING
 	Aring: 'Latin capital letter A with ring above', // MISSING
-	AElig: 'Latin capital letter Æ', // MISSING
+	AElig: 'Latin capital letter Æ',
 	Ccedil: 'Latin capital letter C with cedilla', // MISSING
 	Egrave: 'Latin capital letter E with grave accent', // MISSING
 	Eacute: 'Latin capital letter E with acute accent', // MISSING

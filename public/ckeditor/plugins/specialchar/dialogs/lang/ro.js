@@ -3,43 +3,43 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'ro', {
+	euro: 'Simbol EURO €',
+	lsquo: 'Ghilimea simplă stânga',
+	rsquo: 'Ghilimea simplă dreapta',
+	ldquo: 'Ghilimea dublă stânga',
+	rdquo: 'Ghilimea dublă dreapta',
+	ndash: 'liniuță despărțire cu spații',
+	mdash: 'liniuță despărțire cuvinte fără spații',
+	iexcl: 'semnul exclamației inversat',
+	cent: 'simbol cent',
+	pound: 'simbol lira sterlină',
+	curren: 'simbol monedă',
+	yen: 'simbol yen',
+	brvbar: 'bara verticală întreruptă',
+	sect: 'simbol paragraf',
+	uml: 'tréma',
+	copy: 'simbol drept de autor',
+	ordf: 'Indicatorul ordinal feminin a superscript',
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'Not sign', // MISSING
+	reg: 'Registered sign', // MISSING
+	macr: 'Macron', // MISSING
+	deg: 'Degree sign', // MISSING
+	sup2: 'Superscript two', // MISSING
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Micro sign', // MISSING
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
-	cedil: 'Cedilla', // MISSING
+	cedil: 'Sedila',
 	sup1: 'Superscript one', // MISSING
 	ordm: 'Masculine ordinal indicator', // MISSING
 	raquo: 'Right-pointing double angle quotation mark', // MISSING
 	frac14: 'Vulgar fraction one quarter', // MISSING
 	frac12: 'Vulgar fraction one half', // MISSING
 	frac34: 'Vulgar fraction three quarters', // MISSING
-	iquest: 'Inverted question mark', // MISSING
+	iquest: 'Semnul întrebării inversat',
 	Agrave: 'Latin capital letter A with grave accent', // MISSING
 	Aacute: 'Latin capital letter A with acute accent', // MISSING
 	Acirc: 'Latin capital letter A with circumflex', // MISSING
@@ -63,7 +63,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	Ocirc: 'Latin capital letter O with circumflex', // MISSING
 	Otilde: 'Latin capital letter O with tilde', // MISSING
 	Ouml: 'Latin capital letter O with diaeresis', // MISSING
-	times: 'Multiplication sign', // MISSING
+	times: 'Simbol înmulțire',
 	Oslash: 'Latin capital letter O with stroke', // MISSING
 	Ugrave: 'Latin capital letter U with grave accent', // MISSING
 	Uacute: 'Latin capital letter U with acute accent', // MISSING
@@ -95,7 +95,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	ocirc: 'Latin small letter o with circumflex', // MISSING
 	otilde: 'Latin small letter o with tilde', // MISSING
 	ouml: 'Latin small letter o with diaeresis', // MISSING
-	divide: 'Division sign', // MISSING
+	divide: 'Simbol împărțire',
 	oslash: 'Latin small letter o with stroke', // MISSING
 	ugrave: 'Latin small letter u with grave accent', // MISSING
 	uacute: 'Latin small letter u with acute accent', // MISSING
@@ -121,5 +121,5 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	rArr: 'Rightwards double arrow', // MISSING
 	hArr: 'Left right double arrow', // MISSING
 	diams: 'Black diamond suit', // MISSING
-	asymp: 'Almost equal to' // MISSING
+	asymp: 'Aproximativ egal cu'
 } );

@@ -3,35 +3,35 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'lt', {
+	euro: 'Euro ženklas',
+	lsquo: 'Left single quotation mark', // MISSING
+	rsquo: 'Right single quotation mark', // MISSING
+	ldquo: 'Left double quotation mark', // MISSING
+	rdquo: 'Right double quotation mark', // MISSING
+	ndash: 'En dash', // MISSING
+	mdash: 'Em dash', // MISSING
+	iexcl: 'Inverted exclamation mark', // MISSING
+	cent: 'Cento ženklas',
+	pound: 'Svaro ženklas',
+	curren: 'Valiutos ženklas',
+	yen: 'Jenos ženklas',
+	brvbar: 'Broken bar', // MISSING
+	sect: 'Section sign', // MISSING
+	uml: 'Diaeresis', // MISSING
+	copy: 'Copyright sign', // MISSING
+	ordf: 'Feminine ordinal indicator', // MISSING
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'Ne ženklas',
+	reg: 'Registered sign', // MISSING
+	macr: 'Makronas',
+	deg: 'Laipsnio ženklas',
+	sup2: 'Superscript two', // MISSING
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Mikro ženklas',
 	para: 'Pilcrow sign', // MISSING
-	middot: 'Middle dot', // MISSING
+	middot: 'Vidurinis taškas',
 	cedil: 'Cedilla', // MISSING
 	sup1: 'Superscript one', // MISSING
 	ordm: 'Masculine ordinal indicator', // MISSING

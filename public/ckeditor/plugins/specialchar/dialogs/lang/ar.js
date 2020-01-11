@@ -3,33 +3,33 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'ar', {
+	euro: 'رمز اليورو',
+	lsquo: 'علامة تنصيص فردية علي اليسار',
+	rsquo: 'علامة تنصيص فردية علي اليمين',
+	ldquo: 'علامة تنصيص مزدوجة علي اليسار',
+	rdquo: 'علامة تنصيص مزدوجة علي اليمين',
+	ndash: 'En dash',
+	mdash: 'Em dash',
+	iexcl: 'علامة تعجب مقلوبة',
+	cent: 'رمز السنت',
+	pound: 'رمز الاسترليني',
+	curren: 'رمز العملة',
+	yen: 'رمز الين',
+	brvbar: 'شريط مقطوع',
+	sect: 'رمز القسم',
+	uml: 'Diaeresis',
+	copy: 'علامة حقوق الطبع',
+	ordf: 'Feminine ordinal indicator', // MISSING
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'ليست علامة',
+	reg: 'علامة مسجّلة',
+	macr: 'Macron', // MISSING
+	deg: 'Degree sign', // MISSING
+	sup2: 'Superscript two', // MISSING
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Micro sign', // MISSING
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
 	cedil: 'Cedilla', // MISSING
@@ -39,7 +39,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	frac14: 'Vulgar fraction one quarter', // MISSING
 	frac12: 'Vulgar fraction one half', // MISSING
 	frac34: 'Vulgar fraction three quarters', // MISSING
-	iquest: 'Inverted question mark', // MISSING
+	iquest: 'علامة الإستفهام غير صحيحة',
 	Agrave: 'Latin capital letter A with grave accent', // MISSING
 	Aacute: 'Latin capital letter A with acute accent', // MISSING
 	Acirc: 'Latin capital letter A with circumflex', // MISSING

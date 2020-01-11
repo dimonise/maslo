@@ -3,33 +3,33 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'si', {
+	euro: 'යුරෝ සලකුණ',
+	lsquo: 'වමේ තනි උපුටා දක්වීම ',
+	rsquo: 'දකුණේ තනි උපුටා දක්වීම ',
+	ldquo: 'වමේ දිත්ව  උපුටා දක්වීම ',
+	rdquo: 'දකුණේ දිත්ව  උපුටා දක්වීම ',
+	ndash: 'En dash', // MISSING
+	mdash: 'Em dash', // MISSING
+	iexcl: 'යටිකුරු හර්ෂදී ',
+	cent: 'Cent sign', // MISSING
+	pound: 'Pound sign', // MISSING
+	curren: 'මුල්‍යමය ',
+	yen: 'යෙන් ',
+	brvbar: 'Broken bar', // MISSING
+	sect: 'තෙරේම් ',
+	uml: 'Diaeresis', // MISSING
+	copy: 'පිටපත් අයිතිය ',
+	ordf: 'දර්ශකය',
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'සලකුණක් නොවේ',
+	reg: 'සලකුණක් ලියාපදිංචි කිරීම',
+	macr: 'මුද්‍රිත ',
+	deg: 'සලකුණේ ',
+	sup2: 'උඩු ලකුණු දෙක',
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Micro sign', // MISSING
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
 	cedil: 'Cedilla', // MISSING

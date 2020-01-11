@@ -1,8 +1,5 @@
 </div>
-<?php
-helper('viber_helper');
 
-?>
 <footer class="navbar-static-bottom">
     <div class="row">
         <div class="col-md-3 foot-menu-xs">
@@ -46,7 +43,7 @@ helper('viber_helper');
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <form action="viber/message_post" method="post" id="backphone" name="backphone">
+            <form method="post" id="backphone" name="backphone">
                 <input type="text" name="fname" style="float:left;width:29%" placeholder="<?= lang('Language.fname') ?>"
                        onkeyup="return proverkaChar(this);" onchange="return proverkaChar(this);" required>
                 <hr noshade style="height: 40px; width: 1px;float:left;position: relative;top:-15px">
@@ -54,7 +51,7 @@ helper('viber_helper');
                 <input type="tel" name="phone" style="width:45%" placeholder="<?= lang('Language.phone-num') ?>"
                        onkeyup="return proverka(this);"
                        onchange="return proverka(this);" required>
-                <input type="submit" value="<?= lang('Language.phone') ?>" class="btn btn-success">
+                <input type="button" value="<?= lang('Language.phone') ?>" class="btn btn-success">
             </form>
             <br>
         </div>

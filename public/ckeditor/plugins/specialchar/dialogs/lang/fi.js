@@ -3,43 +3,43 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'fi', {
+	euro: 'Euron merkki',
+	lsquo: 'Vasen yksittäinen lainausmerkki',
+	rsquo: 'Oikea yksittäinen lainausmerkki',
+	ldquo: 'Vasen kaksoislainausmerkki',
+	rdquo: 'Oikea kaksoislainausmerkki',
+	ndash: 'En dash', // MISSING
+	mdash: 'Em dash', // MISSING
+	iexcl: 'Inverted exclamation mark', // MISSING
+	cent: 'Sentin merkki',
+	pound: 'Punnan merkki',
+	curren: 'Valuuttamerkki',
+	yen: 'Yenin merkki',
+	brvbar: 'Broken bar', // MISSING
+	sect: 'Section sign', // MISSING
+	uml: 'Diaeresis', // MISSING
+	copy: 'Copyright sign', // MISSING
+	ordf: 'Feminine ordinal indicator', // MISSING
+	laquo: 'Left-pointing double angle quotation mark', // MISSING
+	not: 'Not sign', // MISSING
+	reg: 'Rekisteröity merkki',
+	macr: 'Macron', // MISSING
+	deg: 'Asteen merkki',
+	sup2: 'Yläindeksi kaksi',
+	sup3: 'Yläindeksi kolme',
+	acute: 'Acute accent', // MISSING
+	micro: 'Mikron merkki',
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
 	cedil: 'Cedilla', // MISSING
-	sup1: 'Superscript one', // MISSING
+	sup1: 'Yläindeksi yksi',
 	ordm: 'Masculine ordinal indicator', // MISSING
 	raquo: 'Right-pointing double angle quotation mark', // MISSING
 	frac14: 'Vulgar fraction one quarter', // MISSING
 	frac12: 'Vulgar fraction one half', // MISSING
 	frac34: 'Vulgar fraction three quarters', // MISSING
-	iquest: 'Inverted question mark', // MISSING
+	iquest: 'Ylösalaisin oleva kysymysmerkki',
 	Agrave: 'Latin capital letter A with grave accent', // MISSING
 	Aacute: 'Latin capital letter A with acute accent', // MISSING
 	Acirc: 'Latin capital letter A with circumflex', // MISSING
@@ -63,7 +63,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	Ocirc: 'Latin capital letter O with circumflex', // MISSING
 	Otilde: 'Latin capital letter O with tilde', // MISSING
 	Ouml: 'Latin capital letter O with diaeresis', // MISSING
-	times: 'Multiplication sign', // MISSING
+	times: 'Kertomerkki',
 	Oslash: 'Latin capital letter O with stroke', // MISSING
 	Ugrave: 'Latin capital letter U with grave accent', // MISSING
 	Uacute: 'Latin capital letter U with acute accent', // MISSING
@@ -95,7 +95,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	ocirc: 'Latin small letter o with circumflex', // MISSING
 	otilde: 'Latin small letter o with tilde', // MISSING
 	ouml: 'Latin small letter o with diaeresis', // MISSING
-	divide: 'Division sign', // MISSING
+	divide: 'Jakomerkki',
 	oslash: 'Latin small letter o with stroke', // MISSING
 	ugrave: 'Latin small letter u with grave accent', // MISSING
 	uacute: 'Latin small letter u with acute accent', // MISSING
@@ -114,12 +114,12 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	'8219': 'Single high-reversed-9 quotation mark', // MISSING
 	bdquo: 'Double low-9 quotation mark', // MISSING
 	hellip: 'Horizontal ellipsis', // MISSING
-	trade: 'Trade mark sign', // MISSING
+	trade: 'Tavaramerkki merkki',
 	'9658': 'Black right-pointing pointer', // MISSING
 	bull: 'Bullet', // MISSING
-	rarr: 'Rightwards arrow', // MISSING
-	rArr: 'Rightwards double arrow', // MISSING
-	hArr: 'Left right double arrow', // MISSING
+	rarr: 'Nuoli oikealle',
+	rArr: 'Kaksoisnuoli oikealle',
+	hArr: 'Kaksoisnuoli oikealle ja vasemmalle',
 	diams: 'Black diamond suit', // MISSING
-	asymp: 'Almost equal to' // MISSING
+	asymp: 'Noin'
 } );

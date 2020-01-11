@@ -3,33 +3,33 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
+CKEDITOR.plugins.setLang( 'specialchar', 'bg', {
+	euro: 'Евро знак',
+	lsquo: 'Лява маркировка за цитат',
+	rsquo: 'Дясна маркировка за цитат',
+	ldquo: 'Лява двойна кавичка за цитат',
+	rdquo: 'Дясна двойна кавичка за цитат',
+	ndash: '\\\\',
+	mdash: '/',
+	iexcl: 'Обърната питанка',
+	cent: 'Знак за цент',
+	pound: 'Знак за паунд',
+	curren: 'Валутен знак',
+	yen: 'Знак за йена',
+	brvbar: 'Прекъсната линия',
+	sect: 'Знак за секция',
+	uml: 'Diaeresis', // MISSING
+	copy: 'Знак за Copyright',
+	ordf: 'Женски ординарен индикатор',
+	laquo: 'Знак с двоен ъгъл за означаване на лява посока',
+	not: 'Not sign', // MISSING
+	reg: 'Registered sign', // MISSING
+	macr: 'Macron', // MISSING
+	deg: 'Degree sign', // MISSING
+	sup2: 'Superscript two', // MISSING
+	sup3: 'Superscript three', // MISSING
+	acute: 'Acute accent', // MISSING
+	micro: 'Micro sign', // MISSING
 	para: 'Pilcrow sign', // MISSING
 	middot: 'Middle dot', // MISSING
 	cedil: 'Cedilla', // MISSING

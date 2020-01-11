@@ -3,42 +3,42 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-CKEDITOR.plugins.setLang( 'specialchar', 'af', {
-	euro: 'Euroteken',
-	lsquo: 'Linker enkelkwotasie',
-	rsquo: 'Regter enkelkwotasie',
-	ldquo: 'Linker dubbelkwotasie',
-	rdquo: 'Regter dubbelkwotasie',
-	ndash: 'Kortkoppelteken',
-	mdash: 'Langkoppelteken',
-	iexcl: 'Omgekeerdeuitroepteken',
-	cent: 'Centteken',
-	pound: 'Pondteken',
-	curren: 'Geldeenheidteken',
-	yen: 'Yenteken',
-	brvbar: 'Gebreekte balk',
-	sect: 'Afdeelingsteken',
-	uml: 'Deelteken',
-	copy: 'Kopieregteken',
-	ordf: 'Vroulikekenteken',
-	laquo: 'Linkgeoorienteerde aanhaalingsteken',
-	not: 'Verbodeteken',
-	reg: 'Regestrasieteken',
-	macr: 'Lengteteken',
-	deg: 'Gradeteken',
-	sup2: 'Kwadraatteken',
-	sup3: 'Kubiekteken',
-	acute: 'Akuutaksentteken',
-	micro: 'Mikroteken',
-	para: 'Pilcrow sign', // MISSING
-	middot: 'Middle dot', // MISSING
-	cedil: 'Cedilla', // MISSING
-	sup1: 'Superscript one', // MISSING
+CKEDITOR.plugins.setLang( 'specialchar', 'ug', {
+	euro: 'ياۋرو بەلگىسى',
+	lsquo: 'يالاڭ پەش سول',
+	rsquo: 'يالاڭ پەش ئوڭ',
+	ldquo: 'قوش پەش سول',
+	rdquo: 'قوش پەش ئوڭ',
+	ndash: 'سىزىقچە',
+	mdash: 'سىزىق',
+	iexcl: 'ئۈندەش',
+	cent: 'تىيىن بەلگىسى',
+	pound: 'فوند ستېرلىڭ',
+	curren: 'پۇل بەلگىسى',
+	yen: 'ياپونىيە يىنى',
+	brvbar: 'ئۈزۈك بالداق',
+	sect: 'پاراگراف بەلگىسى',
+	uml: 'تاۋۇش ئايرىش بەلگىسى',
+	copy: 'نەشر ھوقۇقى بەلگىسى',
+	ordf: 'Feminine ordinal indicator', // MISSING
+	laquo: 'قوش تىرناق سول',
+	not: 'غەيرى بەلگە',
+	reg: 'خەتلەتكەن تاۋار ماركىسى',
+	macr: 'سوزۇش بەلگىسى',
+	deg: 'گىرادۇس بەلگىسى',
+	sup2: 'يۇقىرى ئىندېكىس 2',
+	sup3: 'يۇقىرى ئىندېكىس 3',
+	acute: 'ئۇرغۇ بەلگىسى',
+	micro: 'Micro sign', // MISSING
+	para: 'ئابزاس بەلگىسى',
+	middot: 'ئوتتۇرا چېكىت',
+	cedil: 'ئاستىغا قوشۇلىدىغان بەلگە',
+	sup1: 'يۇقىرى ئىندېكىس 1',
 	ordm: 'Masculine ordinal indicator', // MISSING
-	raquo: 'Right-pointing double angle quotation mark', // MISSING
-	frac14: 'Vulgar fraction one quarter', // MISSING
-	frac12: 'Vulgar fraction one half', // MISSING
-	frac34: 'Vulgar fraction three quarters', // MISSING
+	raquo: 'قوش تىرناق ئوڭ',
+	frac14: 'ئاددىي كەسىر تۆتتىن بىر',
+	frac12: 'ئاددىي كەسىر ئىككىدىن بىر',
+	frac34: 'ئاددىي كەسىر ئۈچتىن تۆرت',
 	iquest: 'Inverted question mark', // MISSING
 	Agrave: 'Latin capital letter A with grave accent', // MISSING
 	Aacute: 'Latin capital letter A with acute accent', // MISSING
@@ -58,7 +58,7 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	Iuml: 'Latin capital letter I with diaeresis', // MISSING
 	ETH: 'Latin capital letter Eth', // MISSING
 	Ntilde: 'Latin capital letter N with tilde', // MISSING
-	Ograve: 'Latin capital letter O with grave accent', // MISSING
+	Ograve: 'قوش پەش ئوڭ',
 	Oacute: 'Latin capital letter O with acute accent', // MISSING
 	Ocirc: 'Latin capital letter O with circumflex', // MISSING
 	Otilde: 'Latin capital letter O with tilde', // MISSING
@@ -89,13 +89,13 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	icirc: 'Latin small letter i with circumflex', // MISSING
 	iuml: 'Latin small letter i with diaeresis', // MISSING
 	eth: 'Latin small letter eth', // MISSING
-	ntilde: 'Latin small letter n with tilde', // MISSING
+	ntilde: 'تىك موللاق سوئال بەلگىسى',
 	ograve: 'Latin small letter o with grave accent', // MISSING
 	oacute: 'Latin small letter o with acute accent', // MISSING
 	ocirc: 'Latin small letter o with circumflex', // MISSING
 	otilde: 'Latin small letter o with tilde', // MISSING
 	ouml: 'Latin small letter o with diaeresis', // MISSING
-	divide: 'Division sign', // MISSING
+	divide: 'بۆلۈش بەلگىسى',
 	oslash: 'Latin small letter o with stroke', // MISSING
 	ugrave: 'Latin small letter u with grave accent', // MISSING
 	uacute: 'Latin small letter u with acute accent', // MISSING
@@ -114,12 +114,12 @@ CKEDITOR.plugins.setLang( 'specialchar', 'af', {
 	'8219': 'Single high-reversed-9 quotation mark', // MISSING
 	bdquo: 'Double low-9 quotation mark', // MISSING
 	hellip: 'Horizontal ellipsis', // MISSING
-	trade: 'Trade mark sign', // MISSING
+	trade: 'خەتلەتكەن تاۋار ماركىسى بەلگىسى',
 	'9658': 'Black right-pointing pointer', // MISSING
 	bull: 'Bullet', // MISSING
-	rarr: 'Rightwards arrow', // MISSING
-	rArr: 'Rightwards double arrow', // MISSING
-	hArr: 'Left right double arrow', // MISSING
-	diams: 'Black diamond suit', // MISSING
-	asymp: 'Almost equal to' // MISSING
+	rarr: 'ئوڭ يا ئوق',
+	rArr: 'ئوڭ قوش سىزىق يا ئوق',
+	hArr: 'ئوڭ سول قوش سىزىق يا ئوق',
+	diams: 'ئۇيۇل غىچ',
+	asymp: 'تەخمىنەن تەڭ'
 } );
