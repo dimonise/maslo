@@ -27,7 +27,7 @@
         </div>
     </section>
     <section class="registration-1">
-        <p><?= lang('Language.after');?> <a href="/">Maslo.loc</a></p>
+        <p><?= lang('Language.after');?> <a href="/">mastylo.com.ua</a></p>
     </section>
 </div>
 <script>

@@ -8,6 +8,7 @@ use App\Models\CatalogModel;
 use App\Controllers\Search as Search;
 use App\Models\NewsModel;
 use App\Models\StaticPageModel;
+use App\Models\SliderModel;
 
 class Home extends Controller
 {
@@ -35,15 +36,17 @@ class Home extends Controller
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-        //recomm
+        
         $rekomm = new CatalogModel();
         $news = new NewsModel();
         $about = new StaticPageModel();
+        $slider = new SliderModel();
         $data['rekomm'] = $rekomm->getRekomm();
         $data['last'] = $rekomm->getLastNine();
         $data['akc'] = $rekomm->getAkc();
         $data['lastn'] = $news->lastFour();
         $data['about'] = $about->getPage(1);
+        $data['slider'] = $slider->get_all_slider();
 
         echo view('templates/header', $data);
         echo view('index', $data);

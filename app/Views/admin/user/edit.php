@@ -33,7 +33,7 @@ helper('form');
 					<div class="col-md-6">
 						<label for="date_reg" class="control-label">Дата регистрации</label>
 						<div class="form-group">
-							<input type="text" name="date_reg" value="<?php echo (service('request')->getVar('date_reg') ? service('request')->getVar('date_reg') : $user[0]['date_reg']); ?>" class="has-datetimepicker form-control" id="date_reg" />
+                                                    <input type="text" readonly name="date_reg" value="<?php echo $user[0]['date_reg']; ?>" class=" form-control" id="date_reg" />
 						</div>
 					</div>
 					<!--<div class="col-md-6">
@@ -50,12 +50,12 @@ helper('form');
 						</div>
 					</div>
 
-					<div class="col-md-6">
+<!--					<div class="col-md-6">
 						<label for="money" class="control-label">Деньги на счету</label>
 						<div class="form-group">
 							<input type="text" name="money" value="<?php echo (service('request')->getVar('money') ? service('request')->getVar('money') : $user[0]['money']); ?>" class="form-control" id="money" />
 						</div>
-					</div>
+					</div>-->
 
 
 				</div>

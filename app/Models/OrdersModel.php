@@ -23,6 +23,7 @@ class OrdersModel
         $this->builder_obl = $this->db->table('region');
         $this->builder_rayon = $this->db->table('rayon');
         $this->builder_city = $this->db->table('city');
+        $this->builder_prod = $this->db->table('product');
     }
 
     function getOrders(){
@@ -57,5 +58,11 @@ class OrdersModel
     {
         return $this->builder_cart->where('user', $id_user)->get()->getResultArray();
     }
-
+    function minus($id,$kolvo){
+        $kol = $this->builder_prod->where(['oem'=>$id])->get()->getResultArray();
+        
+        $ost['warhouse'] = $kol[0]['warhouse'] - $kolvo;
+        $this->builder_prod->where('oem',$id);
+        return $this->builder_prod->update($ost);
+    }
 }

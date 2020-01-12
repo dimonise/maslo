@@ -1,13 +1,11 @@
-<?php
-
-helper('form'); ?>
+<?php helper('form'); ?>
 <div class="row">
     <div class="col-md-12">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Редактирование</h3>
             </div>
-            <?= form_open('staticadmin/edit/' . $static[0]['id_stat']); ?>
+<?= form_open('staticadmin/edit/' . $static[0]['id_stat']); ?>
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -62,7 +60,7 @@ helper('form'); ?>
                     <div class="col-md-6">
                         <label for="text_stat_ua" class="col-md-4 control-label"><span class="text-danger">*</span>Содержимое страницы Ua</label>
                         <div class="form-group">
-                            <textarea name="text_stat_ua" class="form-control"
+                            <textarea name="text_stat_ua" id="text_stat_ua" class="form-control"
                                       id="text_stat_ua"><?php echo(service('request')->getVar('text_stat_ua') ? service('request')->getVar('text_stat_ua') : $static[0]['text_stat_ua']); ?></textarea>
 
                         </div>
@@ -70,7 +68,7 @@ helper('form'); ?>
                     <div class="col-md-6">
                         <label for="text_stat_ru" class="col-md-4 control-label"><span class="text-danger">*</span>Содержимое страницы Ru</label>
                         <div class="form-group">
-                            <textarea name="text_stat_ru" class="form-control"
+                            <textarea name="text_stat_ru" id="text_stat_ru" class="form-control"
                                       id="text_stat_ru"><?php echo(service('request')->getVar('text_stat_ru') ? service('request')->getVar('text_stat_ru') : $static[0]['text_stat_ru']); ?></textarea>
 
                         </div>
@@ -83,7 +81,12 @@ helper('form'); ?>
                     </div>
                 </div>
             </div>
-            <?php echo form_close(); ?>
+<?php echo form_close(); ?>
         </div>
     </div>
 </div>
+<script>
+    CKEDITOR.replace('text_stat_ua');
+    CKEDITOR.replace('text_stat_ru');
+
+</script>

@@ -95,6 +95,8 @@ $routes->get('{locale}/cabinet', 'Cabinet::index');
 $routes->get('{locale}/about', 'StaticPage::about');
 $routes->get('{locale}/delivery', 'StaticPage::delivery');
 $routes->get('{locale}/contact', 'StaticPage::contact');
+$routes->get('{locale}/oferta', 'StaticPage::oferta');
+$routes->get('{locale}/terms', 'StaticPage::terms');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

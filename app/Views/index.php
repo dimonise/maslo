@@ -2,11 +2,35 @@
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid" src="/img/slide1.png" alt="...">
+                <div class="tite"><?= $slider[0]['title_' . $locale]; ?></div>
+                <div class="txt"><?= $slider[0]['text_' . $locale]; ?></div>
+                <?php
+                if($slider[0]['button_' . $locale] != null):
+                    ?>
+                <div class="but"><a href="<?= $slider[0]['button_' . $locale]; ?>">Перейти -></a></div>
+                <?php
+                endif;
+                ?>
+                <img class="img-fluid" src="<?= $slider[0]['slider']; ?>" alt="...">
             </div>
-            <div class="carousel-item">
-                <img class="img-fluid" src="/img/slide2.png" alt="...">
-            </div>
+            <?php
+            foreach ($slider as $slide) {
+                ?>
+                <div class="carousel-item ">
+                    <div class="tite"><?= $slide['title_' . $locale]; ?></div>
+                    <div class="txt"><?= $slide['text_' . $locale]; ?></div>
+                    <?php
+                if($slide['button_' . $locale] != null):
+                    ?>
+                <div class="but"><a href="<?= $slide['button_' . $locale]; ?>">Перейти -></a></div>
+                <?php
+                endif;
+                ?>
+                    <img class="img-fluid" src="<?= $slide["slider"]; ?>" alt="...">
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -26,7 +50,6 @@
         <div id="carousel" class="sale slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
                 <?php
-
                 foreach ($akc as $item) {
                     ?>
                     <div class="item">
@@ -63,7 +86,6 @@
         <div id="carousel" class="rekomm slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
                 <?php
-
                 foreach ($rekomm as $item) {
                     ?>
                     <div class="item">
@@ -80,29 +102,31 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12 manufacture-title"><h4><?= lang('Language.manufacture') ?></h4></div>
-</div>
-<div class="row manufacture">
-    <div class="col-md-2 off"></div>
-    <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
-</div>
-<div class="row manufacture">
-    <div class="col-md-2 off"></div>
-    <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
-</div>
-<div class="row manufacture ">
-    <div class="col-md-2 off"></div>
-    <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-    <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+<div class="backfone">
+    <div class="row">
+        <div class="col-md-12 manufacture-title"><h4><?= lang('Language.manufacture') ?></h4></div>
+    </div>
+    <div class="row manufacture">
+        <div class="col-md-2 off"></div>
+        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+    </div>
+    <div class="row manufacture">
+        <div class="col-md-2 off"></div>
+        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+    </div>
+    <div class="row manufacture ">
+        <div class="col-md-2 off"></div>
+        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-12 last"></div>
@@ -121,10 +145,10 @@
                     <img src="<?= $lnews['img_news']; ?>">
                     <p class="news-date"><?= $lnews['data']; ?></p>
                     <p class="title-news"><?= $lnews['title_news_' . $locale]; ?></p>
-                    <p class="body-news"><?= mb_strimwidth($lnews['text_news_' . $locale],0,50,'...', 'UTF-8'); ?></p>
+                    <p class="body-news"><?= strip_tags(mb_strimwidth($lnews['text_news_' . $locale], 0, 50, '...', 'UTF-8')); ?></p>
                 </a>
             </div>
-        <?php
+            <?php
         endforeach;
         ?>
     </div>
@@ -137,7 +161,6 @@
         <div id="carousel" class="new slide" data-ride="carousel">
             <div class="owl-carousel owl-theme rekomms">
                 <?php
-
                 foreach ($last as $item) {
                     ?>
                     <div class="item">
@@ -161,7 +184,7 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-7 about-body">
-        <p><?= $about[0]['text_stat_'.$locale]; ?></p>
+        <p><?= $about[0]['text_stat_' . $locale]; ?></p>
     </div>
     <div class="col-md-3 imgab">
         <img src="/img/about.png">

@@ -28,9 +28,9 @@ helper('form');
             <div class="col-md-6">
                 <label for="name_har_ua" class="control-label">Привязка к категории (для фильтров)</label>
                 <div class="form-group">
-                    <select name="link_cat">
+                    <select name="link_cat" class="form-control">
                     <?php
-                    echo "<option value='0'>Общая категория</option>";
+                    echo "<option value='0'>Общая категория (будет отображаться во всех категориях товара)</option>";
                     foreach($cats as $item){
                         if($item['id'] == $feature[0]['groupa']){
                             $sel = 'selected';

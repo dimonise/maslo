@@ -168,9 +168,20 @@ helper('form');
                     <th><?= lang('Language.porder'); ?></th>
                     <th><?= lang('Language.sorder'); ?></th>
                     <?php
+                    $status = '';
                     foreach ($orders as $order) {
+                        switch($order['status_'.$locale]){
+                            case '1': $status = lang('Language.prep');
+                                break;
+                            case '2': $status = lang('Language.deliv');
+                                break;
+                            case '3': $status = lang('Language.ended');
+                                break;
+                            case '4': $status = lang('Language.canceled');
+                                break;
+                        }
                         echo "<tr>";
-                        echo "<td>{$order['id_order']}</td><td>{$order['date']}</td><td>{$order['product']}</td><td>{$order['status_'.$locale]}</td>";
+                        echo "<td>{$order['id_order']}</td><td>{$order['date']}</td><td>{$order['product']}</td><td>{$status}</td>";
                         echo "</tr>";
                     }
                     ?>

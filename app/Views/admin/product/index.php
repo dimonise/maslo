@@ -6,61 +6,62 @@ helper('form');
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Товары</h3>
-            	<div class="box-tools">
+                <div class="box-tools">
                     <a href="<?php echo site_url('productadmin/add'); ?>" class="btn btn-success btn-sm">Добавить новый товар</a>
                     <a href="<?php echo site_url('productadmin/export'); ?>" class="btn btn-info btn-sm" style="float:right">Експорт</a>
                     <?php
                     $attributes = ['id' => 'form_id'];
-                    echo form_open_multipart('productadmin/import', $attributes); ?>
+                    echo form_open_multipart('productadmin/import', $attributes);
+                    ?>
                     <input type="file" name="import" id="import" class="btn btn-primary btn-sm" value="Импорт" onchange='document.getElementById("form_id").submit()'>
                     <label for="import">Импорт</label>
-                    <?php form_close(); ?>
+<?php form_close(); ?>
                 </div>
                 <br>
             </div>
             <div class="box-body">
                 <?php
-               // d($product);
+                // d($product);
                 ?>
                 <table class="table table-striped" style="font-size:14px">
                     <tr>
-						<th>Id</th>
-						<th>Артикул</th>
+                        <th>Id</th>
+                        <th>Артикул</th>
 <!--						<th>Img</th>-->
-						<th>Наименование Ua</th>
-						<th>Наименование Ru</th>
+                        <th>Наименование Ua</th>
+                        <th>Наименование Ru</th>
                         <th>Описание Ua</th>
                         <th>Описание Ru</th>
-						<th>Ключевые слова Ua</th>
-						<th>Ключевые слова Ru</th>
-						<th>Цена</th>
-						<th>На складе</th>
+                        <th>Ключевые слова Ua</th>
+                        <th>Ключевые слова Ru</th>
+                        <th>Цена</th>
+                        <th>На складе</th>
                         <th>Дата добавления</th>
-						<th></th>
+                        <th></th>
                     </tr>
-                    <?php foreach($product as $p){ ?>
-                    <tr>
-						<td><?php echo $p['product_id']; ?></td>
-						<td><?php echo $p['oem']; ?></td>
-						<!--<td><img src="<?php //echo $p['img']; ?>" style="width: 50px;"></td>-->
-						<td><?php echo $p['product_name_ua']; ?></td>
-						<td><?php echo $p['product_name_ru']; ?></td>
-                        <td><?php echo mb_strimwidth($p['product_desc_ua'],0,50,'...', 'UTF-8'); ?></td>
-                        <td><?php echo mb_strimwidth($p['product_desc_ru'],0,50,'...', 'UTF-8'); ?></td>
-						<td><?php echo $p['product_key_ua']; ?></td>
-						<td><?php echo $p['product_key_ru']; ?></td>
-						<td><?php echo $p['price']; ?></td>
-						<td><?php echo $p['warhouse']; ?></td>
-                        <td><?php echo $p['date_add']; ?></td>
-						<td>
-                            <a href="<?php echo site_url('productadmin/edit/'.$p['product_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
-                            <a href="<?php echo site_url('productadmin/remove/'.$p['product_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
-                        </td>
-                    </tr>
-                    <?php } ?>
+<?php foreach ($product as $p) { ?>
+                        <tr>
+                            <td><?php echo $p['product_id']; ?></td>
+                            <td><?php echo $p['oem']; ?></td>
+                            <!--<td><img src="<?php //echo $p['img'];  ?>" style="width: 50px;"></td>-->
+                            <td><?php echo $p['product_name_ua']; ?></td>
+                            <td><?php echo $p['product_name_ru']; ?></td>
+                            <td><?php echo mb_strimwidth($p['product_desc_ua'], 0, 50, '...', 'UTF-8'); ?></td>
+                            <td><?php echo mb_strimwidth($p['product_desc_ru'], 0, 50, '...', 'UTF-8'); ?></td>
+                            <td><?php echo $p['product_key_ua']; ?></td>
+                            <td><?php echo $p['product_key_ru']; ?></td>
+                            <td><?php echo $p['price']; ?></td>
+                            <td><?php echo $p['warhouse']; ?></td>
+                            <td><?php echo $p['date_add']; ?></td>
+                            <td>
+                                <a href="<?php echo site_url('productadmin/edit/' . $p['product_id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a>
+                                <a href="<?php echo site_url('productadmin/remove/' . $p['product_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            </td>
+                        </tr>
+<?php } ?>
                 </table>
 
-                <?= $pager->links() ?>
+<?= $pager->links() ?>
 
             </div>
         </div>

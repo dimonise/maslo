@@ -66,9 +66,15 @@ if (session('name_user')) {
         <div class="row">
             <div class="col-md-12"><?= lang('Language.allsumm') . '&nbsp;' . $summ; ?>&nbsp; грн.</div>
             <?php
-
-            echo form_open("orders/confirm/" . session('id_user'));
-            echo "<h5><input type='radio' checked style='margin-top:50px'  name='deliv' value='NP'>" . lang('Language.np') . "</h5>";
+            
+            if (session('id_user') != null):
+                $us = session('id_user');
+            else:
+                $us = session_id();
+            endif;
+            
+            echo form_open("orders/confirm/" . $us);
+            echo "<h5><input type='radio' checked style='margin-top:50px'  id='np' name='deliv' value='NP'>" . lang('Language.np') . "</h5>";
             echo "<h5 style='width:100%;margin-top:10px;text-align: center'>" . lang('Language.del_info') . "</h5>";
             ?>
             <div class="box-body">
@@ -101,11 +107,10 @@ if (session('name_user')) {
                     </div>
                     <div class="col-md-6">
                         <label for="region" class="control-label">Область</label>
-                        <!--                        <div class="form-group">--><?php //var_dump($oblast);die;?>
+                        <!--                        <div class="form-group">--><?php //var_dump($oblast);die;  ?>
                         <select name="region" id="region" onchange="getrayon()" class="form-control">
                             <option>-- ОБЛАСТЬ --</option>
                             <?php
-
                             foreach ($oblast as $obl):
                                 //var_dump($obl);die;
                                 if ($obl['id_region'] == $user['region']) {
@@ -115,7 +120,7 @@ if (session('name_user')) {
                                 }
                                 ?>
                                 <option value="<?= $obl['id_region'] ?>" <?= $sel; ?>><?= $obl['name']; ?></option>
-                            <?php
+                                <?php
                             endforeach;
                             ?>
                         </select>
@@ -154,14 +159,20 @@ if (session('name_user')) {
                     <div class="col-md-6">
                         <label for="address" class="control-label"><?= lang('Language.addnp'); ?></label>
                         <div class="form-group" id="addr">
-                            <input name="address" class="form-control" style="height: 38px;" value="" >
+                            <input name="address" class="form-control" style="height: 38px;" value="" required>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+            <button type="submit" class="btn btn-success np"> <?= lang('Language.ord') ?></button>
+            <?php echo form_close(); ?>
+        </div>
+                <?php echo form_close(); ?>
+                <?= form_open("orders/confirm/" . $us);?>
                 <div class="row clearfix">
                     <div class="col-md-12" >
-                    <?php echo "<h5 style='width:100%;margin-top:50px;text-align: center'>" . lang('Language.ili') . "</h5>"; ?>
-                    <?php echo "<h5 ><input type='radio' name='deliv' value='SAM'>" . lang('Language.del_info_sam') . "</h5>"; ?>
+                        <?php echo "<h5 style='width:100%;margin-top:50px;text-align: center'>" . lang('Language.ili') . "</h5>"; ?>
+                        <?php echo "<h5 ><input type='radio' name='deliv' id='sam' value='SAM'>" . lang('Language.del_info_sam') . "</h5>"; ?>
                     </div>
                     <div class="col-md-6">
                         <label for="name_user_sam" class="control-label"><?= lang('Language.ima'); ?></label>
@@ -186,10 +197,23 @@ if (session('name_user')) {
 
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-success "> <?= lang('Language.ord') ?></button>
+            <button type="submit" class="btn btn-success sam"> <?= lang('Language.ord') ?></button>
             <?php echo form_close(); ?>
         </div>
     </div>
 </div>
 <div class="col-md-2"></div>
 </div>
+<script>
+$(".sam").prop('disabled',true);
+$("#sam").on('click',function(){
+    $(".sam").prop('disabled',false);
+    $(".np").prop('disabled',true);
+    $("#np").prop('checked',false);
+});
+$("#np").on('click',function(){
+    $(".sam").prop('disabled',true);
+    $(".np").prop('disabled',false);
+    $("#sam").prop('checked',false);
+});
+</script>

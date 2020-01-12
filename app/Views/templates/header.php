@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="/js/owl-carousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/js/owl-carousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/js/ui/jquery-ui.theme.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 	<script src="/js/owl-carousel/dist/owl.carousel.min.js"></script>
     <script>
 
@@ -32,6 +33,25 @@
             });
         } );
     </script>
+    <script>
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( ".incart" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+  </script>
 </head>
 <body>
 <div class="container-liquid">
@@ -90,6 +110,9 @@
                                 class="fa fa-search"></i><?= lang('Language.sech') ?>
                     </button>
                 </div>
+                <div id="dialog" title="<?= lang('Language.incart'); ?>">
+                   Товар <span id="tovar"></span><?= lang('Language.incarty'); ?>
+                </div>
                 <div class="col-md-2 cart"  >
                     <a href="/<?= $locale; ?>/cart">
                         <img src="/img/cart.png">
@@ -102,7 +125,12 @@
                                 $user = session('name_user');
                             }
                             $item = $cart->checkCart($user);
-                            echo @$item[0]['cou'];
+                            
+                            if(empty($item)):
+                                echo 0;
+                            else:
+                            echo $item[0]['cou'];
+                            endif;
                             ?>
                         </div>
                     </a>

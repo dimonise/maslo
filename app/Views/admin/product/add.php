@@ -106,14 +106,14 @@ helper('form');
                     <div class="col-md-6">
                         <label for="product_desc_ua" class="control-label">Описание Ua</label>
                         <div class="form-group">
-                            <textarea name="product_desc_ua" class="form-control"
+                            <textarea name="product_desc_ua" rows="10" class="form-control"
                                       id="product_desc_ua"><?php echo service('request')->getVar('product_desc_ua'); ?></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="product_desc_ru" class="control-label">Описание Ru</label>
                         <div class="form-group">
-                            <textarea name="product_desc_ru" class="form-control"
+                            <textarea name="product_desc_ru" rows="10" class="form-control"
                                       id="product_desc_ru"><?php echo service('request')->getVar('product_desc_ru'); ?></textarea>
                         </div>
                     </div>

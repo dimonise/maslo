@@ -31,6 +31,7 @@ class Feature extends Controller
      */
     function add()
     {
+        $data['cats'] = $this->model->get_cats();
         if (isset($_POST) && count($_POST) > 0) {
             $params = array(
                 'name_har_ua' => service('request')->getVar('name_har_ua'),
@@ -46,13 +47,15 @@ class Feature extends Controller
                     'id_feature' => $feature_id,
                     'val_feature_ua' => $val_har_ua[$i],
                     'val_feature_ru' => $val_har_ru[$i],
+                    'groupa'        => service('request')->getVar('link_cat')
                 );
+                
                 $this->model->add_feature_val($val);
             }
             return redirect()->to('/feature/index');
         } else {
             echo view('admin/header');
-            echo view('admin/feature/add');
+            echo view('admin/feature/add',$data);
             echo view('admin/footer');
         }
     }
@@ -65,6 +68,7 @@ class Feature extends Controller
         // check if the feature exists before trying to edit it
         $data['feature'] = $this->model->get_feature($id_name_har);
         $data['feature_val'] = $this->model->get_feature_val($id_name_har);
+        
         $data['cats'] = $this->model->get_cats();
         if (isset($data['feature'][0]['id_name_har'])) {
             if (isset($_POST) && count($_POST) > 0) {
@@ -72,8 +76,8 @@ class Feature extends Controller
                     'name_har_ua' => service('request')->getVar('name_har_ua'),
                     'name_har_ru' => service('request')->getVar('name_har_ru'),
                 );
-
-                $this->model->update_feature($id_name_har, $params);
+                $data['groupa'] = service('request')->getVar('link_cat');
+                $this->model->update_feature($id_name_har, $params, $data['groupa']);
                 return redirect()->to('/feature/index');
             } else {
                 echo view('admin/header', $data);

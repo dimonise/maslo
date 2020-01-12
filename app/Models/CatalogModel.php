@@ -81,7 +81,8 @@ class CatalogModel extends Model
 
     public function checkCart($user)
     {
-        $data = $this->db->query("SELECT *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ? GROUP BY id_cart", [$user])->getResultArray();
+//        var_dump($user);die;
+        $data = $this->db->query("SELECT  *, SUM(`count_product`) as cou FROM `cart`  WHERE user = ? GROUP BY id_cart", [$user])->getResultArray();
 
         return $data;
     }

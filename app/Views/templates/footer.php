@@ -8,7 +8,7 @@
             <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
             <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
             <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a>
-        <br><br>
+            <br><br>
         </div>
 
         <div class="col-md-3 foot-text-xs">
@@ -26,7 +26,10 @@
             <a href="/<?= $locale; ?>/catalog"><?= lang('Language.cat'); ?></a><br>
             <a href="/<?= $locale; ?>/news"><?= lang('Language.article'); ?></a><br>
             <a href="/<?= $locale; ?>/delivery"><?= lang('Language.delivery'); ?></a><br>
-            <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a></div>
+            <a href="/<?= $locale; ?>/contact"><?= lang('Language.contact'); ?></a><br>
+            <a href="/<?= $locale; ?>/oferta"><?= lang('Language.oferta'); ?></a><br>
+            <a href="/<?= $locale; ?>/terms"><?= lang('Language.terms'); ?></a>
+        </div>
         <div class="col-md-3 foot-text-big">
             <?= lang('Language.footer-text') ?>
         </div>
@@ -65,20 +68,22 @@
 
         function proverka(numer) {
             numer.value = numer.value.replace(/[^\d]/g, '');
-        };
+        }
+        ;
 
         function proverkaChar(chars) {
             chars.value = chars.value.replace(/[^A-Za-zА-Яа-я\u0600-\u06FF ]/, '');
-        };
+        }
+        ;
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/js/script.js"></script>
 
 </footer>
