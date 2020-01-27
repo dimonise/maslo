@@ -40,6 +40,8 @@ class Product extends Controller {
         $data['contact'] = $this->contact->index();
         $data['product'] = $product->showProduct($id_prod);
         $data['title'] = $data['product'][0]['product_name_' . $this->locale];
+        $data['keys'] = $data['product'][0]['product_key_' . $this->locale];
+        $data['des'] = $data['product'][0]['product_desc_' . $this->locale];
         $data['search'] = $this->search->index();
 
         echo view('templates/header', $data);

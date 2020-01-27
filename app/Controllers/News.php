@@ -65,7 +65,8 @@ class News extends Controller {
         $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['keys'] = $data['news']['title_news_' . $this->locale];
+        $data['des'] = $data['news']['title_news_' . $this->locale];
         echo view('templates/header', $data);
         echo view('news/view', $data);
         echo view('templates/footer');

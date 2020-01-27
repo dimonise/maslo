@@ -29,15 +29,14 @@ class StaticPage extends Controller {
 
 
         $data['title'] = lang('Language.about');
-        $data['locale'] = $this->locale;
-
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
         $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['keys'] = $data['page'][0]['keywords_stat_' . $this->locale];
+        $data['des'] = $data['page'][0]['description_stat_' . $this->locale];
         echo view('templates/header', $data);
         echo view('static/page', $data);
         echo view('templates/footer');
@@ -58,7 +57,8 @@ class StaticPage extends Controller {
         $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['keys'] = $data['page'][0]['keywords_stat_' . $this->locale];
+        $data['des'] = $data['page'][0]['description_stat_' . $this->locale];
         echo view('templates/header', $data);
         echo view('static/page', $data);
         echo view('templates/footer');
@@ -96,7 +96,8 @@ class StaticPage extends Controller {
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-
+        $data['keys'] = $data['page'][0]['keywords_stat_' . $this->locale];
+        $data['des'] = $data['page'][0]['description_stat_' . $this->locale];
         echo view('templates/header', $data);
         echo view('static/page', $data);
         echo view('templates/footer');
@@ -110,7 +111,8 @@ class StaticPage extends Controller {
         $data['locale'] = $this->locale;
         $data['contact'] = $this->contact->index();
         $data['tree'] = menu();
-
+        $data['keys'] = $data['page'][0]['keywords_stat_' . $this->locale];
+        $data['des'] = $data['page'][0]['description_stat_' . $this->locale];
         $data['search'] = $this->search->index();
 
         $tree = createTree($data['tree']);
