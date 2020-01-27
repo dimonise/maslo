@@ -179,14 +179,27 @@ class CatalogModel extends Model
         return $data->getResultArray();
     }
 
-    public function sort($sort, $onpage)
+    public function sort($sort, $onpage, $root, $root1, $root2)
     {
+        if($root2 != null){
+            $where = "LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=$root AND pcl.id_sub_cat=$root1 AND pcl.id_sub_sub_cat=$root2";
+        }
+        elseif($root1 != null){
+            $where = "LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=$root AND pcl.id_sub_cat=$root1";
+        }
+        elseif($root != null){
+            $where = "LEFT JOIN product_cat_link pcl ON pcl.id_prod = p.product_id WHERE pcl.id_cat=$root";
+        }
+        else{
+            $where = '';
+        }
+        
         if ($sort == 1) {
-            $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price ASC LIMIT $onpage")->getResultArray();
+            $data = $this->db->query("SELECT * FROM product p $where ORDER BY p.price ASC LIMIT $onpage")->getResultArray();
 
             return $data;
         } elseif ($sort == 2) {
-            $data = $this->db->query("SELECT * FROM product p  ORDER BY p.price DESC LIMIT $onpage")->getResultArray();
+            $data = $this->db->query("SELECT * FROM product p $where ORDER BY p.price DESC LIMIT $onpage")->getResultArray();
 
             return $data;
         }

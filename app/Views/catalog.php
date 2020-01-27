@@ -79,7 +79,26 @@ $catalog = new CatalogModel();
         <div class="row">
             <div class="col-md-6 grey">
                 <span>СОРТИРОВКА: </span>
-                <select name="sort" id="sort" onchange="sorts('<?= $locale; ?>');">
+                <?php
+                $uri = service('uri', current_url(true));
+$root = null;
+$root1 = null;
+$root2 = null;
+
+$segments = $uri->getSegments();
+
+
+if($segments[2]){
+    $root = $segments[2];
+}
+if($segments[3]){
+    $root1 = $segments[3];
+}
+if($segments[4]){
+    $root2 = $segments[4];
+}        
+?>
+                <select name="sort" id="sort" onchange="sorts('<?= $locale; ?>','<?= $root;?>','<?= $root1;?>','<?= $root2;?>');">
                     <option value="0"><?= lang('Language.sel_sort'); ?></option>
                     <option value="1"><?= lang('Language.sort_up'); ?></option>
                     <option value="2"><?= lang('Language.sort_down'); ?></option>

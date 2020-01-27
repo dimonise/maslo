@@ -145,8 +145,10 @@ class Catalog extends Controller {
     public function sort() {
         $sort = service('request')->getVar('sort');
         $onpage = service('request')->getVar('onpage');
-
-        $data = $this->model->sort($sort, $onpage);
+        $root = service('request')->getVar('root');
+        $root1 = service('request')->getVar('root1');
+        $root2 = service('request')->getVar('root2');
+        $data = $this->model->sort($sort, $onpage, $root, $root1, $root2);
 
         return json_encode($data);
     }

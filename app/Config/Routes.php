@@ -90,13 +90,16 @@ $routes->get('{locale}/catalog/(:num)/(:num)', 'Catalog::subsubcat/$1/$2');
 $routes->get('{locale}/catalog/(:num)/(:num)/(:num)', 'Catalog::subsubsubcat/$1/$2/$3');
 $routes->get('{locale}/product/(:num)', 'Product::index/$1');
 $routes->get('{locale}/cart', 'Product::cart');
-$routes->get('{locale}/admin', 'User::index');
+$routes->get('{locale}/admin', 'Admin::index');
+$routes->get('{locale}/admin/user', 'User::index');
 $routes->get('{locale}/cabinet', 'Cabinet::index');
 $routes->get('{locale}/about', 'StaticPage::about');
 $routes->get('{locale}/delivery', 'StaticPage::delivery');
 $routes->get('{locale}/contact', 'StaticPage::contact');
 $routes->get('{locale}/oferta', 'StaticPage::oferta');
 $routes->get('{locale}/terms', 'StaticPage::terms');
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

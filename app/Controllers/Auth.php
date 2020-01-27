@@ -191,7 +191,7 @@ class Auth extends Controller {
                 $builder->insert($opt);
                 $em = str_replace('@', '-', $email_user);
                 $mess = "Для подтверждения почтового адреса, указанного при регистрации, перейдите по ссылке ниже.
-                            <br> <a href='http://maslo.loc/" . $this->locale . "/auth/activator/" . $em . "/" . $g . "'>ACTIVE ACCOUNT</a>";
+                            <br> <a href='http://mastylo.com.ua/" . $this->locale . "/auth/activator/" . $em . "/" . $g . "'>ACTIVE ACCOUNT</a>";
 
                 $email = \Config\Services::email();
                 $config['mailtype'] = 'html';
@@ -201,7 +201,7 @@ class Auth extends Controller {
                 $email->setFrom('maslo@gmail.com', 'Admin');
                 $email->setTo($email_user);
 
-                $email->setSubject('http://maslo.loc');
+                $email->setSubject('http://mastylo.com.ua');
                 $email->setMessage('<h3>Активация аккаунта</h3>' . $mess);
 
                 $email->send();

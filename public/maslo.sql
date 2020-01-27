@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 17 2019 г., 18:56
--- Версия сервера: 5.7.25
--- Версия PHP: 7.2.22
+-- Время создания: Янв 28 2020 г., 01:10
+-- Версия сервера: 5.7.25-log
+-- Версия PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,55 @@ SET time_zone = "+00:00";
 --
 -- База данных: `maslo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `adminuser`
+--
+
+CREATE TABLE `adminuser` (
+  `id` int(11) NOT NULL,
+  `login` varchar(150) NOT NULL,
+  `password` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `adminuser`
+--
+
+INSERT INTO `adminuser` (`id`, `login`, `password`) VALUES
+(1, 'admin', '149212686e432b4f618fc6da1d4f8f73');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `brand`
+--
+
+CREATE TABLE `brand` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `brand`
+--
+
+INSERT INTO `brand` (`id`, `name`, `img`) VALUES
+(1, 'Aral', 'aral.png'),
+(2, 'Bizol', 'bizol.png'),
+(3, 'Castrol', 'castrol.png'),
+(4, 'Elf', 'elf.png'),
+(5, 'Aral', 'aral.png'),
+(6, 'Bizol', 'bizol.png'),
+(7, 'Castrol', 'castrol.png'),
+(8, 'Elf', 'elf.png'),
+(9, 'Aral', 'aral.png'),
+(10, 'Bizol', 'bizol.png'),
+(11, 'Castrol', 'castrol.png'),
+(12, 'Elf', 'elf.png');
 
 -- --------------------------------------------------------
 
@@ -28566,25 +28615,37 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('06tathcbsde884oj5b2qrap15f2tbm3b', '127.0.0.1', 1576426836, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('0gm8t4mehfhlms8uu3v7rdpcpn9j2qrd', '127.0.0.1', 1576580568, 0x5f63695f70726576696f75735f75726c7c733a32373a22687474703a2f2f6d61736c6f2e6c6f632f75612f636162696e6574223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b6c6173745f6e616d657c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('0p9t4ieelp8fjt7q79k693c7k1qtrccp', '127.0.0.1', 1575410595, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a343a2274657374223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('19v9v85u80302lb67ehv4fsfg2v2dfma', '127.0.0.1', 1574975645, 0x5f63695f70726576696f75735f75726c7c733a33313a22687474703a2f2f6d61736c6f2e6c6f632f75612f636174616c6f672f312f34223b),
-('1h3ccvhu53r7527t5chupv4u5oueqr65', '127.0.0.1', 1576518863, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b),
-('354j3kue8hnphtaqdeuc9cnho6is1vd5', '127.0.0.1', 1576415582, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('444jgndq693k135sao8lhnc369qh1rul', '127.0.0.1', 1576008963, 0x5f63695f70726576696f75735f75726c7c733a33373a22687474703a2f2f6d61736c6f2e6c6f632f636174616c6f672f7365617263685f66696c7472223b),
-('4d19p0g8lig41pfspm684pt6csghs8f0', '127.0.0.1', 1576598051, 0x5f63695f70726576696f75735f75726c7c733a33303a22687474703a2f2f6d61736c6f2e6c6f632f636162696e65742f696e646578223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b6c6173745f6e616d657c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('8806imq8o3kqm3n75pdmrn1rri5pqam0', '127.0.0.1', 1576440205, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('8f2ov8d82csqp8kcjccl1feau4lgu4fo', '127.0.0.1', 1575195744, 0x5f63695f70726576696f75735f75726c7c733a32323a22687474703a2f2f6d61736c6f2e6c6f632f61646d696e223b),
-('9ts8ko5lovftnisode3d6pkk86f2oass', '127.0.0.1', 1576530554, 0x5f63695f70726576696f75735f75726c7c733a32373a22687474703a2f2f6d61736c6f2e6c6f632f75612f636162696e6574223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('dj2mfvd9vm282v14ogibql5pe79r3tca', '127.0.0.1', 1575494968, 0x5f63695f70726576696f75735f75726c7c733a32343a22687474703a2f2f6d61736c6f2e6c6f632f75612f63617274223b),
-('ed6t4t4nlec5038qboa5usvlfsp2m86j', '127.0.0.1', 1574799352, 0x5f63695f70726576696f75735f75726c7c733a33313a22687474703a2f2f6d61736c6f2e6c6f632f75612f636174616c6f672f312f34223b),
-('ehp2ksbavu722l5bct6lhhhtgfcj358b', '127.0.0.1', 1575321730, 0x5f63695f70726576696f75735f75726c7c733a31373a22687474703a2f2f6d61736c6f2e6c6f632f223b),
-('f7eirlr10u4ipeh0e5nckrgnkugnarqs', '127.0.0.1', 1576096651, 0x5f63695f70726576696f75735f75726c7c733a33303a22687474703a2f2f6d61736c6f2e6c6f632f636162696e65742f696e646578223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a343a2274657374223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('hjr87gluajncn5agves81vc6btbpmbh3', '127.0.0.1', 1575116379, 0x5f63695f70726576696f75735f75726c7c733a31373a22687474703a2f2f6d61736c6f2e6c6f632f223b),
-('j7g85a374u1n2m25ae5o3g45sqg0n4ks', '127.0.0.1', 1576333743, 0x5f63695f70726576696f75735f75726c7c733a32373a22687474703a2f2f6d61736c6f2e6c6f632f75612f636162696e6574223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
-('os8fhmhc2m57dshh77672enkmfitfgti', '127.0.0.1', 1575582618, 0x5f63695f70726576696f75735f75726c7c733a33343a22687474703a2f2f6d61736c6f2e6c6f632f75612f636174616c6f673f706167653d31223b),
-('ot2blk4q7plfi8pc3493b9nhq184r3e8', '127.0.0.1', 1575481292, 0x5f63695f70726576696f75735f75726c7c733a31373a22687474703a2f2f6d61736c6f2e6c6f632f223b);
+('01uoj4iq2c55fc0upglg3mkohk3v89e2', '127.0.0.1', 1578861169, 0x5f63695f70726576696f75735f75726c7c733a31393a22687474703a2f2f6d61736c6f2e6c6f632f7561223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
+('3mc67msdrkvmauuu2e32v8lb3nu9t278', '127.0.0.1', 1579345779, 0x5f63695f70726576696f75735f75726c7c733a33333a22687474703a2f2f6d61736c6f2e6c6f632f75612f636174616c6f672f312f332f35223b),
+('b0tl1q6steilgptbci7d23kecp9tj45s', '127.0.0.1', 1579948790, 0x5f63695f70726576696f75735f75726c7c733a31373a22687474703a2f2f6d61736c6f2e6c6f632f223b),
+('c6jnit4ln78ruu5a0om83qjn677k77pi', '127.0.0.1', 1580162627, 0x5f63695f70726576696f75735f75726c7c733a32393a22687474703a2f2f6d61736c6f2e6c6f632f61646d696e2f6c6f675f696e223b6c6f676765645f696e7c623a313b757365727c733a353a2261646d696e223b706173737c733a33323a223134393231323638366534333262346636313866633664613164346638663733223b),
+('h40o8967p0b55ejq5pk8562nr9bjgnm8', '127.0.0.1', 1579358340, 0x5f63695f70726576696f75735f75726c7c733a32373a22687474703a2f2f6d61736c6f2e6c6f632f75612f636f6e74616374223b6e616d655f757365727c733a31343a22d094d0bcd0b8d182d180d0b8d0b9223b736e616d655f757365727c733a31323a22d0a5d0b8d182d180d18bd0b9223b656d61696c5f757365727c733a31343a227465737440676d61696c2e636f6d223b7569647c733a31353a22373935323438393833393038383938223b69645f757365727c733a313a2231223b747970657c733a313a2230223b6c616e677c733a323a227561223b),
+('mjroli2g8rvqt1o3klcnpl20tf4jc76t', '127.0.0.1', 1578859782, 0x5f63695f70726576696f75735f75726c7c733a35343a22687474703a2f2f6d61736c6f2e6c6f632f3f5844454255475f53455353494f4e5f53544152543d6e65746265616e732d786465627567223b),
+('ret0mv5ob9q9eh4tvdpmbghi8b4l6a2i', '127.0.0.1', 1580040644, 0x5f63695f70726576696f75735f75726c7c733a33373a22687474703a2f2f6d61736c6f2e6c6f632f636174616c6f672f7365617263685f66696c7472223b),
+('rg9v765ssb2j45a1riobrueiegimugcd', '127.0.0.1', 1580051496, 0x5f63695f70726576696f75735f75726c7c733a33373a22687474703a2f2f6d61736c6f2e6c6f632f636174616c6f672f7365617263685f66696c7472223b),
+('sudivqiahm159467mv8te10on9d9a4qd', '127.0.0.1', 1580039382, 0x5f63695f70726576696f75735f75726c7c733a35343a22687474703a2f2f6d61736c6f2e6c6f632f3f5844454255475f53455353494f4e5f53544152543d6e65746265616e732d786465627567223b),
+('ubg10kb88f1igr3eobdrv2clh2gcn0fa', '127.0.0.1', 1579948350, 0x5f63695f70726576696f75735f75726c7c733a31373a22687474703a2f2f6d61736c6f2e6c6f632f223b);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `grafic_ua` varchar(500) NOT NULL,
+  `address_ua` varchar(500) NOT NULL,
+  `grafic_ru` varchar(500) NOT NULL,
+  `address_ru` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `contact`
+--
+
+INSERT INTO `contact` (`id`, `grafic_ua`, `address_ua`, `grafic_ru`, `address_ru`) VALUES
+(1, '&lt;p&gt;Графік роботи:&lt;br /&gt;\r\nпн.-пт. 09:00-18:00&lt;br /&gt;\r\ncб. 11:00-15:00&lt;br /&gt;\r\nнд. вихідний&lt;/p&gt;\r\n', '&lt;p&gt;Наша адреса:&lt;br /&gt;\r\nм.Миколаїв&lt;br /&gt;\r\nвул. 12-а поздовжня 82/7&lt;br /&gt;\r\nтел. +380971701300, +380638221200&lt;/p&gt;\r\n', '&lt;p&gt;Графік роботи:&lt;br /&gt;\r\nпн.-пт. 09:00-18:00&lt;br /&gt;\r\ncб. 11:00-15:00&lt;br /&gt;\r\nнд. вихідний&lt;/p&gt;\r\n', '&lt;p&gt;Наш адрес:&lt;br /&gt;\r\nНиколаев&lt;br /&gt;\r\nул. 12-я продольная 82/7&lt;br /&gt;\r\nтел. +380971701300, +380638221200&lt;/p&gt;\r\n');
 
 -- --------------------------------------------------------
 
@@ -28609,7 +28670,9 @@ INSERT INTO `feature` (`id_name_har`, `name_har_ua`, `name_har_ru`, `groupa`) VA
 (3, 'Полярність', 'Полярность', 2),
 (4, 'Виконання корпусу', 'Исполнение корпуса', 2),
 (5, 'Об\'єм', 'Объем', 1),
-(8, 'Вага', 'Вес', 0);
+(8, 'Вага', 'Вес', 0),
+(9, 'что-то', 'что-то', 0),
+(10, 'исче', 'исче', 0);
 
 -- --------------------------------------------------------
 
@@ -28642,7 +28705,13 @@ INSERT INTO `feature_val` (`id`, `id_feature`, `val_feature_ua`, `val_feature_ru
 (16, 8, '1 кг', '1 кг', 2),
 (17, 8, '2 кг', '2 кг', 2),
 (18, 8, '3 кг', '3 кг', 2),
-(19, 1, 'Mobil', 'Mobil', 1);
+(19, 1, 'Mobil', 'Mobil', 1),
+(20, 9, '1', '1', 2),
+(21, 9, '2', '2', 2),
+(22, 10, '5', '5', 1),
+(23, 10, '6', '6', 1),
+(24, 10, '7', '7', 1),
+(25, 3, 'Справа', 'Справа', 0);
 
 -- --------------------------------------------------------
 
@@ -28684,17 +28753,21 @@ CREATE TABLE `news` (
   `description_news_ru` varchar(500) NOT NULL,
   `title_news_ua` varchar(255) NOT NULL,
   `title_news_ru` varchar(255) NOT NULL,
-  `img_news` varchar(255) NOT NULL,
+  `img_news` varchar(255) NOT NULL DEFAULT '/img/no_image.png',
   `text_news_ua` text NOT NULL,
-  `text_news_ru` text NOT NULL
+  `text_news_ru` text NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `news`
 --
 
-INSERT INTO `news` (`id_news`, `keywords_news_ua`, `keywords_news_ru`, `description_news_ua`, `description_news_ru`, `title_news_ua`, `title_news_ru`, `img_news`, `text_news_ua`, `text_news_ru`) VALUES
-(1, 'новина, перша новина ', 'новость, первая новость', 'перша новина на пробу', 'первая новость на пробу', 'перша новина', 'Первая новость', '', 'Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини', 'Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости');
+INSERT INTO `news` (`id_news`, `keywords_news_ua`, `keywords_news_ru`, `description_news_ua`, `description_news_ru`, `title_news_ua`, `title_news_ru`, `img_news`, `text_news_ua`, `text_news_ru`, `data`) VALUES
+(1, 'новина, перша новина ', 'новость, первая новость', 'перша новина на пробу', 'первая новость на пробу', 'перша новина', 'Первая новость', '/img/primer-news.png', '<p>Текст первой новости Текст первой новости Текст... </p>', '<p>Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости</p>\r\n', '2019-12-20 12:16:08'),
+(2, 'новина, друга новина ', 'новость, вторая новость', 'перша новина на пробу', 'первая новость на пробу', 'друга новина edit', 'Вторая новость edit', '/img/1eaf5a24f4c44c14a2220ad917f4f4ce.jpg', 'Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини', 'Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости', '0000-00-00 00:00:00'),
+(3, 'новина, третя новина ', 'новость, третья новость', 'перша новина на пробу', 'первая новость на пробу', 'третя новина', 'Третья новость', '/img/primer-news.png', 'Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини Текст першої новини', 'Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости Текст первой новости', '2019-12-20 12:16:08'),
+(5, '', '', '', '', 'пята новина', 'пятая новость', '/img/main.jpg', '', '', '2019-12-20 15:24:49');
 
 -- --------------------------------------------------------
 
@@ -28710,8 +28783,8 @@ CREATE TABLE `orders` (
   `product` text NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `address` varchar(500) NOT NULL,
-  `status_ua` varchar(60) NOT NULL DEFAULT 'в обробці',
-  `status_ru` varchar(60) NOT NULL DEFAULT 'в обработке'
+  `status_ua` varchar(60) NOT NULL DEFAULT '1',
+  `status_ru` varchar(60) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -28719,8 +28792,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `id_order`, `id_user`, `name_user`, `product`, `date`, `address`, `status_ua`, `status_ru`) VALUES
-(1, '1-17/12/2019', 1, 'Дмитрий Хитрый', 'A105(1 шт.), A103(2 шт.), A1022(3 шт.), ', '2019-12-17 12:57:11', 'Миколаївська, Миколаївський, Миколаїв №', 'в обробці', 'в обработке'),
-(2, '2-17/12/2019', 1, 'Дмитрий Хитрый', '', '2019-12-17 15:43:53', 'Миколаївська, Миколаївський, Миколаїв №', 'в обробці', 'в обработке');
+(14, '14-12/01/2020', 1, 'Dmytro rfrfrfr', 'A105(1 шт.), ', '2020-01-12 18:09:02', 'Заберу сам', '1', '1'),
+(15, '15-12/01/2020', 1, 'Дмитрий Хитрый', 'A105(1 шт.), A103(1 шт.), A103(1 шт.), ', '2020-01-12 18:09:48', 'Миколаївська, Миколаївський, Миколаїв №7, телефон - +380971701300', '1', '1'),
+(16, '16-18/01/2020', 1, 'Дмитрий Хитрый', 'A105(1 шт.), ', '2020-01-18 16:36:40', 'Миколаївська, Миколаївський, Миколаїв №2, телефон - +380971701300', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -28742,7 +28816,7 @@ CREATE TABLE `product` (
   `warhouse` int(11) NOT NULL,
   `is_rekomm` int(11) DEFAULT '0',
   `is_akcii` int(11) DEFAULT '0',
-  `img` varchar(255) NOT NULL
+  `img` varchar(255) NOT NULL DEFAULT '/img/no_image.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -28752,8 +28826,9 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`product_id`, `oem`, `product_name_ua`, `product_name_ru`, `product_key_ua`, `product_desc_ua`, `product_key_ru`, `product_desc_ru`, `price`, `date_add`, `warhouse`, `is_rekomm`, `is_akcii`, `img`) VALUES
 (1, 'A101', 'Агрінол 20W-50', 'Агринол 20W-50', '', 'Масло моторне малозольне синтетичне General Motors Dexos2 5W-30 - це мастильний матеріал преміум класу, який може бути використаний (з урахуванням рекомендацій виробника) в сучасних двигунах, які встановлюються як в автомобілях Опель, так і в інших автомобілях.', '', 'Масло моторное малозольное синтетическое General Motors Dexos2 5W-30 - это смазочный материал премиум класса, который может быть использован (с учетом рекомендаций производителя) в современных двигателях, которые устанавливаются как в автомобилях Опель, так и в других автомобилях.', 500, '2019-10-28 19:59:47', 5, 1, 1, '/img/product/Penguins.jpg'),
 (2, 'A1022', 'Агрінол 30W-502', 'Агринол 30W-502', 'Агрінол 30W-502', 'мастило4', 'Агринол 30W-502', 'масло4', 504, '2019-11-27 19:17:08', 50, 1, 0, '/img/product/Jellyfish.jpg'),
-(3, 'A103', 'Агрінол 40W-50', 'Агринол 40W-50', NULL, 'мастило', NULL, 'масло', 50, '2019-10-28 19:59:47', 5, 1, 1, '/img/product/prod.png'),
-(44, 'A105', 'Проба', 'Проба', '', '', '', '', 700, '2019-12-10 08:55:58', 50, NULL, NULL, '/img/product/Koala.jpg');
+(3, 'A103', 'Агрінол 40W-50', 'Агринол 40W-50', NULL, 'мастило', NULL, 'масло', 50, '2019-10-28 19:59:47', -1, 1, 1, '/img/product/prod.png'),
+(44, 'A105', 'Проба', 'Проба', '', '', '', '', 700, '2019-12-10 08:55:58', 1, NULL, NULL, '/img/product/Koala.jpg'),
+(45, 'A10221', 'Проба', 'Проба', '', '', '', '', 1200, '2020-01-12 10:23:17', 50, NULL, NULL, '/img/no_image.png');
 
 -- --------------------------------------------------------
 
@@ -28778,7 +28853,8 @@ INSERT INTO `product_cat_link` (`id_link`, `id_prod`, `id_cat`, `id_sub_cat`, `i
 (2, 3, 1, 3, 6),
 (4, 1, 1, 3, 9),
 (18, 42, 1, 3, 5),
-(20, 44, 1, 3, 5);
+(20, 44, 1, 3, 5),
+(21, 45, 1, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -28805,7 +28881,8 @@ INSERT INTO `product_feature_val` (`idd`, `id_product`, `id_feature`, `id_name_f
 (5, 44, 4, 5),
 (6, 1, 8, 4),
 (7, 1, 4, 5),
-(8, 2, 19, 1);
+(8, 2, 19, 1),
+(9, 45, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -29442,6 +29519,83 @@ INSERT INTO `region` (`id_region`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `slider`
+--
+
+CREATE TABLE `slider` (
+  `id` int(11) NOT NULL,
+  `slider` varchar(500) DEFAULT NULL,
+  `title_ua` varchar(255) DEFAULT NULL,
+  `title_ru` varchar(255) DEFAULT NULL,
+  `text_ua` varchar(500) DEFAULT NULL,
+  `text_ru` varchar(500) DEFAULT NULL,
+  `button_ua` varchar(255) DEFAULT NULL,
+  `button_ru` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `slider`
+--
+
+INSERT INTO `slider` (`id`, `slider`, `title_ua`, `title_ru`, `text_ua`, `text_ru`, `button_ua`, `button_ru`) VALUES
+(4, '/img/slider/banner_3.png', 'Перший слайд', 'Первый слайд', 'Текстовка на слайде', 'Текстовка на слайде', 'Ссылка на страницу', 'Ссылка на страницу'),
+(5, '/img/slider/banner_2.png', 'Другий слайд без тексту', 'Первый слайд без текста', '', '', 'Ссылка на страницу', 'Ссылка на страницу'),
+(7, '/img/slider/banner_2.png', '', '', '', '', 'https://mastylo.com.ua/ua/product/45', 'https://mastylo.com.ua/ua/product/45');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `static`
+--
+
+CREATE TABLE `static` (
+  `id_stat` int(11) NOT NULL,
+  `keywords_stat_ua` varchar(300) NOT NULL,
+  `keywords_stat_ru` varchar(300) NOT NULL,
+  `description_stat_ua` varchar(500) NOT NULL,
+  `description_stat_ru` varchar(500) NOT NULL,
+  `title_stat_ua` varchar(255) NOT NULL,
+  `title_stat_ru` varchar(255) NOT NULL,
+  `text_stat_ua` text NOT NULL,
+  `text_stat_ru` text NOT NULL,
+  `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `static`
+--
+
+INSERT INTO `static` (`id_stat`, `keywords_stat_ua`, `keywords_stat_ru`, `description_stat_ua`, `description_stat_ru`, `title_stat_ua`, `title_stat_ru`, `text_stat_ua`, `text_stat_ru`, `data`) VALUES
+(1, '', '', '', '', 'Про нас', 'О нас', 'Текстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАС', 'Текстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАСТекстовка страницы и баннера на главной О НАС', '2019-12-23 09:35:59'),
+(2, '', '', '', '', 'Доставка та оплата', 'Доставка и оплата', 'Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты ', 'Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты Текст страницы доставки и оплаты ', '2019-12-23 11:08:46'),
+(3, '', '', '', '', 'Договір оферти', 'Договор оферты', '', '', '2020-01-12 13:29:34'),
+(4, '', '', '', '', 'Угода користувача ', 'Пользовательское соглашение', '', '', '2020-01-12 13:29:34');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `status`
+--
+
+CREATE TABLE `status` (
+  `id_status` int(11) NOT NULL,
+  `name_ua` varchar(50) NOT NULL,
+  `name_ru` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `status`
+--
+
+INSERT INTO `status` (`id_status`, `name_ua`, `name_ru`) VALUES
+(1, 'в обробці', 'в обработке'),
+(2, 'відправлений', 'отправлен'),
+(3, 'завершений', 'завершен'),
+(4, 'скасований', 'отменен');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -29468,13 +29622,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `name_user`, `sname_user`, `email_user`, `password`, `type_user`, `date_reg`, `user_phone_life`, `active`, `activation_code`, `user_soc_id`, `region`, `rayon`, `city`, `address`) VALUES
-(1, 'Дмитрий', 'Хитрый', 'test@gmail.com', 'a54a6f543be9d7a8008180f1a5474ce5', 0, '2019-10-13 21:25:34', '+380971701300', 1, 'NOPRSTUFIE', '795248983908898', '92', '286', 'Миколаїв', 'Космонавтов 74/1'),
-(11, 'Васька', 'Пробный', 'test@test.com', '123456', 0, '2019-11-14 09:54:08', '+380933100200', 1, '', '', NULL, NULL, '0', '0'),
-(12, 'Ванька ', 'Добавленный', 'test3@test.com', '', 0, '2019-11-18 09:47:38', '', 1, '', '', NULL, NULL, '0', '0');
+(1, 'Admin', '', 'admin@mastylo.com.ua', '149212686e432b4f618fc6da1d4f8f73', 0, '2020-01-27 23:42:08', '', 0, '', '', NULL, NULL, NULL, NULL);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `adminuser`
+--
+ALTER TABLE `adminuser`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `brand`
+--
+ALTER TABLE `brand`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `cart`
@@ -29495,6 +29659,12 @@ ALTER TABLE `city`
 ALTER TABLE `ci_sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
+
+--
+-- Индексы таблицы `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `feature`
@@ -29576,6 +29746,24 @@ ALTER TABLE `region`
   ADD PRIMARY KEY (`id_region`);
 
 --
+-- Индексы таблицы `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `static`
+--
+ALTER TABLE `static`
+  ADD PRIMARY KEY (`id_stat`);
+
+--
+-- Индексы таблицы `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id_status`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -29586,10 +29774,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `adminuser`
+--
+ALTER TABLE `adminuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `brand`
+--
+ALTER TABLE `brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `city`
@@ -29598,16 +29798,22 @@ ALTER TABLE `city`
   MODIFY `id_city` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29220;
 
 --
+-- AUTO_INCREMENT для таблицы `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `feature`
 --
 ALTER TABLE `feature`
-  MODIFY `id_name_har` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_name_har` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `feature_val`
 --
 ALTER TABLE `feature_val`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT для таблицы `menu`
@@ -29619,37 +29825,37 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id_news` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_news` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT для таблицы `product_cat_link`
 --
 ALTER TABLE `product_cat_link`
-  MODIFY `id_link` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_link` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `product_feature_val`
 --
 ALTER TABLE `product_feature_val`
-  MODIFY `idd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `product_img`
 --
 ALTER TABLE `product_img`
-  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `quest`
@@ -29670,10 +29876,28 @@ ALTER TABLE `region`
   MODIFY `id_region` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1612;
 
 --
+-- AUTO_INCREMENT для таблицы `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT для таблицы `static`
+--
+ALTER TABLE `static`
+  MODIFY `id_stat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `status`
+--
+ALTER TABLE `status`
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -309,14 +309,14 @@ $('#search-filtr').on('click', function () {
     })
 });
 
-function sorts(lang) {
+function sorts(lang,root,root1,root2) {
     var sort = $('#sort').val();
     var onpage = $('#onpage').val();
     $.ajax({
         url: '/catalog/sort',
         type: 'post',
         dataType: 'json',
-        data: {sort: sort, onpage: onpage},
+        data: {sort: sort, onpage: onpage, root:root,root1:root1,root2:root2},
         success: function (html) {
             $('body').find('.sort-section').empty();
 
