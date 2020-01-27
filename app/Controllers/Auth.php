@@ -4,60 +4,59 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController as Controller;
 use App\Helpers\Menu;
+use App\Models\ContactModel;
 use App\Controllers\Search as Search;
-class Auth extends Controller
-{
+
+class Auth extends Controller {
 
     public $locale;
     protected $table = 'users';
     private $db;
     private $session;
     private $search;
+    public $contact;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->locale = service('request')->getLocale();
         $this->db = \Config\Database::connect();
         $this->session = \Config\Services::session();
         $this->search = new Search();
+        $this->contact = new ContactModel();
         helper(['form', 'url', 'menu']);
     }
 
-
-    public function index()
-    {
+    public function index() {
         $data['locale'] = $this->locale;
         $data['title'] = lang('Language.login');
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
         echo view('templates/header', $data);
         echo view('login');
         echo view('templates/footer', $data);
     }
 
-    public function registration()
-    {
+    public function registration() {
         $data['locale'] = $this->locale;
         $data['title'] = "Регистрация";
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
         echo view('templates/header', $data);
         echo view('registration', $data);
         echo view('templates/footer', $data);
     }
 
-    public function new_user()
-    {
+    public function new_user() {
         $this->session->sess_destroy();
         $this->registration();
     }
 
-    public function creat_user_soc()
-    {
+    public function creat_user_soc() {
         $data['locale'] = $this->locale;
 
         $token = service('request')->getPost('token');
@@ -87,7 +86,6 @@ class Auth extends Controller
                         'id_user' => $val->id_user,
                         'type' => $val->type_user,
                         'lang' => $data['locale']
-
                     );
                     $session = session();
                     $session->set($arr);
@@ -112,26 +110,19 @@ class Auth extends Controller
                 'password' => md5($datas['uid']),
                 'user_soc_id' => $datas['uid'],
                 'active' => 1,
-
             );
             $builder->insert($opt);
             $arr = array(
-
                 'email_user' => $dat['email'],
                 'uid' => $datas['uid'],
-
-
             );
             $session = session();
             $session->set($arr);
             return redirect()->to('/');
-
         }
-
     }
 
-    public function creat_user()
-    {
+    public function creat_user() {
         $validation = \Config\Services::validation();
 
 
@@ -167,7 +158,7 @@ class Auth extends Controller
                     'rules' => 'min_length[8]|required|matches[repassword]',
                     'errors' => [
                         'min_length' => lang('Language.create_user_password_label'),
-                        //'matches' => lang('Language.create_user_password_label')
+                    //'matches' => lang('Language.create_user_password_label')
                     ]
                 ],
                 'repassword' => [
@@ -185,7 +176,6 @@ class Auth extends Controller
                 $res['error'] = '1';
                 $res['msg'] = $error;
                 echo json_encode($res);
-
             } else {
 
 
@@ -197,7 +187,6 @@ class Auth extends Controller
                     'password' => md5($pass),
                     'name_user' => $fname,
                     'active' => 0,
-
                 );
                 $builder->insert($opt);
                 $em = str_replace('@', '-', $email_user);
@@ -227,9 +216,7 @@ class Auth extends Controller
         }
     }
 
-
-    public function success_isset()
-    {
+    public function success_isset() {
         $lang = $this->locale;
         $data['title'] = "Авторизация";
         $data['txt'] = 'Пользователь с таким email существует! <a href="/' . $lang . '/login" style="color:green;text-decoration: underline"> Авторизуйтесь! </a>';
@@ -237,13 +224,13 @@ class Auth extends Controller
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
         echo view('templates/header-login', $data);
         echo view('success', $data);
         echo view('templates/footer-login', $data['locale']);
     }
 
-    public function success()
-    {
+    public function success() {
         $data['locale'] = $this->locale;
         $data['title'] = "Авторизация";
         $data['txt'] = 'Поздравляем! Вы успешно зарегистрировались на нашем портале. 
@@ -252,14 +239,13 @@ class Auth extends Controller
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
         echo view('templates/header', $data);
         echo view('success', $data);
         echo view('templates/footer', $data);
     }
 
-
-    public function login()
-    {
+    public function login() {
         $data['locale'] = $this->locale;
 
 
@@ -273,7 +259,7 @@ class Auth extends Controller
             $query = $builder->get()->getResult();
 
 //d($login);
-d($query);
+            d($query);
             if ($query) {
                 foreach ($query as $val) {
 
@@ -289,7 +275,7 @@ d($query);
                             'id_user' => $val->id_user,
                             'type' => $val->type_user,
                             'lang' => $data['locale'],
-                            //'money' => $money[0]->money
+                                //'money' => $money[0]->money
                         );
                         $session = session();
                         $session->set($arr);
@@ -307,21 +293,20 @@ d($query);
         }
     }
 
-    public function forgot_view()
-    {
+    public function forgot_view() {
         $data['locale'] = $this->locale;
         $data['title'] = "Восстановление пароля";
         $data['tree'] = menu();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
         echo view('templates/header', $data);
         echo view('forgot', $data);
         echo view('templates/footer', $data);
     }
 
-    public function forgot()
-    {
+    public function forgot() {
         $data['locale'] = $this->locale;
 
         $to = service('request')->getPost('email');
@@ -376,11 +361,9 @@ d($query);
                 echo "<script> alert('" . lang('Language.go_pass_no_acc') . "'); location.href='/'</script>";
             }
         }
-
     }
 
-    public function activator()
-    {
+    public function activator() {
 
         $data['locale'] = $this->locale;
         $uri = service('uri', current_url(true));
@@ -402,15 +385,13 @@ d($query);
                 $builder = $this->db->table('users');
                 $builder->where('activation_code', $code);
                 $builder->update($data);
-
             }
         }
 //dd($uri->getHost());
-        return redirect()->to('/'); /*.'/'. $lang . "/personal/settings", 'refresh');*/
+        return redirect()->to('/'); /* .'/'. $lang . "/personal/settings", 'refresh'); */
     }
 
-    public function logout()
-    {
+    public function logout() {
 
         $this->session->destroy();
         return redirect()->to('/');

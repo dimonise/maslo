@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: димон
@@ -12,22 +13,23 @@ use App\Controllers\BaseController as Controller;
 use App\Models\CatalogModel;
 use App\Models\CabinetModel as Cabinet;
 use App\Controllers\Search as Search;
+use App\Models\ContactModel;
 
-class Product extends Controller
-{
+class Product extends Controller {
+
     protected $request;
     public $search;
+    public $contact;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->session = \Config\Services::session();
         $this->locale = service('request')->getLocale();
         $this->search = new Search();
+        $this->contact = new ContactModel();
         helper('menu');
     }
 
-    public function index($id_prod)
-    {
+    public function index($id_prod) {
         $data['locale'] = $this->locale;
 
         $data['tree'] = menu();
@@ -35,7 +37,7 @@ class Product extends Controller
         $data['mmm'] = renderTemplate($tree);
 
         $product = new CatalogModel();
-
+        $data['contact'] = $this->contact->index();
         $data['product'] = $product->showProduct($id_prod);
         $data['title'] = $data['product'][0]['product_name_' . $this->locale];
         $data['search'] = $this->search->index();
@@ -45,8 +47,7 @@ class Product extends Controller
         echo view('templates/footer', $data);
     }
 
-    public function inCart()
-    {
+    public function inCart() {
 
         if ($this->request->isAJAX()) {
 
@@ -76,11 +77,9 @@ class Product extends Controller
 
             return json_encode($getProductInfo[0]['product_name_' . $this->locale], JSON_UNESCAPED_UNICODE);
         }
-
     }
 
-    public function cart()
-    {
+    public function cart() {
         $data['locale'] = $this->locale;
 
         $data['tree'] = menu();
@@ -101,14 +100,13 @@ class Product extends Controller
         $data['oblast'] = $cabinet->getOblast();
         $data['allrayon'] = $cabinet->getRayonAll();
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         echo view('templates/header', $data);
         echo view('cart', $data);
         echo view('templates/footer', $data);
     }
 
-    public function delCart()
-    {
+    public function delCart() {
         if ($this->request->isAJAX()) {
 
             $prodID = service('request')->getVar('prod_id');
@@ -120,4 +118,5 @@ class Product extends Controller
             return json_encode('deleted');
         }
     }
+
 }

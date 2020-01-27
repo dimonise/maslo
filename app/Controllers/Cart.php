@@ -32,6 +32,7 @@ class Cart extends Controller {
         ];
         $data['search'] = $this->search->index();
         $data['validation'] = $this->validation;
+        
         echo view('admin/header', $data);
         echo view('admin/cart/index', $data);
         echo view('admin/footer');

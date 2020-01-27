@@ -88,11 +88,11 @@
                 <div class="col-md-2"><a href="/<?= $locale; ?>"><img src="/img/logo_for_site.png" class="logo"></a></div>
                 <div class="col-md-3">
                     <div style="float:left"><img src="/img/clock-white.png"></div>
-                    <div style="margin-left: 45px;"><?= lang('Language.grafik-head') ?></div>
+                    <div style="margin-left: 45px;"><?= htmlspecialchars_decode($contact[0]['grafic_'.$locale]) ?></div>
                 </div>
                 <div class="col-md-3">
                     <div style="float:left"><img src="/img/point-white.png"></div>
-                    <div style="margin-left: 45px;"><?= lang('Language.grafik') ?></div>
+                    <div style="margin-left: 45px;"> <?= htmlspecialchars_decode($contact[0]['address_'.$locale]) ?> </div>
                 </div>
                 <div class="col-md-2" style="text-align: center;">
                     <a href="#backphone" class="btn btn-success"><?= lang('Language.phone') ?></a>

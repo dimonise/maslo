@@ -108,24 +108,24 @@
     </div>
     <div class="row manufacture">
         <div class="col-md-2 off"></div>
-        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[0]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[1]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[2]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[3]['img']?>"></div>
     </div>
     <div class="row manufacture">
         <div class="col-md-2 off"></div>
-        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[4]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[5]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[6]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[7]['img']?>"></div>
     </div>
     <div class="row manufacture ">
         <div class="col-md-2 off"></div>
-        <div class="col-md-2"><img src="/img/manufacture/bizol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/aral.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/castrol.png"></div>
-        <div class="col-md-2"><img src="/img/manufacture/elf.png"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[8]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[9]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[10]['img']?>"></div>
+        <div class="col-md-2"><img src="/img/manufacture/<?= $brand[11]['img']?>"></div>
     </div>
 </div>
 <div class="row">

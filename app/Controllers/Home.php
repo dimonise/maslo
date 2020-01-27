@@ -9,34 +9,38 @@ use App\Controllers\Search as Search;
 use App\Models\NewsModel;
 use App\Models\StaticPageModel;
 use App\Models\SliderModel;
+use App\Models\ContactModel;
+use App\Models\BrandModel;
 
-class Home extends Controller
-{
+class Home extends Controller {
+
     public $locale;
     public $search;
+    public $contact;
+    public $brand;
 
-
-    public function __construct()
-    {
+    public function __construct() {
 
         $this->locale = service('request')->getLocale();
         $this->search = new Search();
+        $this->contact = new ContactModel();
+        $this->brand = new BrandModel();
         helper('menu');
-
     }
 
-    public function index()
-    {
+    public function index() {
 
         $data['locale'] = $this->locale;
         $data['title'] = 'Главная';
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
+        $data['contact'] = $this->contact->index();
+        $data['brand'] = $this->brand->index();
 
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
-        
+
         $rekomm = new CatalogModel();
         $news = new NewsModel();
         $about = new StaticPageModel();
@@ -53,10 +57,9 @@ class Home extends Controller
         echo view('templates/footer', $data);
     }
 
-    public function admin()
-    {
+    public function admin() {
         echo view('admin/admin');
     }
-    //--------------------------------------------------------------------
 
+    //--------------------------------------------------------------------
 }

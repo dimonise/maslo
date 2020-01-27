@@ -5,17 +5,20 @@ namespace App\Controllers;
 use App\Controllers\BaseController as Controller;
 use App\Models\StaticPageModel;
 use App\Controllers\Search as Search;
+use App\Models\ContactModel;
 
 class StaticPage extends Controller {
 
     public $locale;
     public $search;
     public $model;
+    public $contact;
 
     public function __construct() {
         $this->locale = service('request')->getLocale();
         $this->search = new Search();
         $this->model = new StaticPageModel();
+        $this->contact = new ContactModel();
         helper('menu');
     }
 
@@ -31,7 +34,7 @@ class StaticPage extends Controller {
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 
@@ -52,7 +55,7 @@ class StaticPage extends Controller {
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 
@@ -71,7 +74,7 @@ class StaticPage extends Controller {
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 
@@ -86,7 +89,7 @@ class StaticPage extends Controller {
         $data['page'] = $this->model->getPage(3);
         $data['title'] = lang('Language.oferta');
         $data['locale'] = $this->locale;
-
+        $data['contact'] = $this->contact->index();
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
@@ -105,7 +108,7 @@ class StaticPage extends Controller {
         $data['page'] = $this->model->getPage(4);
         $data['title'] = lang('Language.terms');
         $data['locale'] = $this->locale;
-
+        $data['contact'] = $this->contact->index();
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();

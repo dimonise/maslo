@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: димон
- * Date: 11.12.2019
- * Time: 20:41
- */
 
 namespace App\Controllers;
 
@@ -13,26 +7,27 @@ use App\Models\CabinetModel;
 use App\Models\OrdersModel;
 use App\Models\UserModel;
 use App\Controllers\Search as Search;
-class Cabinet extends Controller
-{
+use App\Models\ContactModel;
+
+class Cabinet extends Controller {
+
     public $locale;
     public $model;
     public $order;
     public $search;
+    public $contact;
 
-    public function __construct()
-    {
+    public function __construct() {
 
         $this->locale = service('request')->getLocale();
         $this->model = new CabinetModel();
         $this->order = new OrdersModel();
         $this->search = new Search();
+        $this->contact = new ContactModel();
         helper('menu');
-
     }
 
-    public function index()
-    {
+    public function index() {
         $data['locale'] = $this->locale;
         $data['title'] = lang('Language.cabinet');
         $data['tree'] = menu();
@@ -46,7 +41,7 @@ class Cabinet extends Controller
 
         $data['oblast'] = $this->model->getOblast();
         $data['allrayon'] = $this->model->getRayonAll();
-
+$data['contact'] = $this->contact->index();
         $data['orders'] = $this->order->getOrders();
 
         echo view('templates/header', $data);
@@ -54,8 +49,7 @@ class Cabinet extends Controller
         echo view('templates/footer', $data);
     }
 
-    function edit($id_user)
-    {
+    function edit($id_user) {
         // check if the user exists before trying to edit it
         $data['user'] = $this->model->getUser($id_user);
 
@@ -91,8 +85,7 @@ class Cabinet extends Controller
             echo 'The user you are trying to edit does not exist.';
     }
 
-    function search_rayon()
-    {
+    function search_rayon() {
         $id = service('request')->getVar('id');
 
         $data = $this->model->getRayon($id);
@@ -100,8 +93,7 @@ class Cabinet extends Controller
         return json_encode($data);
     }
 
-    function search_city()
-    {
+    function search_city() {
         $id = service('request')->getVar('id');
 
         $data = $this->model->getCity($id);
@@ -109,8 +101,7 @@ class Cabinet extends Controller
         return json_encode($data);
     }
 
-    function quest($user)
-    {
+    function quest($user) {
         $title = htmlspecialchars(service('request')->getVar('subject'));
         $mess = htmlspecialchars(service('request')->getVar('quest'));
         $komu = htmlspecialchars(service('request')->getVar('komu'));
@@ -140,6 +131,6 @@ class Cabinet extends Controller
         $email->send();
 
         return redirect()->to('/cabinet/index');
-
     }
+
 }

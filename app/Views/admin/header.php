@@ -98,6 +98,16 @@
                                     <span>Слайдер на главной</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/contactadmin/index">
+                                    <span>Контакты</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/brandadmin/index">
+                                    <span>Производители</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <!-- /.sidebar -->

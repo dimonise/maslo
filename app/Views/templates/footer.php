@@ -17,7 +17,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-2">
             <div style="float:left"><img src="/img/clock-grey.png"></div>
-            <div style="margin-left: 50px;"><?= lang('Language.grafik-head') ?></div>
+            <div style="margin-left: 50px;"><?= htmlspecialchars_decode($contact[0]['grafic_'.$locale]) ?></div>
             <br>
         </div>
         <div class="col-md-1"></div>
@@ -38,7 +38,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-2">
             <div style="float:left"><img src="/img/point-grey.png"></div>
-            <div style="margin-left: 50px;"><?= lang('Language.grafik') ?></div>
+            <div style="margin-left: 50px;"><?= htmlspecialchars_decode($contact[0]['address_'.$locale]) ?></div>
             <br>
         </div>
         <div class="col-md-2">

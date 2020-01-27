@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: димон
@@ -11,24 +12,24 @@ namespace App\Controllers;
 use App\Controllers\BaseController as Controller;
 use App\Models\NewsModel;
 use App\Controllers\Search as Search;
+use App\Models\ContactModel;
 
+class News extends Controller {
 
-class News extends Controller
-{
     public $locale;
     public $search;
     public $model;
+    public $contact;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->locale = service('request')->getLocale();
         $this->search = new Search();
         $this->model = new NewsModel();
+        $this->contact = new ContactModel();
         helper('menu');
     }
 
-    public function index()
-    {
+    public function index() {
 
 
         $data['locale'] = $this->locale;
@@ -38,7 +39,7 @@ class News extends Controller
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         $data['news'] = $this->model->paginate(12);
         $data['pager'] = $this->model->pager;
 
@@ -47,8 +48,7 @@ class News extends Controller
         echo view('templates/footer');
     }
 
-    public function view($id_news = null)
-    {
+    public function view($id_news = null) {
 
         $data['locale'] = $this->locale;
         $data['news'] = $this->model->getNews($id_news);
@@ -62,7 +62,7 @@ class News extends Controller
         $data['tree'] = menu();
 
         $data['search'] = $this->search->index();
-
+        $data['contact'] = $this->contact->index();
         $tree = createTree($data['tree']);
         $data['mmm'] = renderTemplate($tree);
 
@@ -70,4 +70,5 @@ class News extends Controller
         echo view('news/view', $data);
         echo view('templates/footer');
     }
+
 }

@@ -116,9 +116,16 @@ class CatalogModel extends Model
         return $data;
     }
 
-    public function getBrend()
+      public function getBrendCat()
     {
-        $data = $this->db->query("SELECT *  FROM feature ")->getResultArray();
+        $data = $this->db->query("SELECT *  FROM feature  ")->getResultArray();
+
+        return $data;
+    }
+    
+    public function getBrend($groupa)
+    {
+        $data = $this->db->query("SELECT *  FROM feature WHERE groupa = ? OR groupa = 0", [$groupa])->getResultArray();
 
         return $data;
     }
